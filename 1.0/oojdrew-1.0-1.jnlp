@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <!-- JNLP File for OO jDREW 1.0 --> 
-<jnlp spec="1.0+" codebase="http://cloud.github.com/downloads/OOjDREW/OOjDREW/" href="oojdrew-1.0.jnlp">
+<jnlp spec="1.0+" codebase="http://jdrew.org/oojdrew/1.0/" href="oojdrew-1.0.jnlp">
 	<information>
 		<title>OO jDREW Top-Down Engine</title> 
 		<vendor>NRC</vendor>
