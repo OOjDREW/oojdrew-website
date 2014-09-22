@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+	<rdfs:Class rdf:ID="All_Categories"><rdfs:label>0</rdfs:label><rdfs:comment>All Categories</rdfs:comment></rdfs:Class>
+	<rdfs:Class rdf:ID="Information_Systems"><rdfs:label>100100</rdfs:label><rdfs:comment>Information Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Artificial_Intelligence"><rdfs:label>100200</rdfs:label><rdfs:comment>Artificial Intelligence</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Signal_and_Image_Processing"><rdfs:label>100300</rdfs:label><rdfs:comment>Signal and Image Processing</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Computer_Software"><rdfs:label>100400</rdfs:label><rdfs:comment>Computer Software</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Computation_Theory_and_Mathematics"><rdfs:label>100500</rdfs:label><rdfs:comment>Computation Theory and Mathematics</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Data_Formats"><rdfs:label>100600</rdfs:label><rdfs:comment>Data Formats</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Information_Systems_Organization"><rdfs:label>100101</rdfs:label><rdfs:comment>Information Systems Organization</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Information_Systems_Management"><rdfs:label>100102</rdfs:label><rdfs:comment>Information Systems Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Information_Storage,_Retrieval_and_Management"><rdfs:label>100103</rdfs:label><rdfs:comment>Information Storage, Retrieval and Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Human-Computer_Interaction"><rdfs:label>100104</rdfs:label><rdfs:comment>Human-Computer Interaction</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Interfaces_and_Presentation"><rdfs:label>100105</rdfs:label><rdfs:comment>Interfaces and Presentation</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Global_Information_Systems"><rdfs:label>100106</rdfs:label><rdfs:comment>Global Information Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Database_Management"><rdfs:label>100107</rdfs:label><rdfs:comment>Database Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Decision_Support_Systems"><rdfs:label>100108</rdfs:label><rdfs:comment>Decision Support Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Group_Support_Systems"><rdfs:label>100109</rdfs:label><rdfs:comment>Group Support Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Systems_Theory"><rdfs:label>100110</rdfs:label><rdfs:comment>Systems Theory</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Conceptual_Modelling"><rdfs:label>100111</rdfs:label><rdfs:comment>Conceptual Modelling</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Information_Systems_Development_Methodologies"><rdfs:label>100112</rdfs:label><rdfs:comment>Information Systems Development Methodologies</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Interorganisational_Information_Systems"><rdfs:label>100113</rdfs:label><rdfs:comment>Interorganisational Information Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Information_Systems"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Expert_Systems"><rdfs:label>100201</rdfs:label><rdfs:comment>Expert Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Agents_/_Multi-Agent_Systems"><rdfs:label>100202</rdfs:label><rdfs:comment>Agents / Multi-Agent Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Intelligent_Robotics"><rdfs:label>100203</rdfs:label><rdfs:comment>Intelligent Robotics</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Neural_Networks"><rdfs:label>100204</rdfs:label><rdfs:comment>Neural Networks</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Genetic_Algorithms"><rdfs:label>100205</rdfs:label><rdfs:comment>Genetic Algorithms</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Fuzzy_Logic"><rdfs:label>100206</rdfs:label><rdfs:comment>Fuzzy Logic</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Image_Processing"><rdfs:label>100301</rdfs:label><rdfs:comment>Image Processing</rdfs:comment><rdfs:subClassOf rdf:resource="#Signal_and_Image_Processing"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Signal_Processing"><rdfs:label>100302</rdfs:label><rdfs:comment>Signal Processing</rdfs:comment><rdfs:subClassOf rdf:resource="#Signal_and_Image_Processing"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Natural_Language_Processing"><rdfs:label>100207</rdfs:label><rdfs:comment>Natural Language Processing</rdfs:comment><rdfs:subClassOf rdf:resource="#Artificial_Intelligence"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Speech_Recognition"><rdfs:label>100303</rdfs:label><rdfs:comment>Speech Recognition</rdfs:comment><rdfs:subClassOf rdf:resource="#Signal_and_Image_Processing"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Pattern_Recognition"><rdfs:label>100304</rdfs:label><rdfs:comment>Pattern Recognition</rdfs:comment><rdfs:subClassOf rdf:resource="#Signal_and_Image_Processing"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Computer_Vision"><rdfs:label>100305</rdfs:label><rdfs:comment>Computer Vision</rdfs:comment><rdfs:subClassOf rdf:resource="#Signal_and_Image_Processing"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Programming_Techniques"><rdfs:label>100401</rdfs:label><rdfs:comment>Programming Techniques</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Software"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Software_Engineering"><rdfs:label>100402</rdfs:label><rdfs:comment>Software Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Software"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Programming_Languages"><rdfs:label>100403</rdfs:label><rdfs:comment>Programming Languages</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Software"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Operating_Systems"><rdfs:label>100404</rdfs:label><rdfs:comment>Operating Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Software"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Multimedia_Programming"><rdfs:label>100405</rdfs:label><rdfs:comment>Multimedia Programming</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Software"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Analysis_of_Algorithms_and_Complexity"><rdfs:label>100501</rdfs:label><rdfs:comment>Analysis of Algorithms and Complexity</rdfs:comment><rdfs:subClassOf rdf:resource="#Computation_Theory_and_Mathematics"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Mathematical_Logic_and_Formal_Languages"><rdfs:label>100502</rdfs:label><rdfs:comment>Mathematical Logic and Formal Languages</rdfs:comment><rdfs:subClassOf rdf:resource="#Computation_Theory_and_Mathematics"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Logics_and_Meanings_of_Programs"><rdfs:label>100503</rdfs:label><rdfs:comment>Logics and Meanings of Programs</rdfs:comment><rdfs:subClassOf rdf:resource="#Computation_Theory_and_Mathematics"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Numerical_Analysis"><rdfs:label>100504</rdfs:label><rdfs:comment>Numerical Analysis</rdfs:comment><rdfs:subClassOf rdf:resource="#Computation_Theory_and_Mathematics"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Discrete_Mathematics"><rdfs:label>100505</rdfs:label><rdfs:comment>Discrete Mathematics</rdfs:comment><rdfs:subClassOf rdf:resource="#Computation_Theory_and_Mathematics"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Mathematical_Software"><rdfs:label>100506</rdfs:label><rdfs:comment>Mathematical Software</rdfs:comment><rdfs:subClassOf rdf:resource="#Computation_Theory_and_Mathematics"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Data_Structures"><rdfs:label>100601</rdfs:label><rdfs:comment>Data Structures</rdfs:comment><rdfs:subClassOf rdf:resource="#Data_Formats"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Data_Storage_Representations"><rdfs:label>100602</rdfs:label><rdfs:comment>Data Storage Representations</rdfs:comment><rdfs:subClassOf rdf:resource="#Data_Formats"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Data_Encryption"><rdfs:label>100603</rdfs:label><rdfs:comment>Data Encryption</rdfs:comment><rdfs:subClassOf rdf:resource="#Data_Formats"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Data_Security"><rdfs:label>100604</rdfs:label><rdfs:comment>Data Security</rdfs:comment><rdfs:subClassOf rdf:resource="#Data_Formats"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Coding_and_Information_Theory"><rdfs:label>100605</rdfs:label><rdfs:comment>Coding and Information Theory</rdfs:comment><rdfs:subClassOf rdf:resource="#Data_Formats"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Aerospace_Engineering"><rdfs:label>200100</rdfs:label><rdfs:comment>Aerospace Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Manufacturing_Engineering"><rdfs:label>200200</rdfs:label><rdfs:comment>Manufacturing Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Mechanical_and_Industrial_Engineering"><rdfs:label>200300</rdfs:label><rdfs:comment>Mechanical and Industrial Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Chemical_Engineering"><rdfs:label>200400</rdfs:label><rdfs:comment>Chemical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Resources_Engineering"><rdfs:label>200500</rdfs:label><rdfs:comment>Resources Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Electrical_and_Electronic_Engineering"><rdfs:label>200600</rdfs:label><rdfs:comment>Electrical and Electronic Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Geomatic_Engineering"><rdfs:label>200700</rdfs:label><rdfs:comment>Geomatic Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Civil_Engineering"><rdfs:label>200800</rdfs:label><rdfs:comment>Civil Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Environmental_Engineering"><rdfs:label>200900</rdfs:label><rdfs:comment>Environmental Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Maritime_Engineering"><rdfs:label>201000</rdfs:label><rdfs:comment>Maritime Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Materials_Engineering"><rdfs:label>201100</rdfs:label><rdfs:comment>Materials Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Biomedical_Engineering"><rdfs:label>201200</rdfs:label><rdfs:comment>Biomedical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Computer_Hardware"><rdfs:label>201300</rdfs:label><rdfs:comment>Computer Hardware</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Communications_Technologies"><rdfs:label>201400</rdfs:label><rdfs:comment>Communications Technologies</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Other_Engineering_and_Technology"><rdfs:label>201500</rdfs:label><rdfs:comment>Other Engineering and Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Aerodynamics"><rdfs:label>200101</rdfs:label><rdfs:comment>Aerodynamics</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Flight_Dynamics"><rdfs:label>200102</rdfs:label><rdfs:comment>Flight Dynamics</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Aerospace_Structures"><rdfs:label>200103</rdfs:label><rdfs:comment>Aerospace Structures</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Aircraft_Performance"><rdfs:label>200104</rdfs:label><rdfs:comment>Aircraft Performance</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Flight_Control_Systems"><rdfs:label>200105</rdfs:label><rdfs:comment>Flight Control Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Aerospace_Electrical_Systems"><rdfs:label>200106</rdfs:label><rdfs:comment>Aerospace Electrical Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Satellite_and_Space_Vehicle_Design"><rdfs:label>200107</rdfs:label><rdfs:comment>Satellite and Space Vehicle Design</rdfs:comment><rdfs:subClassOf rdf:resource="#Aerospace_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Robotics_and_Mechatronics"><rdfs:label>200201</rdfs:label><rdfs:comment>Robotics and Mechatronics</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Flexible_Manufacturing_Systems"><rdfs:label>200202</rdfs:label><rdfs:comment>Flexible Manufacturing Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="CAD/CAM_Systems"><rdfs:label>200203</rdfs:label><rdfs:comment>CAD/CAM Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Control_Engineering"><rdfs:label>200204</rdfs:label><rdfs:comment>Control Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Welding_Technology"><rdfs:label>200205</rdfs:label><rdfs:comment>Welding Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Textile_Technology"><rdfs:label>200206</rdfs:label><rdfs:comment>Textile Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Printing_Technology"><rdfs:label>200207</rdfs:label><rdfs:comment>Printing Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Manufacturing_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Mechanical_Engineering"><rdfs:label>200301</rdfs:label><rdfs:comment>Mechanical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Mechanical_and_Industrial_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Industrial_Engineering"><rdfs:label>200302</rdfs:label><rdfs:comment>Industrial Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Mechanical_and_Industrial_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Chemical_Engineering_Design"><rdfs:label>200401</rdfs:label><rdfs:comment>Chemical Engineering Design</rdfs:comment><rdfs:subClassOf rdf:resource="#Chemical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Process_Control_and_Simulation"><rdfs:label>200402</rdfs:label><rdfs:comment>Process Control and Simulation</rdfs:comment><rdfs:subClassOf rdf:resource="#Chemical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Membrance_and_Separation_Technologies"><rdfs:label>200403</rdfs:label><rdfs:comment>Membrance and Separation Technologies</rdfs:comment><rdfs:subClassOf rdf:resource="#Chemical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Mining_Engineering"><rdfs:label>200501</rdfs:label><rdfs:comment>Mining Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Resources_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Mineral_Processing"><rdfs:label>200502</rdfs:label><rdfs:comment>Mineral Processing</rdfs:comment><rdfs:subClassOf rdf:resource="#Resources_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Petroleum_and_Reservoir_Engineering"><rdfs:label>200503</rdfs:label><rdfs:comment>Petroleum and Reservoir Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Resources_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Geomechanics"><rdfs:label>200504</rdfs:label><rdfs:comment>Geomechanics</rdfs:comment><rdfs:subClassOf rdf:resource="#Resources_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Electrical_Engineering"><rdfs:label>200601</rdfs:label><rdfs:comment>Electrical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Electrical_and_Electronic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Integrated_Circuits"><rdfs:label>200602</rdfs:label><rdfs:comment>Integrated Circuits</rdfs:comment><rdfs:subClassOf rdf:resource="#Electrical_and_Electronic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Geodesy"><rdfs:label>200701</rdfs:label><rdfs:comment>Geodesy</rdfs:comment><rdfs:subClassOf rdf:resource="#Geomatic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Surveying"><rdfs:label>200702</rdfs:label><rdfs:comment>Surveying</rdfs:comment><rdfs:subClassOf rdf:resource="#Geomatic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Spatial_Information_Systems"><rdfs:label>200703</rdfs:label><rdfs:comment>Spatial Information Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Geomatic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Navigation_and_Position_Fixing"><rdfs:label>200704</rdfs:label><rdfs:comment>Navigation and Position Fixing</rdfs:comment><rdfs:subClassOf rdf:resource="#Geomatic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Cartography"><rdfs:label>200705</rdfs:label><rdfs:comment>Cartography</rdfs:comment><rdfs:subClassOf rdf:resource="#Geomatic_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Structural_Engineering"><rdfs:label>200801</rdfs:label><rdfs:comment>Structural Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Civil_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Water_and_Sanitary_Engineering"><rdfs:label>200802</rdfs:label><rdfs:comment>Water and Sanitary Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Civil_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Transport_Engineering"><rdfs:label>200803</rdfs:label><rdfs:comment>Transport Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Civil_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Construction_Engineering"><rdfs:label>200804</rdfs:label><rdfs:comment>Construction Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Civil_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Geotechnical_Engineering"><rdfs:label>200805</rdfs:label><rdfs:comment>Geotechnical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Civil_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Environmental_Engineering_Modelling"><rdfs:label>200901</rdfs:label><rdfs:comment>Environmental Engineering Modelling</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Naval_Architecture"><rdfs:label>201001</rdfs:label><rdfs:comment>Naval Architecture</rdfs:comment><rdfs:subClassOf rdf:resource="#Maritime_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Ship_and_Platform_Hydrodynamics"><rdfs:label>201002</rdfs:label><rdfs:comment>Ship and Platform Hydrodynamics</rdfs:comment><rdfs:subClassOf rdf:resource="#Maritime_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Ship_and_Platform_Structures"><rdfs:label>201003</rdfs:label><rdfs:comment>Ship and Platform Structures</rdfs:comment><rdfs:subClassOf rdf:resource="#Maritime_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Marine_Engineering"><rdfs:label>201004</rdfs:label><rdfs:comment>Marine Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Maritime_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Ocean_Engineering"><rdfs:label>201005</rdfs:label><rdfs:comment>Ocean Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Maritime_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Polymers"><rdfs:label>201101</rdfs:label><rdfs:comment>Polymers</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Composite_Materials"><rdfs:label>201102</rdfs:label><rdfs:comment>Composite Materials</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Alloy_Materials"><rdfs:label>201103</rdfs:label><rdfs:comment>Alloy Materials</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Ceramics"><rdfs:label>201104</rdfs:label><rdfs:comment>Ceramics</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Timber"><rdfs:label>201105</rdfs:label><rdfs:comment>Timber</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Pulp_and_Paper"><rdfs:label>201106</rdfs:label><rdfs:comment>Pulp and Paper</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Plastics"><rdfs:label>201107</rdfs:label><rdfs:comment>Plastics</rdfs:comment><rdfs:subClassOf rdf:resource="#Materials_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Clinical_Engineering"><rdfs:label>201201</rdfs:label><rdfs:comment>Clinical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Biomedical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Rehabilitation_Engineering"><rdfs:label>201202</rdfs:label><rdfs:comment>Rehabilitation Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Biomedical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Biomaterials"><rdfs:label>201203</rdfs:label><rdfs:comment>Biomaterials</rdfs:comment><rdfs:subClassOf rdf:resource="#Biomedical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Biomechanical_Engineering"><rdfs:label>201204</rdfs:label><rdfs:comment>Biomechanical Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Biomedical_Engineering"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Arithmetic_and_Logic_Structures"><rdfs:label>201301</rdfs:label><rdfs:comment>Arithmetic and Logic Structures</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Hardware"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Memory_Structures"><rdfs:label>201302</rdfs:label><rdfs:comment>Memory Structures</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Hardware"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Input,_Output_and_Data_Devices"><rdfs:label>201303</rdfs:label><rdfs:comment>Input, Output and Data Devices</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Hardware"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Logic_Design"><rdfs:label>201304</rdfs:label><rdfs:comment>Logic Design</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Hardware"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Processor_Architectures"><rdfs:label>201305</rdfs:label><rdfs:comment>Processor Architectures</rdfs:comment><rdfs:subClassOf rdf:resource="#Computer_Hardware"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Antenna_Technology"><rdfs:label>201401</rdfs:label><rdfs:comment>Antenna Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Optical_and_Phontonic_Systems"><rdfs:label>201402</rdfs:label><rdfs:comment>Optical and Phontonic Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Digital_Systems"><rdfs:label>201403</rdfs:label><rdfs:comment>Digital Systems</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Computer_Communications_Networks"><rdfs:label>201404</rdfs:label><rdfs:comment>Computer Communications Networks</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Microwave_and_Millimetrewave_Technology"><rdfs:label>201405</rdfs:label><rdfs:comment>Microwave and Millimetrewave Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Broadband_Technology"><rdfs:label>201406</rdfs:label><rdfs:comment>Broadband Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Modem_Technology"><rdfs:label>201407</rdfs:label><rdfs:comment>Modem Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Baseband_Technology"><rdfs:label>201408</rdfs:label><rdfs:comment>Baseband Technology</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Satellite_Communications"><rdfs:label>201409</rdfs:label><rdfs:comment>Satellite Communications</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Radio_Communications_and_Broadcasting"><rdfs:label>201410</rdfs:label><rdfs:comment>Radio Communications and Broadcasting</rdfs:comment><rdfs:subClassOf rdf:resource="#Communications_Technologies"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Agricultural_Engineering"><rdfs:label>201501</rdfs:label><rdfs:comment>Agricultural Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Combustion_and_Fuel_Engineering"><rdfs:label>201502</rdfs:label><rdfs:comment>Combustion and Fuel Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Biosensor_Technologies"><rdfs:label>201503</rdfs:label><rdfs:comment>Biosensor Technologies</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Engineering/Technology_Instrumentation"><rdfs:label>201504</rdfs:label><rdfs:comment>Engineering/Technology Instrumentation</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Automotive_Engineering"><rdfs:label>201505</rdfs:label><rdfs:comment>Automotive Engineering</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Metallurgy"><rdfs:label>201506</rdfs:label><rdfs:comment>Metallurgy</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Nanotechnology"><rdfs:label>201507</rdfs:label><rdfs:comment>Nanotechnology</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Fluidization_and_Fluid_Mechanics"><rdfs:label>201508</rdfs:label><rdfs:comment>Fluidization and Fluid Mechanics</rdfs:comment><rdfs:subClassOf rdf:resource="#Other_Engineering_and_Technology"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Forestry_Sciences"><rdfs:label>300100</rdfs:label><rdfs:comment>Forestry Sciences</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Fisheries_Sciences"><rdfs:label>300200</rdfs:label><rdfs:comment>Fisheries Sciences</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Environmental_Sciences"><rdfs:label>300300</rdfs:label><rdfs:comment>Environmental Sciences</rdfs:comment><rdfs:subClassOf rdf:resource="#All_Categories"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Nutrition_and_Physiology"><rdfs:label>300101</rdfs:label><rdfs:comment>Nutrition and Physiology</rdfs:comment><rdfs:subClassOf rdf:resource="#Forestry_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Tree_Improvement_"><rdfs:label>300102</rdfs:label><rdfs:comment>Tree Improvement (Selection, Breeding, Genetic Engineering, etc.)</rdfs:comment><rdfs:subClassOf rdf:resource="#Forestry_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Pests,_Health_and_Diseases"><rdfs:label>300103</rdfs:label><rdfs:comment>Pests, Health and Diseases</rdfs:comment><rdfs:subClassOf rdf:resource="#Forestry_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Management_and_Environment"><rdfs:label>300104</rdfs:label><rdfs:comment>Management and Environment</rdfs:comment><rdfs:subClassOf rdf:resource="#Forestry_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Fire_Management"><rdfs:label>300105</rdfs:label><rdfs:comment>Fire Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Forestry_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Agroforestry"><rdfs:label>300106</rdfs:label><rdfs:comment>Agroforestry</rdfs:comment><rdfs:subClassOf rdf:resource="#Forestry_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Physiology_and_Genetics"><rdfs:label>300201</rdfs:label><rdfs:comment>Physiology and Genetics</rdfs:comment><rdfs:subClassOf rdf:resource="#Fisheries_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Pests_and_Diseases"><rdfs:label>300202</rdfs:label><rdfs:comment>Pests and Diseases</rdfs:comment><rdfs:subClassOf rdf:resource="#Fisheries_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Aquaculture"><rdfs:label>300203</rdfs:label><rdfs:comment>Aquaculture</rdfs:comment><rdfs:subClassOf rdf:resource="#Fisheries_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Ecosystem_Studies_and_Stock_Management"><rdfs:label>300204</rdfs:label><rdfs:comment>Ecosystem Studies and Stock Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Fisheries_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Evaluation_of_Management_Strategies"><rdfs:label>300205</rdfs:label><rdfs:comment>Evaluation of Management Strategies</rdfs:comment><rdfs:subClassOf rdf:resource="#Fisheries_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Environmental_Management_and_Rehabilitation"><rdfs:label>300301</rdfs:label><rdfs:comment>Environmental Management and Rehabilitation</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Wildlife_and_Habitat_Management"><rdfs:label>300302</rdfs:label><rdfs:comment>Wildlife and Habitat Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Natural_Resource_Management"><rdfs:label>300303</rdfs:label><rdfs:comment>Natural Resource Management</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Environmental_Impact_Assesment"><rdfs:label>300304</rdfs:label><rdfs:comment>Environmental Impact Assesment</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Conservation"><rdfs:label>300305</rdfs:label><rdfs:comment>Conservation</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Sciences"/></rdfs:Class>
+	<rdfs:Class rdf:ID="Sustainable_Development"><rdfs:label>300306</rdfs:label><rdfs:comment>Sustainable Development</rdfs:comment><rdfs:subClassOf rdf:resource="#Environmental_Sciences"/></rdfs:Class>
+	
+</rdf:RDF>

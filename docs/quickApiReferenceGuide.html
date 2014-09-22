@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Quick API guide</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <h3>Quick API Guide for the Top-Down Engine of OO jDREW</h3>
+	  
+	  <h3>Three-Step Guide to Using the Top-Down engine</h3>
+	  <OL>
+	    
+	  <LI>
+	  <h4>Loading a File into the Knowledge Base</h4>
+	  <p>The first thing that OO jDREW requires when using the TD engine is a knowledge base file.  This file can be stored as RuleML/XML or POSL.
+	  To parse a RuleML document, you need to use the RuleML <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/util/RuleMLParser.html">parser class.</a> 
+	  The calling method to parse a RuleML document can be found <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/util/RuleMLParser.html#parseRuleMLString(int,%20java.lang.String)">here</a>.
+	  There are methods that allow both a file name containing the content of the RuleML document and a string containing the RulML document to be parsed.
+	  </p>
+	  <p>
+	 To load a knowledge base that is stored as POSL, you must use the POSL  <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/util/POSLParser.html">parser class.</a>  The calling method to parse
+	 a POSL file can be found at this <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/util/POSLParser.html#parseDefiniteClauses(java.lang.String)">location.</a>
+	 There are methods that allow both a file name containing the content of the POSL document and a string containing the POSL contents to be parsed.
+	 </p>
+	  <LI>
+	  <h4>Loading an RDFS File into the Taxonomy System</h4>
+	  <p>The second step is optional whenever the user needs a user defined taxonomy.  If the user requires a taxonomy a RDFS file must be given.
+	  To parse this RDFS document, you must use the RDFS <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/util/RDFSParser.html">parser class.</a>
+	  The calling method to parse an RDFS file is located <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/util/RDFSParser.html#parseRDFSString(java.lang.String)">here.</a>
+	  It is possible to either parser a file containing the RDFS taxonomy or a string containing the RDFS taxonomy to be parsed.
+	  </p>
+	  <LI>
+	  <h4>Executing a Query</h4>
+	    
+		<p> To execute a query for the Top-Down engine the Backward Reasoner <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/td/BackwardReasoner.html">class</a> must be used. 
+	    The calling method used to perform queries can be found <a href="http://www.jdrew.org/oojdrew/docs/api/0.94/jdrew/oo/td/BackwardReasoner.html#iterativeDepthFirstSolutionIterator(jdrew.oo.util.DefiniteClause)">here.</a>
+	    </p>
+	  </OL>
+	  <h4>Java template Reference</h4>
+	  <p>
+	  This java template <a href="Template.java">file</a> contains all the steps to get the Top-Down engine up and running.
+	  </p>
+	
+	 </td>
+      <td style="height: 609px;" class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; July 25, 2006</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Ben Craig </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

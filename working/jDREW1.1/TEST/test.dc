@@ -1,0 +1,15 @@
+%sytax test begins
+
+% fact test
+
+a(b).
+a(a(b)).
+p(f(h(X)),h(Y),f(X),Y).
+p(f(g1),h,h(g2),g1).
+
+% rule test
+
+a(a(b)):-a(b).
+p(f(h(X)),h(Y),f(X),Y) :- p(f(g1),h,h(g2),g1).
+
+% sytax test ends

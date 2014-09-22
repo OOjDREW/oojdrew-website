@@ -1,0 +1,14 @@
+%Main Query to be called
+
+person(?person,?role, ?title, ?email, ?telephone):-
+	contact(?person,?email,?telephone),
+	role(?person,?role),
+    title(?person,?title).
+	
+role(John,PanelChair).
+title(John,PHD).
+contact(John,johnAtemailDotcom, 15555555555).
+
+role(ben,ben).
+title(ben,ben).
+contact(ben,ben,ben).

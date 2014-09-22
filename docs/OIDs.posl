@@ -1,0 +1,361 @@
+%Systematic Variations of OID Use                                                     July 30, 2008 Ben Craig
+
+%constant oid test
+oidTestA(constant^argument1,argument2).
+
+%Query Rules
+oidQueryConstant(?y,?z) :- oidTestA(constant^?y,?z).
+oidQueryConstant(?y,?z) :- oidTestA(constant:Thing^?y,?z).
+oidQueryConstant(?x,?y,?z) :- oidTestA(?x^?y,?z).
+oidQueryConstant(?x,?y,?z) :- oidTestA(?x:Thing^?y,?z).          %Thing is always defined even without a taxonomy.
+
+%constant oid test
+oidTestB("constant":String^argument1,argument2).
+
+%Query Rules
+oidQueryConstant(?y,?z) :- oidTestB("constant"^?y,?z).
+oidQueryConstant(?y,?z) :- oidTestB("constant":String^?y,?z).
+oidQueryConstant(?x,?y,?z) :- oidTestB(?x^?y,?z).
+oidQueryConstant(?x,?y,?z) :- oidTestB(?x:String^?y,?z).
+
+%typed constant oid test
+oidTestC(100:Integer^argument1,argument2).
+
+%Query Rule
+oidQueryTypeConstant(?y,?z) :- oidTestC(100^?y,?z).
+oidQueryTypeConstant(?y,?z) :- oidTestC(100:Integer^?y,?z).
+oidQueryTypeConstant(?x,?y,?z) :- oidTestC(?x^?y,?z).
+oidQueryTypeConstant(?x,?y,?z) :- oidTestC(?x:Integer^?y,?z).
+oidQueryTypeConstant(?x,?y,?z) :- oidTestC(100:String^?y,?z).      %Fails String is not an Integer
+oidQueryTypeConstant(?x,?y,?z) :- oidTestC(?x:String^?y,?z).       %Fails String is not an Integer
+
+%Plex oid test
+oidTestD([term1,term2,100:Integer]^argument1,argument2).
+
+%Query Rule
+oidQueryPlex(?y,?z) :- oidTestD([term1,term2,100]^?y,?z).           
+oidQueryPlex(?y,?z) :- oidTestD([term1,term2,100:Integer]^?y,?z).
+oidQueryPlex(?x,?y,?z) :- oidTestD(?x^?y,?z).
+
+%CTerm oid test
+oidTestE(complexTerm[term1,term2,100:Integer]^argument1,argument2).
+
+%Query Rule
+oidQueryCTerm(?y,?z) :- oidTestE(complexTerm[term1,term2,100]^?y,?z).
+oidQueryCTerm(?y,?z) :- oidTestE(complexTerm[term1,term2,100:Integer]^?y,?z).    
+oidQueryCTerm(?x,?y,?z) :- oidTestE(?x^?y,?z).
+
+
+%Cterm and plex oid test
+oidTestF(complexTerm[term1,term2,100:Integer,[list1,list2,list3]]^argument1,argument2).
+
+%QueryRule
+oidQueryCTermPlex(?y,?z) :- oidTestF(complexTerm[term1,term2,100,[list1,list2,list3]]^?y,?z).
+oidQueryCTermPlex(?y,?z) :- oidTestF(complexTerm[term1,term2,100:Integer,[list1,list2,list3]]^?y,?z).
+oidQueryCTermPlex(?x,?y,?z) :- oidTestF(?x^?y,?z).
+
+
+%Skolem oid test
+oidTestSk(sk[?var1,?var2,?var3]^?var1,?var2,?var3).
+
+%QueryRule
+oidQuerySk(?var1,?var2,?var3) :- oidTestSk(sk[?var1,?var2,?var3]^?var1,?var2,?var3).
+oidQuerySk(?var1,?var2,?var3) :- oidTestSk(sk[?var1,?var2,?var3:Integer]^?var1,?var2,?var3).
+oidQuerySk(?var1,?var2,?var3) :- oidTestSk(?x^?var1,?var2,?var3).
+
+%Variable oid test
+oidTestG(?var^argument1,argument2).
+
+%QueryRule
+oidQueryVar(?y,?z) :- oidTestG(constant^?y,?z).
+oidQueryVar(?y,?z) :- oidTestG(constant:Integer^?y,?z).
+oidQueryVar(?x,?y,?z) :- oidTestG(?x^?y,?z).
+oidQueryVar(?x,?y,?z) :- oidTestG(?x:Integer^?y,?z).
+
+%typed Variable oid test
+oidTestH(?var:Integer^argument1,argument2).
+
+%Query Rule
+oidQueryTypeVariable(?y,?z) :- oidTestH(100^?y,?z).                    %Fails, the constant must be type Integer
+oidQueryTypeVariable(?y,?z) :- oidTestH(100:Integer^?y,?z).
+oidQueryTypeVariable(?x,?y,?z) :- oidTestH(?x^?y,?z).
+oidQueryTypeVariable(?x,?y,?z) :- oidTestH(?x:Integer^?y,?z).
+oidQueryTypeVariable(y,?z) :- oidTestH(100:String^?y,?z).              %Fails Integer is not a String
+oidQueryTypeVariable(?x,?y,?z) :- oidTestH(?x:String^?y,?z).           %Fails Integer is not a String
+
+%The below Queries require the follow RDFS type definitions. (Source: http://www.jdrew.org/oojdrew/exa/exa4RDFS.html)
+%<rdf:RDF 
+% 
+%  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+%  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+%  xml:base="http://example.org/schemas/vehicles">
+% 
+%    <rdf:Description rdf:ID="Vehicle">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="PassengerVehicle">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#Vehicle"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="Van">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#Vehicle"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="Car">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#PassengerVehicle"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="MiniVan">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#Van"/>
+%      <rdfs:subClassOf rdf:resource="#PassengerVehicle"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="Sedan">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#Car"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="SportsCoupe">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#Car"/>
+%    </rdf:Description>
+% 
+%    <rdf:Description rdf:ID="ToyotaCorolla">
+%      <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+%      <rdfs:subClassOf rdf:resource="#Sedan"/>
+%    </rdf:Description>
+% 
+%</rdf:RDF>
+%GLB LUB Constant Test
+oidTestJ(constant:Car^argument1,argument2).
+%QueryRule
+oidQueryConstantType(?y,?z) :- oidTestJ(constant:Car^?y,?z).
+oidQueryConstantType(?y,?z) :- oidTestJ(constant:Sedan^?y,?z).             %Fails
+oidQueryConstantType(?y,?z) :- oidTestJ(constant:Vehicle^?y,?z).
+oidQueryConstantType(?y,?z) :- oidTestJ(constant:MiniVan^?y,?z).           %Fails
+
+oidQueryConstantType(?x,?y,?z) :- oidTestJ(?x:Car^?y,?z).
+oidQueryConstantType(?x,?y,?z) :- oidTestJ(?x:Sedan^?y,?z).                %Fails
+oidQueryConstantType(?x,?y,?z) :- oidTestJ(?x:Vehicle^?y,?z).
+oidQueryConstantType(?x,?y,?z) :- oidTestJ(?x:MiniVan^?y,?z).              %Fails
+
+%LUB GLB Variable Test
+oidTestI(?var:Car^argument1,argument2).
+
+%QueryRule
+oidQueryVariableType(?y,?z):- oidTestI(constant:Car^?y,?z).
+oidQueryVariableType(?y,?z) :- oidTestI(constant:Sedan^?y,?z).
+oidQueryVariableType(?y,?z) :- oidTestI(constant:Vehicle^?y,?z).          %Fails
+oidQueryVariableType(?y,?z) :- oidTestI(constant:MiniVan^?y,?z).          %Fails
+
+oidQueryVariableType(?x,?y,?z) :- oidTestI(?x:Car^?y,?z).
+oidQueryVariableType(?x,?y,?z) :- oidTestI(?x:Sedan^?y,?z).
+oidQueryVariableType(?x,?y,?z) :- oidTestI(?x:Vehicle^?y,?z).
+oidQueryVariableType(?x,?y,?z) :- oidTestI(?x:MiniVan^?y,?z).              %Fails
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     Distributed OIDs         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Positional Distributed OIDs
+%same predicate diff oids
+p1(c^A,A).
+p1(d^B,B).
+
+%Query for OID
+query1(?oid1,?oid2) :- p1(?oid1^?,?), p1(?oid2^?,?).
+query1noOID(?x,?y) :- p1(?x,?x), p1(?y,?y).
+
+%same predicate same oids
+p2(a^A,A).
+p2(a^B,B).
+
+query2(?oid) :- p2(?oid^?,?), p2(?oid^?,?).
+query2noOID(?x,?y) :- p2(?x,?x), p2(?y,?y).
+
+%different predicate same oids
+p3(b^A,A).
+p4(b^B,B).
+
+query3(?oid) :- p3(?oid^?,?), p4(?oid^?,?).
+query3noOID(?x,?y) :- p3(?x,?x), p4(?y,?y).
+
+%different predicate different oids
+p5(e^A,A).
+p6(f^B,B).
+
+query4(?oid1,?oid2):- p5(?oid1^?,?), p6(?oid2^?,?).
+query4noOID(?x,?y) :- p5(?x,?x), p6(?y,?y).
+
+%Slotted Distributed OIDs 
+%same predicate diff oids
+s1(c^slot1->A;slot2->A).
+s1(d^slot1->B;slot2->B).
+
+query5(?oid1,?oid2) :- s1(?oid1^slot1->?;slot2->?), s1(?oid2^slot1->?;slot2->?).
+query5noOID(?x,?y) :- s1(slot1->?x;slot2->?x), s1(slot1->?y;slot2->?y).
+
+%same predicate same oids
+s2(a^slot1->A;slot2->A).
+s2(a^slot1->B;slot2->B).
+
+query6(?oid) :- s2(?oid^slot1->?;slot2->?), s2(?oid^slot1->?;slot2->?).
+query6noOID(?x,?y) :- s2(slot1->?x;slot2->?x), s2(slot1->?y;slot2->?y).
+
+%different predicate same oids
+s3(b^slot1->A;slot2->A).
+s4(b^slot1->B;slot2->B).
+
+query7(?oid) :- s3(?oid^slot1->?;slot2->?), s4(?oid^slot1->?;slot2->?).
+query7noOID(?x,?y) :- s3(slot1->?x;slot2->?x), s4(slot1->?y;slot2->?y).
+
+%different predicate different oids
+s5(e^slot1->A;slot2->A).
+s6(f^slot1->B;slot2->B).
+
+query8(?oid1,?oid2):- s5(?oid1^slot1->?;slot2->?), s6(?oid2^slot1->?;slot2->?).
+query8noOID(?x,?y) :- s5(slot1->?x;slot2->?x), s6(slot1->?y;slot2->?y).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%      Stored Facts with OIDs  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Rules with Constants
+%Success
+q1(c^A,A) :- fact1(a,b).  
+fact1(a,b).
+
+%The next two examples display an issue concerning asymetric unification with oids.
+%This asymmetry is still open for discussion and could be changed later.
+
+%Success - In a premise or query, the user does not need to supply the OID of the fact if the fact has an OID. 
+q3(c^A,A) :- fact3(a,b).  
+fact3(e^a,b).
+
+%Fails - In a premise or query, in which the user supplies an OID to a fact, the unification of the fact and premise
+%will fail if the fact does not contain the oid supplied.
+q2(c^A,A) :- fact2(e^a,b).  
+fact2(a,b).
+
+%Success
+q4(c^A,A) :- fact4(e^a,b).  
+fact4(e^a,b).
+
+%Rules with Vars
+r1(c^?x,?y) :- fact1(?x,?y).  
+fact1(?x,?y).
+
+%fails
+r2(c^?x,?y) :- fact2(e^?x,?y).  
+fact2(?x,?y).
+
+%Success
+r3(c^?x,?y) :- fact3(?x,?y).  
+fact3(e^?x,?y).
+
+%Success
+r4(c^?x,?y) :- fact4(e^?x,?y).  
+fact4(e^?x,?y).
+
+%Chaining of Rules
+r1(a^b) :- r2(c^d).
+r2(c^d) :- r3(e^f).
+r3(e^f) :- r4(g^h).
+r4(g^h).
+
+%oid
+query() :- r1(a^b).
+%no oid
+query() :- r1(b).
+
+%Stored facts
+fact1(a,b).
+fact2(e^a,b).
+
+q1(?x,?y) :- fact1(?^?x,?y). 
+q2(?x,?y) :- fact1(e^?x,?y). %Fails also top level query *fact1(e^?x,?y)* fails
+q3(?x,?y) :- fact1(?x,?y).
+q4(?b,?x,?y) :- fact1(?b^?x,?y).
+q5(?x,?y) :- fact2(?^?x,?y).
+q6(?x,?y) :- fact2(e^?x,?y).
+q7(?x,?y) :- fact2(?x,?y).
+q8(?b,?x,?y) :- fact2(?b^?x,?y).
+
+%Stored Rules
+rule1(?x,?y) :- fact1(?x,?y).
+rule2(e^?x,?y) :- fact2(e^?x,?y).
+
+q9(?x,?y) :- rule1(?^?x,?y). 
+
+%The next two examples display an issue concerning asymetric unification with oids.
+%This asymmetry is still open for discussion and could be changed later.
+
+%Success - In a premise or query, the user does not need to supply the OID of the rule head if the rule head  has an OID. 
+q15(?x,?y) :- rule2(?x,?y). 
+
+%Fails - In a premise or query, in which the user supplies an OID to a rule head , the unification of the rule head  and premise
+%will fail if the rule head  does not contain the oid supplied.
+q10(?x,?y) :- rule1(e^?x,?y).
+
+q11(?x,?y) :- rule1(?x,?y).
+q12(?b,?x,?y) :- rule1(?b^?x,?y).
+q13(?x,?y) :- rule2(?^?x,?y).
+q14(?x,?y) :- rule2(e^?x,?y).
+q16(?b,?x,?y) :- rule2(?b^?x,?y).
+
+%Skolem Example
+fact5(a,b).
+fact6(e^a,b). 
+fact7(a,a,b).   %duplication
+fact8(e^a,a,b).
+fact9(a,a,b,c). %in premise but not in the head
+fact10(e^a,a,b,c).
+
+ruleSk1(sk[?x,?y]^?x,?y) :- fact5(?x,?y).
+ruleSk2(sk[?x,?y,?z]^?x,?y,?z):- fact6(?x^?y,?z).
+
+ruleSk3(sk[?x,?y]^?x,?y) :- fact7(?x,?x,?y).
+ruleSk4(sk[?x,?y,?z]^?x,?y,?z) :- fact8(?x^?y,?y,?z).
+
+ruleSk5(sk[?x,?y,?z]^?x,?y):- fact9(?x,?x,?y,?z).
+ruleSk6(sk[?w,?x,?y,?z]^?w,?x,?y):- fact10(?w^?x,?x,?y,?z).
+
+q17(?x,?y) :- ruleSk1(?x,?y).
+q18(?x,?y) :- ruleSk1(?^?x,?y).
+q19(?x,?y) :- ruleSk1(sk[?x,?y]^?x,?y).
+q20(?x,?y) :- ruleSk1(e^?x,?y).           %Fails wrong OID
+
+q21(?x,?y,?z) :- ruleSk2(?x,?y,?z).
+q22(?x,?y,?z) :- ruleSk2(?^?x,?y,?z).
+q23(?x,?y,?z) :- ruleSk2(sk[?x,?y,?z]^?x,?y,?z). 
+q24(?x,?y,?z) :- ruleSk2(e^?x,?y,?z).     %Fails wrong OID
+
+q25(?x,?y) :- ruleSk3(?x,?y).
+q26(?x,?y) :- ruleSk3(?^?x,?y).
+q27(?x,?y) :- ruleSk3(sk[?x,?y]^?x,?y). 
+q28(?x,?y) :- ruleSk3(e^?x,?y).     %Fails wrong OID
+
+q29(?x,?y,?z) :- ruleSk4(?x,?y,?z).
+q30(?x,?y,?z) :- ruleSk4(?^?x,?y,?z).
+q31(?x,?y,?z) :- ruleSk4(sk[?x,?y,?z]^?x,?y,?z). 
+q32(?x,?y,?z) :- ruleSk4(e^?x,?y,?z).     %Fails wrong OID
+
+q33(?x,?y) :- ruleSk5(?x,?y).
+q34(?x,?y) :- ruleSk5(?^?x,?y).
+q35(?x,?y) :- ruleSk5(sk[?x,?y,?z]^?x,?y). 
+q36(?x,?y) :- ruleSk5(e^?x,?y).     %Fails wrong OID
+
+q37(?x,?y,?z) :- ruleSk6(?x,?y,?z).
+q38(?x,?y,?z) :- ruleSk6(?^?x,?y,?z).
+q39(?x,?y,?z) :- ruleSk6(sk[?w,?x,?y,?z]^?w,?x,?y). 
+q40(?x,?y,?z) :- ruleSk6(e^?x,?y,?z).     %Fails wrong OID
+
+%Last example
+employee(?P:Person^age->?Age:Integer!?)  :- employee(?P:Person^born->?B:Integer!?), currrentyear(?Year:Integer), subtract(?YearDiff:Integer,?Year:Integer,?B:Integer), equal(?Age:Integer, ?YearDiff:Integer).
+currentyear(2008:Integer).
+employe(Person^born->1985:Integer;age->?Age;name->ben).

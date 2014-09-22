@@ -1,0 +1,14 @@
+%Instance 2,
+% Example course facts
+course(id->7:Expert_Systems;name->course7).
+course(id->8:Interfaces_and_Presentation;name->course8).
+course(id->9:Systems_Theory;name->Information_Systemscourse).
+course(id->10:Interorganisational_Information_Systems;name->Information_Systemscourse).
+course(id->11:Conceptual_Modelling;name->course11).
+course(id->12:Decision_Support_Systems;name->course12).
+
+%Example rules
+university_course(cour->CS;courseid->?ID):-course(id->?ID:Information_Systems !?X).
+
+%Example Query
+%course(id->?ID:Information_Systems;name->?Name).

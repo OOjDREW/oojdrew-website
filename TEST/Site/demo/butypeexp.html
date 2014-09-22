@@ -1,0 +1,18 @@
+<HTML>
+	<HEAD>
+		<TITLE>OO jDREW Bottom Up Example typed rules and facts</TITLE>
+	</HEAD>
+	<BODY>
+	<H3>% Example: NBBizKB sample typed rules and facts - Bottom Up</H3>
+<XMP>
+discount(offerName->?off : Offer; customerName->?cust : Customer; amount->10):-
+offer(name->?off : Offer; category->special; price->?),
+customer(name->?cust : Customer; status->gold).
+
+customer(name->?cust: Customer; status->gold).
+
+offer(name->?offer : Promotion; category->special; price->?).
+
+</XMP>
+	</BODY>
+</HTML>

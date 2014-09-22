@@ -1,0 +1,270 @@
+\documentclass [letterpaper] {Article}
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+%fleqn: left alignment the equations
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage[pdftex]{graphicx,color}
+\graphicspath{{pdfpics/}}
+\usepackage{amsthm}
+\usepackage{url}
+\usepackage [noend] {algorithmic}
+\usepackage{setspace}
+\usepackage [letterpaper] {geometry}
+\usepackage[nottoc, notlot, notlof]{tocbibind}
+\usepackage{indentfirst}
+\usepackage{setspace}
+
+
+
+\begin{document}
+\begin{small}
+\doublespacing
+\large
+
+%\maketitle
+\begin{titlepage}
+\begin{center}
+\vspace{10mm}
+\Large University of New Brunswick\\
+\vspace{10mm}
+\Large{Translating FOAF/RDF-like Profiles}\\
+\Large{for an eTourism Use Case of OO jDREW}\\
+\vspace{5mm}
+\Large {Research Exposition}
+\\
+\vspace{3.5mm}for
+\\
+\Large {UNB Faculty of Computer Science}\\
+\vspace{10mm}
+By\\
+\vspace{5mm}Harold Boley, Greg Sherman, Tshering Dema,\\
+\hspace{7mm}Benjamin Larry Craig, Judy Zhao\\
+\vspace{10mm}
+%\today
+\begin{center}
+
+
+\vspace{10mm}
+%\today
+\singlespacing
+{\bf Abstract}
+As a contribution to knowledge interoperation between Semantic Web
+languages, the XSLT-based translator RDF2POSL from OWL/RDF instances
+with {\tt subClassOf} taxonomies to RuleML and POSL with order-sorted
+types is discussed. The RuleML and OO jDREW use case eTourPlan for
+FOAF/RDF-based travel recommendations is presented.
+\end{center}
+\end{center}
+\end{titlepage}
+\newpage
+%\tableofcontents
+\thispagestyle{empty}
+\Large
+
+\newpage
+\singlespacing
+
+\section{Introduction}
+
+\hspace{0.3in}Instances in OWL and RDF knowledge bases (KBs) are expressed as object-centric descriptions called {\it slotted facts} in the RuleML interchange language and its POSL presentation syntax $<$http://www.ruleml.org$>$ as implemented in OO jDREW $<$http://www.jdrew.org/oojdrew$>$.
+
+\hspace{0.3in}For providing order-sorted type restrictions to slot fillers, these descriptions are complemented by the {\tt subClassOf} taxonomy backbone of ontology KBs (e.g., of frame-based languages, RDFS, and description logic), also implemented in OO jDREW. 
+
+\hspace{0.3in}As a contribution to knowledge interoperation between Semantic Web languages, we present an XSLT translator from a subset of OWL/RDF to a subset of RuleML and POSL along with a use case of OO jDREW \linebreak
+$<$http://www.ruleml.org/usecases$>$ in eTourism.
+
+
+\section{XSLT-Translator OWL/RDF to RuleML/RDFS} 
+
+\hspace{0.3in}The use of XML-based Semantic Web languages such as W3C's Resource Description Framework (RDF) and Web Ontology Language (OWL) has become widespread for describing real-world knowledge. Users of OO jDREW can take advantage of this abundance of knowledge by utilizing the power of XSLT to translate these languages into OO RuleML (hence into POSL). OWL is often used to model (light-weight) ontologies with a taxonomy backbone that can be automatically extracted into an RDFS {\tt subClassOf} taxonomy for use by OO jDREW's order-sorted type system. Instance descriptions in OWL/RDF/XML can be similarly translated to slotted facts in RuleML/XML. The RDF graph in Figure 1 shows a partial instance description of a
+well-known museum in Bhutan for use by eTourPlan (cf. Section 3). 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12.5cm, height=5.5cm]{rdfmuseum.jpg}
+\caption {RDF Description of Knowledge}
+\label{fig:Fig4}
+\end{center}
+\end{figure}
+
+\hspace{0.1in}This knowledge may have been originally represented in RDF/XML as follows:
+ 
+\begin{small}
+\singlespacing
+\begin{verbatim}
+<rdf:Description rdf:about="Ta Dzong">
+ <rdf:type rdf:resource="National_museum">
+    <url>http://www.nationalmuseum.gov.bt/history-ta-dzong.html </url> 
+    <province>Paro</province>
+    ...
+    <theme>historical_cultural</theme>
+ </rdf:Description>
+ \end{verbatim}
+ \end{small}
+ 
+
+\hspace{0.1in}We can use XSLT to perform a translation to Object Oriented RuleML/XML, representing the same knowledge: 
+
+\begin{small}
+\singlespacing
+\begin{verbatim}
+ <Atom>
+   <Rel>object</Rel>
+     <slot>
+       <Ind>id</Ind>
+       <Ind type ="National_Museum">Ta Dzong</Ind>
+     </slot>
+     <slot>
+       <Ind>url</Ind>
+       <Ind> http://www.nationalmuseum.gov.bt/history-ta-dzong.html </Ind>
+     </slot> 
+     <slot>
+       <Ind>province</Ind>
+       <Ind>Paro</Ind>
+     </slot>
+      ...
+     <slot>
+       <Ind>theme</Ind>
+       <Ind>historical_cultural</Ind>
+     </slot>
+   </Atom>
+ \end{verbatim}
+ \end{small}
+
+This knowledge can also be represented in POSL using the RuleML to POSL converter $<$http://www.jdrew.org/oojdrew/demo/translator.jnlpas$>$\linebreak 
+follows:
+
+\begin{small}
+\singlespacing
+\begin{verbatim}
+    
+     object(id->"Ta Dzong":National_museum;
+           url->"http://www.nationalmuseum.gov.bt/history-ta-dzong.html";
+           province->Paro;
+           ...
+           theme->historical_cultural).
+		       
+\end{verbatim}
+\end{small}	   
+
+ 
+\hspace{0.1in}While this is just a one-to-one translation of RDF to OO RuleML, a skilled knowledge engineer can modify the RDF2POSL translator into a more domain-specific translation which would produce the following POSL representation of our earlier FOAF (Friend of A Friend)/RDF-like profile:
+ 
+\begin{small}
+\singlespacing
+\begin{verbatim}
+    
+attraction(hs.name->"Ta Dzong":National_museum;
+           et.url->"http://www.nationalmuseum.gov.bt/history-ta-dzong.html";
+           et.province->Paro;
+           et.theme->historical_cultural;
+           et.open->"9amTo4pm";
+           hs.description->"Built in 1968 in Paro, Bhutan by the third King of Bhutan.";
+           hs.contact->"nmb@druknet.bt" ;
+           hs.relatedTo->"www.parodzong.bt, www.trongsaMuseum.bt").
+           
+           
+\end{verbatim}
+\end{small}
+
+\hspace{0.3in}The above slotted fact describes an attraction site, ``Ta Dzong" under the class National\_museum type and other slots describing the attraction site. The vocabularies that are borrowed from the Harmonise Ontology \linebreak 
+$<$http://www.harmo-ten.org$>$ are prefixed with an `hs', while those with `et' prefixes are the user-defined vocabularies for the KB. 
+
+\hspace{0.3in}Once these facts are converted, the resultant KB can be enhanced with rules, which can provide useful constraints and deduced relationships. For example, we can write the following rule to complement the knowledge we have transformed. This rule finds the province where the attraction is located:
+
+\begin{small}
+\begin{verbatim}           
+
+getProvince(?Province, ?Name:Attractions):-
+  attraction(hs.name->?Name:Attractions;  et.province->?Province!?).
+
+ \end{verbatim}
+\end{small}	   
+
+\section{A Knowledge-Based Tourist Route and Activity Planner}
+
+\hspace{0.3in}\textbf{eTourPlan} is a knowledge-based travel planner and a recommender. eTourism is a good application area for Semantic Web technologies \linebreak$<$http://www.w3.org/2001/sw/Activity$>$, since information distribution and exchange are the backbones of the travel industry. The interoperability and integration of the available information on the Web can be enhanced by using ontologies and rules on a knowledge base. eTourPlan aims at a solution to enhance semantic and structure to distributed tourist information on the Web. The evaluation of the eTourPlan is performed based on Bhutan KB.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12.5cm, height=6.5cm]{eTourPlanMethod.jpg}
+\caption {eTourPlan Methodology}
+\label{fig:3Fig1} 
+\end{center}
+\end{figure}
+
+\hspace{0.3in}The eTourPlan prototype functions as a travel planner which aids in the selection and scheduling of various tour aspects such as event selection, the route to be taken, sightseeing attractions and accommodations according to user preferences and constraints. It can also function independently as a location centric recommender of actitivites and route planner. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=14cm, height=8.5cm]{attractions.jpg}
+\caption {RDFS Taxonomy of Attractions}
+\label{fig:3Fig2}
+\end{center}
+\end{figure}
+
+\hspace{0.3in}The light-weight rule-ontology capability of OO jDREW is used to structure the tourism domain consisting of Events, Attractions and Accommodations. The RDFS class taxonomy of the Attractions class is shown in Figure 3.
+\\
+ 
+\hspace{0.3in}The FOAF$<$http://www.foaf-project.org$>$ concept in the tourism domain. The FOAF vocabulary has been extended to FOAF-like profiles of tourist entities like events and attraction sites as shown in the previous section.
+
+\hspace{0.3in}A recursive subpredicate to list a number N of attractions in a province in POSL syntax is shown here. It  recursively accummulates pairs of attraction's name and url in a list. The attraction premise used in the predicate refer back to the FOAF-like profile described above. This subpredicate is used to list the attractions at specific event-occuring locations for travel planning and also in location-centric recommendation of activities.
+\linebreak 
+\linebreak 
+\linebreak
+\linebreak 
+\singlespacing
+\begin{small}	       
+\begin{verbatim}
+
+%A Recursive predicate to get a number N of attractions at a specified location. 
+ 
+getAttractionList(et.province->?Province;  
+	                attractionList->[]; 
+	                num->0).
+getAttractionList(et.province->?Province;  
+                  attractionList->[[?Name:Attractions, ?WebLink] | ?Rest];  
+                  num->?N : Integer):-
+  greaterThan(?N : Integer, 0 : Integer),
+  attraction(hs.name->?Name:Attractions; 
+             et.url->?WebLink;  
+             hs.description->?Description;  
+             et.theme->?Theme;  
+             et.province->?Province;  
+             hs.relatedTo->?Url!?),
+  subtract(?Numtleft, ?N : Integer,  1 : Integer), 
+  getAttractionList(et.province->?Province;  
+                    attractionList->?Rest;  
+                    num->?Numtleft ),
+  notMember(?Name, ?Rest).
+  
+notMember(?X, []). 
+notMember(?X, [?H|?T]) :- notEqual(?X,?H), notMember(?X,?T).
+
+\end{verbatim}
+\end{small}
+
+
+
+\section{Conclusion}
+
+\hspace{0.3in}Besides the preceding illustration for the eTourPlan use case, the XSLT-based RDF2POSL translator has been employed as a preprocessor for major projects using OO jDREW.
+The implementation of further translators to OO jDREW is planned for Semantic Web knowledge interoperation.
+OO jDREW can be run online using Java Web Start (the OO jDREW sources are freely available under GNU LGPL).
+OO jDREW is one of the engines used by the distributed
+Rule Responder architecture $<$http://responder.ruleml.org$>$. RuleML and the OO jDREW Open Source Initiative \linebreak $<$http://wiki.ruleml.org/OO\_jDREW$>$ have also been working with OMG's PRR $<$http://www.omg.org/docs/
+dtc/07-11-04.pdf$>$ and W3C's RIF \linebreak 
+$<$http://www.w3.org/2005/rules/ wiki/RIF\_Working\_Group$>$.
+Our companion paper in these proceedings describes the introduction of probabilities into OO jDREW along with a Currency Exchange example.
+
+%\addcontentsline{toc}{section}{\bf{References}}
+\nocite{*}
+\newpage
+\singlespacing
+%\bibliographystyle{plain}
+%\bibliography{references}
+\end{small}
+%\end{center}
+\end{document}

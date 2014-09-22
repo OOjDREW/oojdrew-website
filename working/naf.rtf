@@ -1,0 +1,227 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fswiss\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Msftedit 5.41.15.1507;}\viewkind4\uc1\trowd\trgaph10\trleft-10\trbrdrt\brdrdb\brdrw5 \trbrdrb\brdrdb\brdrw5 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clvertalb\cellx9350\pard\intbl\sb100\sa100\f0\fs24 wahlau: hi Ben \par
+Ben: hey \par
+wahlau: hope it is ok to call you Ben :) \par
+morning \par
+Ben: yea its fine \par
+wahlau: tell me when is the good time to talk \par
+Ben: what time zone do you live in? \par
+wahlau: CET \par
+Germany \par
+Ben: so what time is it there now? \par
+wahlau: 130pm :) \par
+Ben: ok \par
+wahlau: b4 we go into serious stuffs \par
+Ben: yea \par
+its 8:30 am here \par
+wahlau: i must tell you i am no good programmer :) don put too much hope in my contribution :) \par
+Ben: k \par
+do you have something a prototype that works? \par
+wahlau: i have a version here that i should tidy up and rerelease for our work \par
+but first \par
+i just explain what i did \par
+Ben: k \par
+wahlau: i basically made a filter \par
+Ben: ok \par
+wahlau: to capture all <Naf> tags \par
+Ben: ok \par
+wahlau: from what i have understood \par
+oojdrew works in the following way: it fetches a fact from the new facts \par
+and try to check it against the rules \par
+Ben: yea \par
+wahlau: that is what i understood with unify part \par
+so what i do is \par
+whenever a fact satisfy any of the NAF tags i have \par
+i drop that particular rule for that round \par
+Ben: ok \par
+wahlau: this will work well with rules like\line if (A=1) and (B=2) and (C!=3) then (do D) \par
+as long as C = 3 is a fact \par
+this round should not take place \par
+Ben: ok \par
+wahlau: hope i explained it well \par
+Ben: yea that makes sense \par
+wahlau: i also make a double check part \par
+Ben: thats a good way to do it \par
+wahlau: if D somehow existed earlier \par
+i will remove D from the old Facts :) \par
+Ben: ok \par
+wahlau: so far it works for our rules that we implemented in our context aware project \par
+btw, we are doing context aware projects here \par
+Ben: ok \par
+wahlau: and part of it we uses oojdrew in our rule based reasoning \par
+Ben: and you use oo jdrew? \par
+wahlau: yes# \par
+Ben: ok \par
+wahlau: perhaps without the OO goodness \par
+but it works :) \par
+so if my logic is not totally wrong \par
+give me a week \par
+Ben: ok \par
+wahlau: we are releasing our work as GPL \par
+Ben: k \par
+wahlau: ok, part of it \par
+my extension and component should be LGPL \par
+Ben: do you have a website for your project? \par
+just so I can look at it \par
+wahlau: and the project softwar that uses my component is GPL \par
+erm \par
+you mean the work? \par
+Ben: yea \par
+wahlau: {\field{\*\fldinst{HYPERLINK "http://www.ist-mobilife.org/"}}{\fldrslt{\cf1\ul www.ist-mobilife.org}}}\cf0\ulnone\f0\fs24  \par
+the work itself has no website \par
+Ben: oh ok \par
+its not really a big deal \par
+wahlau: i've basicall made a dispatcher for the recommendation tool from the project \par
+Ben: I was just curious to see how other people use OO jDREW \par
+wahlau: and the dispatcher examines the rule language, and select the underlying rule engine \par
+Ben: ok \par
+wahlau: so oojdrew is one of them ;) (we have only 1 actually :P) \par
+hehehe \par
+Ben: lol \par
+wahlau: jdrew was there, but since we uses NAf, i included oojdrew \par
+and ignored jdrew totally now :P \par
+is the approach for Naf ok so far? \par
+Ben: yea \par
+I think that woudl work in all cases \par
+wahlau: i hope no one has done that \par
+so i will tidy up and commit the work to you \par
+then you can focus on other things :) \par
+next thign i am interested in implementing <OR> for BU \par
+Ben: Im really the only one that works on OO jDREW now other then you, and a couple other people(that dont realyl do a whole lot) \par
+ok \par
+I can update the oo Jdrew website with your work \par
+wahlau: thanks \par
+Ben: I'm the only one that updates the site \par
+wahlau: you are doing your masters now? \par
+or PhD? \par
+Ben: I'm still an udergrad student \par
+wahlau: i saw David finished his studies too now \par
+:) \par
+i guessed so :) \par
+are you familiar with licensing? \par
+Ben: yea a little bit \par
+wahlau: if my dispatcher is released under LGPL \par
+Ben: jdrew is LGPL right now \par
+wahlau: must i change it to GPL, if the reasoning tool from the project is GPL? \par
+when it is released together with my component? \par
+Ben: I'm not sure \par
+wahlau: i know, that is why i am happy about the changes :) \par
+you are in your final year now? \par
+Ben: yea \par
+wahlau: all the best \par
+hope you find it interesting \par
+Ben: but I'm going to be doing antoher co-op term and working full time on oo jdrew again \par
+wahlau: nice \par
+i saw there are many things listed in the roadmap \par
+Ben: and maybe a masters thesis involving oo jDREW \par
+yea \par
+wahlau: doubt you alone can finish them \par
+:) \par
+Ben: yea lol \par
+wahlau: go ahead, it is interesting \par
+Ben: we updated the road map \par
+wahlau: if you have ideas, do update me \par
+Ben: ill give you the link \par
+wahlau: perhaps i can do my phd on oojdrew then LOL \par
+hehehe \par
+Ben: if you really want to, I CC you harold boley(who is from germany ) and Bruce Spencer tehy are both professors \par
+in an email \par
+wahlau: oh no \par
+i am already with a prof now :) \par
+Ben: oh \par
+wahlau: but reasoning isn#t my main focus \par
+Ben: ok \par
+wahlau: i am still opened to possibilities actually \par
+Ben: http://wiki.ruleml.org/OO_jDREW \par
+thats where we keep news about OO jdrew \par
+wahlau: let me help around with oojdrew, then see what might be interesting for us \par
+Ben: ok \par
+i only work part time with oo jdrew right now \par
+wahlau: fine then \par
+Ben: but I still do work \par
+with it \par
+wahlau: let me send you the work next week, hopefully \par
+then you can test it \par
+Ben: ok \par
+and I'll do a release with your version \par
+wahlau: can you explain to me the diff between NEG and Naf? \par
+Ben: NEG is when you negate a fact and NAF is negation as failure \par
+ill try to explain it a bit better \par
+Neg isnt implemented in oo jdrew \par
+wahlau: but planned in 0.93? \par
+Ben: yea the road map isnt really correct on the dates lol \par
+i mean the versions \par
+wahlau: it is stated in 0.93 that Naf in the bottom up engine \par
+who implementing it? \par
+Ben: no one is \par
+wahlau: LOL \par
+Ben: you did \par
+so its done now \par
+:p \par
+wahlau: hope it is working ;) \par
+Ben: the road map is mroe of a reference for what could be implemented \par
+im the only one working on oo jdrew other then you \par
+that I know of \par
+wahlau: the equality part \par
+do you know what is that? \par
+i saw that in Jing Mei's work \par
+Ben: I talked to Jing Mei and she said to ignore most of her work \par
+If I can fidn the email I can forward it to you \par
+wahlau: hey no problem :) \par
+i actually contacted her earlier \par
+Ben: ok \par
+what did she say? \par
+wahlau: when she released her work \par
+and reported a bug \par
+:) \par
+because there is some logic issues ;) \par
+Ben: yea \par
+wahlau: well, at least i got the idea from her i must admit \par
+Ben: yea \par
+wahlau: so i went on and hacked oojdrew 0.89 \par
+since no one is doing it ;) \par
+Ben: cool \par
+yea its just me doign some part time work with it \par
+wahlau: the latest is 0.93 right? \par
+Ben: yea \par
+wahlau: i will put the changes into 0.93 then \par
+does it support RuleML 0.89 as before? \par
+Ben: yea \par
+wahlau: i do not want to change our rule base now :) \par
+Ben: it also has ruleml 0.91 too \par
+ok \par
+but I have an updated version that should go up \par
+i did soem updates \par
+i can uplaod the new soruce \par
+wahlau: i will try to document it well, so that you can understand it :) \par
+Ben: k \par
+wahlau: or email me your latest copy \par
+i will add in my parts then send it back to you \par
+Ben: ok ill email you the newest source \par
+let me zip it \par
+ill be a sec to do it \par
+wahlau: thanks \par
+Sent at 9:01 AM on Thursday \par
+You cannot send files because wahlau@gmail.com is using chat in Gmail or is using another chat program. \par
+Ben: ill email you the fil \par
+file \par
+I cant sent it over g talk \par
+wahlau: ok thanks \par
+nope \par
+email would do, you can send to perhaps sian.lun.lau@comtec.eecs.uni-kassel.de \par
+gmail might not like java files :) \par
+Ben: k \par
+emailing it now \par
+wahlau: k \par
+Sent at 9:11 AM on Thursday \par
+Ben: I changed a few method calls around that may effect you if you use any methods to generate ruleML code \par
+i can put in the old ones but it would take me a few mins to do it \par
+all you need to do to fix it is just add the type of ruleml you are generating either 0.89 or 0.91 \par
+its just based on an int so 0.89 = 1 and 0.91 = 2 \par
+so if your getting a method not found error just change the method call to add a 1 at the end \par
+thats the only method calls I changed that may effect you\cell\row\pard\sb100\sa100\par
+\pard\f1\fs20\par
+}
+ 

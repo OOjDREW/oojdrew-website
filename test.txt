@@ -1,0 +1,20 @@
+<Assert>
+   <Rulebase mapClosure="universal">
+   
+
+       
+	<Atom>
+      <op><Rel>book</Rel></op>
+      <Expr>
+        <op><Fun>parts</Fun></op>
+        <Var>title</Var>
+        <Var>author</Var>
+        <Var>toc</Var>
+        <Var>chapters</Var>
+      </Expr>
+    </Atom>
+   
+   
+   
+   </Rulebase>
+</Assert>

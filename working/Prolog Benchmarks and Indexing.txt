@@ -1,0 +1,24 @@
+Bench Marks
+
+http://www.sics.se/isl/sicstuswww/site/performance.html
+
+http://www.sics.se/isl/sicstus/bench.pl
+http://www.sics.se/isl/sicstus/crypt.pl
+http://www.sics.se/isl/sicstus/deriv.pl
+http://www.sics.se/isl/sicstus/poly.pl
+http://www.sics.se/isl/sicstus/primes.pl
+http://www.sics.se/isl/sicstus/qsort.pl
+http://www.sics.se/isl/sicstus/queens.pl
+http://www.sics.se/isl/sicstus/query.pl
+http://www.sics.se/isl/sicstus/tak.pl
+http://www.sics.se/isl/sicstus/harness.pl
+
+
+Indexing
+
+Standard Prolog Indexing:   http://www.dfki.uni-kl.de/~sintek/pa/section1_2_0_4.html
+
+Multiple Argument Indexing: http://www.clip.dia.fi.upm.es/Software/Ciao/ciao_html/ciao_96.html
+
+sicstus Prolog Indexing:    https://www.cs.tcd.ie/courses/csll/sicstus/Indexing.html
+

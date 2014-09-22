@@ -1,0 +1,76 @@
+% Use Case 4: A personal agent which answers queries is
+% requested by a Reaction RuleML message
+% using HTTP protocol. The answer is send back synchronosly over
+% the communication channel.
+%
+%
+% As soon as the ESB runs, please type a valid RuleML Message
+% into your browser such as:
+% http://localhost:8888/?<Message mode='outbound' directive='request'><oid> <Ind>id</Ind></oid><protocol> <Ind>esb</Ind></protocol><sender> <Ind>User</Ind></sender><content><Atom> <Rel>person</Rel> <Var>Name</Var> <Var>Role</Var> <Var>Title</Var> <Var>EMail</Var>  <Var>Telephone</Var></Atom></content></Message>
+
+rcvMsg(?XID,esb ,?From, ?Performative, [?X|?Args]) :-
+   understandPerformative(?XID, ?From, ?Performative, [?X|?Args]),
+   answerQuery(?XID, HTTPReply:String, ?Performative, [?X|?Args]).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% rules for processing the query
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% taxonomy of performatives
+performative(request):-performative(query).
+performative(query).
+
+understandPerformative(?XID, ?From, ?Performative, ?PayLoad) :-
+       performative(?Performative).
+understandPerformative(?XID, ?From, ?Performative, ?PayLoad) :-
+       naf(performative(?Performative)),
+       sendMsg(?XID,esb,?From,inform).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% rules for answering the query
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% stops communication
+answerQuery(?XID, ?From, ?Performative, [stop]):-
+               sendMsg(?XID,esb,"vm://global":String,stop_communication,[]).
+
+% answers query
+answerQuery(?XID, ?From, ?Performative, [?X|?Args]):-
+       derive([?X|?Args]),
+       sendMsg(?XID,esb,?From, answer, [?X|?Args]).
+
+% incomprehensible answer
+answerQuery(?XID, ?From, ?Performative, [?X | ?Args]):-
+       sendMsg(?XID,esb,?From,inform).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% personal rule base
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% create person information from RDF vCard
+
+person(?Name,?Role, ?Title, ?EMail, ?Telephone):-
+ name(?Name),
+ role(?Role),
+ title(?Title),
+ telephone(?Telephone),
+ email(?EMail).
+
+ name(ben).
+ role(lead).
+ title(student).
+ telephone(15064440547).
+ email(bencraigatunbdotca).
+
+reference("A Typed Hybrid Description Logic Programming Language with Polymorphic Order-Sorted DL-Typed Unification for Semantic Web Type Systems", "Paschke Adrian").
+reference(book,ben).
+
+c(a).
+c(b).
+c(c).
+c(d).
+

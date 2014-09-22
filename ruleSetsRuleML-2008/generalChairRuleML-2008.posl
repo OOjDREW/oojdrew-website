@@ -1,0 +1,26 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF profile for RuleML-2008 General Chair: **Disclaimer** these rules are experimental and not offical									    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF contact and personal information									                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%FOAF facts about the General Chair	
+
+person(
+  symposiumChair[ruleML_2008, general],  
+  foafname[firstName[adrian],lastName[paschke]],
+  foaftitle[title[dr]],
+  foafmbox[email[adrianATemailDOTcom]],
+  exphones[telephoneNumbers[office[4512],cellPhone[4536]]]).
+
+%Rule to obtain the General Chair contact information
+
+contactGeneralChair(?Meeting, ?Chair, ?FirstName, ?LastName, ?Title, ?Email, ?Telephone) :-
+  person(
+  symposiumChair[?Meeting, ?Chair],
+  foafname[firstName[?FirstName],lastName[?LastName]],
+  foaftitle[title[?Title]],
+  foafmbox[email[?Email]],
+  exphones[telephoneNumbers[office[?Telephone],cellPhone[?]]]). 

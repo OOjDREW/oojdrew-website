@@ -1,0 +1,53 @@
+<Assert>
+   <And>
+      <Atom closure="universal">
+         <Rel>discount</Rel>
+         <Var>product0</Var>
+         <Expr>
+            <Fun>bike</Fun>
+            <Ind>yellow</Ind>
+         </Expr>
+	 <Ind>pecent 5</Ind>
+      </Atom>
+   </And>
+</Assert>
+
+<Assert>
+   <And>
+      <Atom closure="universal">
+         <Rel>discount</Rel>
+         <Var>product0</Var>
+         <Cterm>
+            <Ctor>bike</Ctor>
+            <Ind>yellow</Ind>
+         </Cterm>
+	 <Ind>pecent 5</Ind>
+      </Atom>
+   </And>
+</Assert>
+
+<Assert>
+   <And>
+      <Implies closure="universal">
+         <Atom>
+            <Rel>premium</Rel>
+            <Var>customer</Var>
+         </Atom>
+         <Atom>
+            <Rel>discount</Rel>
+            <Var>customer</Var>
+            <Expr>
+               <Fun>bike</Fun>
+               <Ind>yellow</Ind>
+            </Expr>
+            <Ind>pecent 5</Ind>
+         </Atom>
+      </Implies>
+      <Atom closure="universal">
+         <Rel>premium</Rel>
+         <Ind>ben</Ind>
+      </Atom>
+   </And>
+</Assert>
+
+	

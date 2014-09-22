@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Examples of Using the Loop Counter for BU Iterations</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body style="width: 1006px;">
+
+<table style="width: 1003px; height: 649px;" border="0" cellpadding="0" cellspacing="0">
+
+  <tbody>
+
+    <tr>
+
+      <td style="height: 38px;" colspan="3" class="title">OO jDREW</td>
+
+    </tr>
+
+    <tr>
+
+      <td style="height: 609px;" class="leftbar">
+      <table style="width: 125px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tbody>
+
+          <tr>
+
+            <td style="width: 119px;" class="topspacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../index.html">home</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../docs.html">documentation</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../pres.html">presentations</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../download.html">downloads</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../demo.html">online demo</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="bottomspacer"></td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      </td>
+
+      <td style="height: 609px;" class="mainarea">
+      <h3>Examples of Using the Loop Counter for BU Iterations</h3>
+
+	  The purpose of the loop counter is to prevent infinite loops: it will halt the BU reasoning engine and
+	  display what it has derived so far.  If the loop counter is set to "0" then the BU reasoning engine
+ 	  ignores the loop counter all together.
+	  
+	  <p><b>Simple Example</b></p>
+	  <br>
+	a(?x) :- b(?x).<br>
+	b(?x) :- c(?x).<br>
+	c(?x) :- d(?x).<br>
+	d(?x) :- e(?x).<br>
+	e(?x) :- f(?x).<br>
+	f(?x) :- g(?x).<br>
+	g(?x) :- h(?x).<br>
+	<br>
+	h(y).<br>
+	<br>
+	If we set the loop counter to 5 it will derive the first 5 facts that it can derive from this knowledge base:
+	<br>
+	<br>
+	<a href="five.jpg"><img style="border: 1px solid ; width: 700px; height: 650px;" src="five.jpg" /></a>
+	<br><br>
+	If we set the loop counter to 0 (default) it derives all of the facts it can:
+	<br><br>	
+	<a href="zero.jpg"><img style="border: 1px solid ; width: 700px; height: 650px;" src="zero.jpg" /></a>  
+	<br><br>
+	<p><b>Natural numbers example</b></p>
+	nat(0).<br>
+	nat(succ[?N]) :- nat(?N).<br>
+	<br>
+	In unrestricted forward mode it will enter an infinite loop in an attempt to derive all natural numbers.
+	If we set the loop counter to 10 it will not enter an infinite loop and will derive the first 10 natural
+	number instead:
+	<br><br>
+	<a href="nat.jpg"><img style="border: 1px solid ; width: 700px; height: 650px;" src="nat.jpg" /></a> 
+	<br>
+	<p><b>Example using <a href="http://www.ruleml.org/usecases/nbbizkb">NBBizKB use case</a></b></p>
+	If we use the non-Datalog <a href="http://www.ruleml.org/usecases/nbbizkb">NBBizKB use case</a> when we try to run the forward reasoner unrestricted it goes into a infinite loop, but if we set the
+	loop counter to 50 if will stop and show us what it has derived so far.
+	<br><br>
+	Here is a link to NBBizKB rules in <a href="http://www.ruleml.org/usecases/nbbizkb/NBBizKBRules.posl">POSL format</a>.
+	<br><br>
+	This is what OO jDREW will produce:
+	<br><br>
+	<a href="fifty.jpg"><img style="border: 1px solid ; width: 700px; height: 650px;" src="fifty.jpg" /></a>
+	<br>
+
+	
+	 </td>
+      <td style="height: 609px;" class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; July 11, 2006</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Ben Craig </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

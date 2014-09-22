@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Examples of Using Builtins</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+	  
+	  
+      <h3>Examples of Using Builtins</h3>
+<h3>POSL format</h3>
+	  
+child(?person) :- hasAge(?person, ?age), lessThanOrEqual(?age, 18:Integer).<br>
+hasAge(baby, 5:Integer). <br><br>
+
+<h3>RuleML 0.88 format</h3>
+<code>
+<pre>
+&lt;Assert&gt;
+   &lt;And mapClosure="universal"&gt;
+      &lt;Implies&gt;
+         &lt;And>
+            &lt;Atom&gt;
+               &lt;Rel&gt;hasAge&lt;/Rel&gt;
+               &lt;Var&gt;person&lt;/Var&gt;
+               &lt;Var&gt;age&lt;/Var&gt;
+            &lt;/Atom&gt;
+            &lt;Atom&gt;
+               &lt;Rel&gt;lessThanOrEqual&lt;/Rel&gt;
+               &lt;Var&gt;age&lt;/Var&gt;
+               &lt;Ind type="Integer"&gt;18&lt;/Ind&gt;
+            &lt;/Atom&gt;
+         &lt;/And&gt;
+         &lt;Atom&gt;
+            &lt;Rel&gt;child&lt;/Rel&gt;
+            &lt;Var&gt;person&lt;/Var&gt;
+         &lt;/Atom&gt;
+      &lt;/Implies&gt;
+      &lt;Atom&gt;
+         &lt;Rel&gt;hasAge&lt;/Rel&gt;
+         &lt;Ind&gt;baby&lt;/Ind&gt;
+         &lt;Ind type="Integer"&gt;5&lt;/Ind&gt;
+      &lt;/Atom&gt;
+   &lt;/And&gt;
+&lt;/Assert&gt;
+</pre>
+</code>
+	<br><br>
+	<img src="e1.jpg">
+	<br><br>
+	<h3>POSL format</h3>
+	
+adult(?person) :- hasAge(?person,?age), greaterThan(?age,18:Integer).<br>
+hasAge(olderPerson,60:Integer).<br><br>
+
+	<h3>RuleML 0.88 format</h3>
+<code>
+<pre>
+&lt;Assert&gt;
+   &lt;And mapClosure="universal"&gt;
+      &lt;Implies&gt;
+         &lt;And&gt;
+            &lt;Atom&gt;
+               &lt;Rel&gt;hasAge&lt;/Rel&gt;
+               &lt;Var&gt;person&lt;/Var&gt;
+               &lt;Var&gt;age&lt;/Var&gt;
+            &lt;/Atom&gt;
+            &lt;Atom&gt;
+               &lt;Rel&gt;greaterThan&lt;/Rel&gt;
+               &lt;Var&gt;age&lt;/Var&gt;
+               &lt;Ind type="Integer"&gt;18&lt;/Ind&gt;
+            &lt;/Atom&gt;
+         &lt;/And&gt;
+         &lt;Atom&gt;
+            &lt;Rel&gt;adult&lt;/Rel&gt;
+            &lt;Var&gt;person&lt;/Var&gt;
+         &lt;/Atom&gt;
+      &lt;/Implies&gt;
+      &lt;Atom&gt;
+         &lt;Rel&gt;hasAge&lt;/Rel&gt;
+         &lt;Ind&gt;olderPerson&lt;/Ind&gt;
+         &lt;Ind type="Integer"&gt;60&lt;/Ind&gt;
+      &lt;/Atom&gt;
+   &lt;/And&gt;
+&lt;/Assert&gt;
+
+</pre>
+</code>
+	<br><br>
+	<img src="e2.jpg">
+	<br><br>
+	
+	<h3>POSL format</h3>
+	
+	result(?x) :- add(?x,10:Integer,15:Integer).<br><br>
+
+	<h3>RuleML 0.88 format</h3>
+<code>
+<pre>
+&lt;Assert&gt;
+   &lt;And mapClosure="universal"&gt;
+      &lt;Implies&gt;
+         &lt;Atom&gt;
+            &lt;Rel&gt;add&lt;/Rel&gt;
+            &lt;Var&gt;x&lt;/Var&gt;
+            &lt;Ind type="Integer"&gt;10&lt;/Ind&gt;
+            &lt;Ind type="Integer"&gt;15&lt;/Ind&gt;
+         &lt;/Atom&gt;
+         &lt;Atom&gt;
+            &lt;Rel&gt;result&lt;/Rel&gt;
+            &lt;Var&gt;x&lt;/Var&gt;
+         &lt;/Atom&gt;
+      &lt;/Implies&gt;
+   &lt;/And&gt;
+&lt;/Assert&gt;
+	
+</pre>
+</code>
+	<br><br>
+	<img src="e3.jpg">
+	<br><br>	
+	</td>
+      <td style="height: 609px;" class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; December 2, 2006</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Ben Craig </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

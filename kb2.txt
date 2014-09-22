@@ -1,0 +1,4 @@
+rides(ben,bus).
+rides(greg,plane).
+rides(bob,car).
+rides(tim, train).

@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Examples of Displaying Only Derived Facts and not Generatated Rules</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <h3>Displaying Only Derived Facts or Also Generatated Rules</h3>
+		If we check <b>"Print Rules"</b> then the rules and facts will be displayed.  If we leave <b>"Print Rules"</b>
+		unchecked then it will only display the facts.
+		<br>
+		<br>
+		Here is a simple example to demonstrate this.
+		<br><br>
+	a(?x) :- b(?x).<br>
+	b(?x) :- c(?x).<br>
+	c(?x) :- d(?x).<br>
+	d(?x) :- e(?x).<br>
+	e(?x) :- f(?x).<br>
+	f(?x) :- g(?x).<br>
+	g(?x) :- h(?x).<br>
+	<br>
+	h(y).<br>
+	<br>
+	If we leave the <b>"Print Rules"</b> check box unchecked then we get the following output:
+	<br><br>
+	<img src="unchecked.jpg" />
+	<br><br>
+	If we check the <b>"Print Rules"</b> check box then we get the following output:
+	<br><br>
+	<img src="checked.jpg" />
+	<br><br>
+	A more complicated example involving generated rules.
+	<br><br>
+
+	road(?X, ?Z) :- road(?X, ?Y), road(?Y, ?Z).<br>
+	<br>
+	road(Halifax, Truro).<br>
+	road(Truro, Moncton).<br>
+	road(Moncton, Fredericton).<br>
+	<br>
+	This example shows newly generated rules:
+	<br><br>
+	<img src="gen.jpg" />
+	<br>
+	<br>
+	
+	
+      </td>
+
+      <td style="height: 609px;" class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; July 25, 2006</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Ben Craig </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+%If u are calling about projectJ then contact person P
+%If u are calling about sponsoring then contact persons type ?P:SponsoringChair
+%Submiting a paper contact
+%Review contact
+
+%Sponsoring
+Donate(?Name,?Organization,?Amount) :- 	%request sponsoring level
+										%request benefits
+										%Donate call
+
+RequestSponsoringLevel(?Level,?Amount) :- SponsoringLevel(?Level,?Amount).
+
+SponsoringLevel(Bronze, US$500).
+SponsoringLevel(Sliver, US$1000).
+SponsoringLevel(Gold, US$3000).
+SponsoringLevel(Platinum, US$5000).
+SponsoringLevel(Emerald, US$7500).
+
+RequestBenefits(?Level,?Benefits) :- Benefits(?Level,?Benefits).
+
+Benefits(Broneze, ["Logo on Site","Acknowledgement in Proceedings"]).
+Benefits(Sliver, ["Logo on Site","Acknowledgement in Proceedings", "Option to target sponsoring Student"]).
+Benefits(Gold, ["Logo on Site","Acknowledgement in Proceedings","Free Registration","Logo in Proceedings","Option to target sponsoring Student","Option to give out demos"]).
+Benefits(Platinum, [Logo on Site","Acknowledgement in Proceedings","2 Free Registrations","Logo in Proceedings","Option to target sponsoring Student","Option to give out demos","Name in all Advance Publicity", "Distrubtion of brochures to all Participants"]).
+Benefits(Emerald, [Logo on Site","Acknowledgement in Proceedings","3 Free Registrations","Logo in Proceedings","Option to target sponsoring Student","Option to give out demos","Name in all Advance Publicity", "Distrubtion of brochures to all Participants"]]).
+
+%Reviewing
+reviewerNumber()
+reviewerNumber(?Submission, 3N)
+reviewerNumber(?Submission, 3)
+review(?Submission, ?Reviewer,3)
+review(Submission, Reviewer1, Reviewer2, Reviewer3)
+review(?S:Submission, ?R:Reviewer,3) :-
+
+%Possibly add topics to the paper submission valid topic section
+%Add rule to see which commitee member gets what paper
+
+request(?C:ProgramChair, ?R:Requester, ?T:ProgramTopic) :-
+request(?C:ProgramChair, ?R:Requester, sequentialSessionSchedule) :- ruleml(2007).
+request(?C:ProgramChair, ?R:Requester, parallelSessionSchedule) :- ruleml(2008).
+delegation(?C:ProgramChair, ?R:Requester,?T:ProgramTopic) :-
+
+%Rules about RuleML-2007 paper submission:
+%When you submit you need to check what they are submitting and if they are allowable authors.
+
+submit(?C:ProgramChair,?R:Requester,?SubmitingType,?Result) :-
+ stringEqualIgnoreCase(?SubmitingType,abstract),
+ abstractSubmital(?C:ProgramChair,?R:Requester,?Result1,?Reason1),
+ authorPossiblity(?C:ProgramChair,?R:Requester,?SubmitingType,?Result2,?Reason2),
+ stringConcat(?Result,?Result1,?Reason1,?Result2,?Reason2).
+ 
+submit(?C:ProgramChair,?R:Requester,?SubmitingType,?Result) :-
+ stringEqualIgnoreCase(?SubmitingType,paper),
+ paperSubmital(?C:ProgramChair,?R:Requester,?Result),
+ authorPossiblity(?C:ProgramChair,?R:Requester,?SubmitingType,?Result2,?Reason2),
+ stringConcat(?Result,?Result1,?Reason1,?Result2,?Reason2).
+ 
+submit(?C:ProgramChair,?R:Requester,?SubmitingType,?Result) :-
+ stringEqualIgnoreCase(?SubmitingType,final),
+ finalSubmital(?C:ProgramChair,?R:Requester,?Result,?Reason),
+ authorPossiblity(?C:ProgramChair,?R:Requester,?SubmitingType,?Result2,?Reason2),
+ stringConcat(?Result,?Result1,?Reason1,?Result2,?Reason2).
+
+%Rules to determine who can be an author a paper  
+authorPossiblity(?C:ProgramChair,?R:Requester,?Authors,?Answer) : - authorRequirements(?C:ProgramChair,?R:Requester,?Authors,?Answer).
+
+authorRequirements(?C:ProgramChair,?R:PCMember,"submission authors?", "Yes, second or later").
+authorRequirements(?C:ProgramChair,?R:ProgramChair, "submission authors?", "No, because ProgramChair").
+ 
+%Past dead line and not a VIP
+abstractSubmital(?C:ProgramChair, ?R:Requester, "submission possible?", "No, because deadlinePassed") :-
+time(?X), deadline(abstract, ?D), greaterThan(?X,?D),naf(vip(?R:Request)).
+
+paperSubmital(?C:ProgramChair, ?R:Requester, "submission possible?", "No, because deadlinePassed") :-
+time(?X), deadline(paper, ?D), greaterThan(?X,?D),naf(vip(?R:Request)).
+
+finalSubmital(?C:ProgramChair, ?R:Requester, "submission possible?", "No, because deadlinePassed") :-
+time(?X), deadline(final, ?D), greaterThan(?X,?D),naf(vip(?R:Request)).
+
+%Past dead line and a VIP
+abstractSubmital(?C:ProgramChair, ?R:Requester, "submission possible?" "Yes, but deadline has passed please submit asap") :-
+time(?X), deadline(abstract, ?D), greaterThan(?X,?D),vip(?R:Request).
+
+paperSubmital(?C:ProgramChair,?R:Requester,"submission possible?","Yes, but deadline has passed please submit asap") :-
+time(?X), deadline(paper, ?D), greaterThan(?X,?D),vip(?R:Request).
+
+finalSubmital(?C:ProgramChair,?R:Requester,"submission possible?", "Yes, but deadline has passed please submit asap") :-
+time(?X), deadline(final, ?D), greaterThan(?X,?D),vip(?R:Request).
+
+%Deadline is still ongoing
+abstractSubmital(?To:ProgramChair,?From:Requester,"submission possible?","Yes, because deadline Ongoing") :-
+date(?X), deadline(abstract, ?D), lessThanOrEqual(?X,?D).
+
+paperSubmital(?To:ProgramChair,?From:Requester,"submission possible?","Yes, because deadline Ongoing") :-
+date(?X), deadline(paper, ?D), lessThanOrEqual(?X,?D).
+
+finalSubmital(?To:ProgramChair,?From:Requester,"submission possible?","Yes, because deadline Ongoing") :-
+date(?X), deadline(final, ?D), lessThanOrEqual(?X,?D).
+
+%Deadline facts Year Month Day
+deadline(abstract, 20070615).
+deadline(paper,    20070629).
+deadline(final,    20070817).
+
+%Define a rule to figure out if someone is a vip should be more detailed, possible could relate to spondering level
+vip(?R:Requester) :- important(?:R:Requester).

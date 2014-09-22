@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Demo Examples POSL</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <h3>OO jDREW Examples in POSL</h3>
+
+      <pre style="font-family: Arial;">
+The discount for a customer buying a product is 5 percent if the customer is premium and the product is regular.
+
+	  discount(?customer,?product,percent5):- premium(?customer), regular(?product).
+	  premium(PeterMiller).
+	  regular(Honda).
+	  
+	  Top-down engine running the example:
+	
+	  <img src="jpeg/exa4posl-td1.JPG" />
+	  
+	  Bottom-up engine running the example:
+	  
+	  <img src="jpeg/exa4posl-bu1.JPG" />
+	  
+	  </pre>
+
+      <pre style="font-family: Arial;">
+	  Slotted Version of the example:
+	  
+	  discount(cust-&gt;?customer;prod-&gt;?product;rebate-&gt;percent5) :- premium(cust-&gt;?customer), regular(prod-&gt;?product).
+	  premium(cust-&gt;PeterMiller).
+	  regular(prod-&gt;Honda).
+	  
+	  Top-down engine running the slotted example:
+	  
+	  <img src="jpeg/exa4posl-td2.JPG"/> 
+	  
+	  Bottom-up engine running the slotted example:
+	  
+	  <img src="jpeg/exa4posl-bu2.JPG"/>
+	  
+	  </pre>
+
+      </td>
+
+      <td class="rightbar">
+      <p style="margin-left: 0px; width: 119px;">Last
+Updated:<br />
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Jing Mei </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

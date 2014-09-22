@@ -1,0 +1,93 @@
+<HTML>
+	<HEAD>
+		<TITLE>OO jDREW Top Down Example Rules</TITLE>
+	</HEAD>
+	<BODY>
+	<H3>% Example: NBBizKB sample rules for Top Down</H3>
+<XMP>
+% NBBizKB Rules for top down                                                March 11, 2004
+% ==========================
+
+% The rules are given here in POSL (POsitional SLotted) syntax.
+% POSL can be transformed to RuleML syntax via the translator at
+% http://www.ruleml.org:8080/converters/servlet/AsciiToRuleML.
+
+% Sector-Category Clauses
+
+
+% Category-Sector-Category Path
+% Sample call: CSCPath([Accountants], Book-Keepers, Result)
+
+CSCPath([?Cfin | ?SCList], ?Cfin, [?Cfin | ?SCList]).  % found 'finish' Category
+CSCPath([?C | ?SCList], ?Cfin, ?Path) :-  % perform 'Category<-Sector<-Category' step
+  naf(eq(?C,?Cfin)),
+  SectorCategory(?Snext, ?C),
+  naf(member(?Snext, ?SCList)),
+  SectorCategory(?Snext, ?Cnext),
+  naf(member(?Cnext, [?C | ?SCList])),
+  CSCPath([?Cnext,?Snext,?C | ?SCList], ?Cfin, ?Path).
+
+
+% Uniqueness of Category
+
+uniqueCategory(?S, ?C, ?CategoryList) :-
+  SectorCategory(?S, ?C),
+  remove(?C, ?CategoryList, ?CategoryListprime),  % CategoryListprime omits C
+  naf(checkCategoryList(?S, ?CategoryListprime)). % no other Category for S
+
+checkCategoryList(?S, ?CategoryListprime) :-
+  member(?Cprime, ?CategoryListprime),  % Cprime binds CategoryListprime elements
+  SectorCategory(?S, ?Cprime).%
+
+% Integration Rules
+
+% View NBEnterprise as primarily BIZNET_ENT and secondarily YAHOO_ENT
+
+% NBEnterprise includes all slots from YAHOO_ENT facts without BIZNET_ENT fact
+
+% Omit variables that are not filled by YAHOO_ENT premise
+
+NBEnterprise(
+  NAME->?Ne;
+  NAICS_INDUSTRY_SECTOR->?S;
+  CONTACT->
+    [PHONE->?P;
+     FAX->?Fax;
+     WEB_SITE->?URL;
+     MAILING_ADDRESS->
+       [ADDRESS_LINE1_ENG->?MLe;
+        CITY->?MCity;
+        PROVINCE->?MProv;
+        POSTAL_CODE->?MCode]])
+
+:-
+
+  YAHOO_ENT(
+    OPER_NAME->?Ne;
+    PHONE->?P;
+    FAX->?Fax;
+    MAIL_ENG->?MLe;
+    MAIL_PLACE->?MCity;
+    MAIL_PROV->?MProv;
+    MAIL_POST->?MCode;
+    CATEGORY->?C;
+    WEB_SITE->?URL !),
+
+  naf(BIZNET_ENT(CONTACT->[PHONE->?P; !?] ! ?)),  % no K-keyed BIZNET_ENT, hence NBEnterprise, must exist
+
+  SectorCategory(?S, ?C).  % computed using non-K YAHOO_ENT and BIZNET_ENT facts
+
+% List Clauses
+
+
+member(?X,[?X | ?Tail]).
+member(?X,[?Head | ?Tail]) :- naf(eq(?X,?Head)), member(?X,?Tail).
+
+remove(?X,[],[]).
+remove(?X,[?X | ?Tail],?L) :- remove(?X,?Tail,?L).
+remove(?X,[?Head | ?Tail],[?Head | ?L2]) :- naf(eq(?X,?Head)), remove(?X,?Tail,?L2).
+
+% Contact: Anna Maclachlan or Harold Boley
+</XMP>
+	</BODY>
+</HTML>

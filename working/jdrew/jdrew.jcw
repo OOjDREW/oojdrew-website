@@ -1,0 +1,16 @@
+<?xml?>
+<workspace>
+	<settings>
+		<label>jdrew</label>
+	</settings>
+	<users>
+		<user>
+			<path>jdrew.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>jdrew.jcp</path>
+		</project>
+	</projects>
+</workspace>

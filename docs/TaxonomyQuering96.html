@@ -1,0 +1,659 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - How to use the Taxonomy Querying System</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+
+	  <h2>How to use the Taxonomy Querying System of OO jDREW</h2>
+	  
+      <h3>How to Input a Taxonomy</h3>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There are two different methods to define a Taxonomy (RDFS/XML <tt>subClassOf</tt>).  One way is to use RDFS/XML to define the taxonomy.
+	  The other way to define a taxonomy is to use the RuleML/POSL syntax of <tt>subsumes(superClass, subClass).</tt>  This also comes with a RuleML/XML syntax.
+	  
+	  <br><br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All of the examples shown will be based on the following taxonomy diagram.  The artificial class <tt>Thing</tt> at the top of the directed labeled graph is used to
+	  show that every class has a superClass of type "Thing".  As well as the artificial <tt>Nothing</tt> is used to show that every class is a subClass
+	  of "Nothing".
+	  <br>
+	  <br><br>
+	  <img src="VehicleDAG.jpg" />
+	  <br><br>
+
+	  <h4>RuleML/POSL Syntax</h4>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How to write the RuleML/POSL syntax for types is explained in the next few lines.	  
+	  
+	  <br><br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>subsumes(superClass, subClass).</b><br><br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Where superClass is the superClass in the relation and subClass is the sub class in the relation.  The
+	  predicate subsumes means that the superClass can subsume the subClass.
+	  <br><br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The RuleML/POSL syntax for the illustrated Taxonomy can be defined in the following RuleML/POSL facts:
+	  <br><br>
+% Taxonomy Facts: <br><br>
+subsumes(Vehicle,PassengerVehicle).<br>
+subsumes(Vehicle,Van).<br>
+subsumes(PassengerVehicle,Car).<br>
+subsumes(PassengerVehicle,MiniVan).<br>
+subsumes(Van,MiniVan).<br>
+subsumes(Car,Sedan).<br>
+subsumes(Car,SportsCoupe).<br>
+subsumes(Sedan,ToyotaCorolla).<br>
+<br>	  
+	  <h4>RDFS/XML Syntax</h4>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The above taxonomy can be defined in RDFS/XML by the following schema:
+	  
+<pre style="font-family: Arial;">
+&lt;rdf:RDF <br /> 
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://example.org/schemas/vehicles"&gt;
+ 
+    &lt;rdf:Description rdf:ID="Vehicle"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="PassengerVehicle"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#Vehicle"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="Van"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#Vehicle"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="Car"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#PassengerVehicle"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="MiniVan"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#Van"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#PassengerVehicle"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="Sedan"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#Car"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="SportsCoupe"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#Car"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+    &lt;rdf:Description rdf:ID="ToyotaCorolla"&gt;
+      &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;
+      &lt;rdfs:subClassOf rdf:resource="#Sedan"/&gt;
+    &lt;/rdf:Description&gt;
+ 
+&lt;/rdf:RDF&gt;
+</pre>	  
+
+      <h3>How to Query the Taxonomy</h3>
+<OL>
+<LH>There are 10 different ways to query the Taxonomy.
+<br><br>
+<LI>To test if two classes are in a direct super/sub class relationship then the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumes(superClass,subClass).
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Rel&gt;superClass&lt;/Rel&gt;
+   &lt;Rel&gt;subClass&lt;/Rel&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>	
+
+<br>
+<LI>To test if two classes are in a indirect (transitive closure) super/sub class relationship then the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumesPlus(superClass,subClass).
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Rel&gt;superClass&lt;/Rel&gt;
+   &lt;Rel&gt;subClass&lt;/Rel&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>	
+
+<br>
+<LI>To find all of the direct subClasses of a class the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumes(superClass, ?subClass).
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Rel&gt;superClass&lt;/Rel&gt;
+   &lt;Var&gt;subClass&lt;/Var&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>	
+
+<br>
+<LI>To find all of subClasses of a class in the transitive closure the following query is used: <br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumesPlus(superClass, ?subClass).
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Rel&gt;superClass&lt;/Rel&gt;
+   &lt;Var&gt;subClass&lt;/Var&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>
+<br>
+
+<LI>To find all of the direct superClasses of a class the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumes(?superClass, subClass).	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Var&gt;superClass&lt;/Var&gt;
+   &lt;Rel&gt;subClass&lt;/Rel&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>
+<br>
+
+<LI>To find all of superClasses of a class in the transitive closure the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumesPlus(?superClass, subClass). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Var&gt;superClass&lt;/Var&gt;
+   &lt;Rel&gt;subClass&lt;/Rel&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>
+<br>
+
+<LI>To find all direct super/sub class relationships for every class in the taxonomy the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumes(?superClass, ?subClass). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Var&gt;superClass&lt;/Var&gt;
+   &lt;Var&gt;subClass&lt;/Var&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>
+<br>
+
+<LI>To find all indirect (transitive closure) super/sub class relationships for every class in the taxonomy the following query is used:<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	subsumesPlus(?superClass, ?subClass). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Var&gt;superClass&lt;/Var&gt;
+   &lt;Var&gt;subClass&lt;/Var&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>
+<br>
+<!-- Add var to both GLB and LUB -->
+<!--
+<LI>To find the least upper bound of a set of classes the following query is used (Functional):<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	lub(class1,class2,class3,...,classN). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;LUB&gt;
+   &lt;Rel&gt;class1&lt;/Rel&gt;
+   &lt;Rel&gt;class2&lt;/Rel&gt;
+   &lt;Rel&gt;class3&lt;/Rel&gt;
+   ................
+   &lt;Rel&gt;classN&lt;/Rel&gt;
+&lt;/LUB&gt;
+</pre>
+</code>
+-->
+<br>
+
+<LI>To find the least upper bound of a set of classes the following is used (Relational):<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	lub(?result,class1,class2,class3,...,classN). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;LUB&gt;
+   &lt;Var&gt;result&lt;/Var&gt; 
+   &lt;Rel&gt;class1&lt;/Rel&gt;
+   &lt;Rel&gt;class2&lt;/Rel&gt;
+   &lt;Rel&gt;class3&lt;/Rel&gt;
+   ................
+   &lt;Rel&gt;classN&lt;/Rel&gt;
+&lt;/LUB&gt;
+</pre>
+</code>
+<br>
+<!--
+<LI>To find the greater lower bound of a set of classes the following query is used (Functional):<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	glb(class1,class2,class3,...,classN). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;GLB&gt;
+   &lt;Rel&gt;class1&lt;/Rel&gt;
+   &lt;Rel&gt;class2&lt;/Rel&gt;
+   &lt;Rel&gt;class3&lt;/Rel&gt;
+   ................
+   &lt;Rel&gt;classN&lt;/Rel&gt;
+&lt;/GLB&gt;
+</pre>
+</code>
+<br>
+-->
+<LI>To find the greater lower bound of a set of classes the following is used (Relational):<br><br>
+	<i>In POSL Syntax:</i><br><br>	
+	glb(?result,class1,class2,class3,...,classN). 	
+	<br><br><i>In RuleML Snytax:</i><br>
+<code>
+<pre>
+&lt;GLB&gt;
+   &lt;Var&gt;result&lt;/Var&gt; 
+   &lt;Rel&gt;class1&lt;/Rel&gt;
+   &lt;Rel&gt;class2&lt;/Rel&gt;
+   &lt;Rel&gt;class3&lt;/Rel&gt;
+   ................
+   &lt;Rel&gt;classN&lt;/Rel&gt;
+&lt;/GLB&gt;
+</pre>
+</code>
+</OL>	  
+
+	  <h3>How to input the taxonomy into OO jDREW</h3>
+	 
+	  To input the taxonomy you must first select the format you want to use, either POSL format or RDFS.  You can then copy and paste your
+	  taxonomy into the text area.  Once your taxonomy has been placed in the text area then you must press the "Load Type Information" button.
+	  
+	  <br><br>
+	  <img src="inputTaxonoyPOSL.jpg" />
+	  <br><br>
+	 
+	  <br><br>
+	  <img src="inputTaxonoyRDFS.jpg" />
+	  <br><br>
+	 
+	  <h3>Examples of Querying the Taxonomy with POSL</h3>
+
+	  Once the taxonomy information has been parsed, switch to the "Type Query" pane to query the taxonomy.
+    
+	  <OL>
+	  <LI> <br><b>subsumes(Vehicle, Car).</b> <br><br>
+	  Since a Vehicle is not a direct superClass of Car OO jDREW will return false.
+	  <br><br>
+	  <img src="subsumesVC.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumesPlus(Vehicle, Car).</b> <br><br>
+	  Since a Vehicle is a superClass of Car in the transitive closure OO jDREW will return true.
+	  <br><br>
+	  <img src="subsumesPlusVC.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumes(Car, ?X).</b> <br><br>
+	  In this query, OO jDREW will bind ?X to all of the direct subClasses of the class Car.  The first solution OO jDREW finds is Sedan,
+	  while the next solution would be bound to SportsCoupe.
+	  <br><br>
+	  <img src="subsumesCX.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumesPlus(Car, ?X).</b> <br><br>
+	  In this query, OO jDREW will bind ?X to all of the classes below Car in the transitive closure.  So ?X would be bound to the following:
+	  Sedan, SportsCoupe, and ToyotaCorolla.
+	  <br><br>
+	  <img src="subsumesPlusCX.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumes(?X, MiniVan).</b> <br><br>
+	  In this query, OO jDREW will bind ?X to all of the direct superClasses of MiniVan.  The bindings of ?X are as follows: Van and PassengerVehicle.  
+	  MiniVan is in the scope of multiple inheritance, since it is both a Van and a PassengerVehicle.
+	  <br><br>
+	  <img src="subsumesXM.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumesPlus(?X, MiniVan).</b> <br><br>
+	  In this query, OO JDREW will bind ?X to all of the superClasses of MiniVan in the transitive closure.  ?X will bind to the following classes:
+	  Vehicle, Van, and PassengerVehicle.
+	  <br><br>
+	  <img src="subsumesPlusXM.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumes(?X, ?Y).</b> <br><br>
+	  This query will return all of the direct subClass and superClass relations stored in the taxonomy.
+	  <br><br>
+	  <img src="subsumesXY.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>subsumesPlus(?X, ?Y).</b> <br><br>
+		This query will return all of the subClass and superClass relations inferred by the transitive closure.
+	  <br><br>
+	  <img src="subsumesPlusXY.jpg" />
+	  <br><br>
+	  <!--
+	  <LI> <b>lub(SportsCoupe, ToyotaCorolla, MiniVan).</b> <br><br>
+	  The least upper bound of a SportsCoupe, ToyotaCorolla, and MiniVan is a passenger vehicle.  I.e PassengerVehicle is the smallest class above SportsCoupe, ToyotaCorrla,
+	  and MiniVan.  The result is bound to a variable.
+	  <br><br>
+	  <img src="lub.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>glb(PassengerVehicle, Van).</b> <br><br>
+	  The greast lower bound of PassengerVehicle and Van is a MiniVan. I.E MiniVan inherits from both a Van and a PassengerVehicle.
+	  <br><br>
+	  <img src="glb.jpg" />
+	  <br><br>
+	  -->
+	  <LI> <b>lub(?Result, SportsCoupe, ToyotaCorolla, MiniVan).</b> <br><br>
+	  The least upper bound of a SportsCoupe, ToyotaCorolla, and MiniVan is a passenger vehicle.  I.e PassengerVehicle is the smallest class above SportsCoupe, ToyotaCorrla,
+	  and MiniVan.  The result is bound to a variable.
+	  <br><br>
+	  <img src="lubVar.jpg" />
+	  <br><br>
+	  
+	  <LI> <b>glb(?Result, PassengerVehicle, Van).</b> <br><br>
+	  The greast lower bound of PassengerVehicle and Van is a MiniVan. I.e, MiniVan directly inherits from both a Van and a PassengerVehicle.  The Result
+	  is bound to a variable.	  
+	  <br><br>
+	  <img src="glbVar.jpg" />
+	  <br><br>
+	  
+	  </OL>
+
+	  <!-- RuleML Section-->
+	  
+	  
+	  <h3>Examples of Querying the Taxonomy with RuleML</h3>
+
+	  Once the taxonomy information has been parsed, switch to the "Type Query" pane to query the taxonomy.
+    
+	  <OL>
+	  <LI>
+
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Rel&gt;Vehicle&lt;/Rel&gt;
+   &lt;Rel&gt;Car&lt;/Rel&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>	
+
+	  Since a Vehicle is not a direct superClass of Car OO jDREW will return false.
+	  <br><br>
+	  <img src="subsumesVCR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Rel&gt;Vehicle&lt;/Rel&gt;
+   &lt;Rel&gt;Car&lt;/Rel&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>	
+
+	  
+	  Since a Vehicle is a superClass of Car in the transitive closure OO jDREW will return true.
+	  <br><br>
+	  <img src="subsumesPlusVCR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Rel&gt;Car&lt;/Rel&gt;
+   &lt;Var&gt;X&lt;/Var&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>	
+
+	  In this query, OO jDREW will bind ?X to all of the direct subClasses of the class Car.  The first solution OO jDREW finds is Sedan,
+	  while the next solution would be bound to SportsCoupe.
+	  <br><br>
+	  <img src="subsumesCXR.jpg" />
+	  <br><br>
+	  
+	  <LI> 
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Rel&gt;Car&lt;/Rel&gt;
+   &lt;Var&gt;X&lt;/Var&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>	
+
+	  In this query, OO jDREW will bind ?X to all of the classes below Car in the transitive closure.  So ?X would be bound to the following:
+	  Sedan, SportsCoupe, and ToyotaCorolla.
+	  <br><br>
+	  <img src="subsumesPlusCXR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Var&gt;X&lt;/Var&gt;
+   &lt;Rel&gt;MiniVan&lt;/Rel&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>	
+
+	  In this query, OO jDREW will bind ?X to all of the direct superClasses of MiniVan.  The bindings of ?X are as follows: Van and PassengerVehicle.  
+	  MiniVan is in the scope of multiple inheritance, since it is both a Van and a PassengerVehicle.
+	  <br><br>
+	  <img src="subsumesXMR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Var&gt;X&lt;/Var&gt;
+   &lt;Rel&gt;MiniVan&lt;/Rel&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>	
+	  In this query, OO JDREW will bind ?X to all of the superClasses of MiniVan in the transitive closure.  ?X will bind to the following classes:
+	  Vehicle, Van, and PassengerVehicle.
+	  <br><br>
+	  <img src="subsumesPlusXMR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;Subsumes&gt;
+   &lt;Var&gt;X&lt;/Var&gt;
+   &lt;Var&gt;Y&lt;/Var&gt;
+&lt;/Subsumes&gt;
+</pre>
+</code>	
+	 	This query will return all of the direct subClass and superClass relations stored in the taxonomy.
+	  <br><br>
+	  <img src="subsumesXYR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;SubsumesPlus&gt;
+   &lt;Var&gt;X&lt;/Var&gt;
+   &lt;Var&gt;Y&lt;/Var&gt;
+&lt;/SubsumesPlus&gt;
+</pre>
+</code>	
+	This query will return all of the subClass and superClass relations inferred by the transitive closure.
+	  <br><br>
+	  <img src="subsumesPlusXYR.jpg" />
+	  <br><br>
+
+	<!--  
+	  <LI>
+<code>
+<pre>
+&lt;LUB&gt;
+   &lt;Rel&gt;SportsCoupe&lt;/Rel&gt;
+   &lt;Rel&gt;ToyotaCorolla&lt;/Rel&gt;
+   &lt;Rel&gt;MiniVan&lt;/Rel&gt;
+&lt;/LUB&gt;
+</pre>
+</code>	
+	  The least upper bound of a SportsCoupe, ToyotaCorolla and MiniVan is a passenger vehicle.  I.E. SportsCoupe, ToyotaCorrla
+	  and MiniVan are all PassengerVehicle.
+	  <br><br>
+	  <img src="lubR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;GLB&gt;
+   &lt;Rel&gt;PassengerVehicle&lt;/Rel&gt;
+   &lt;Rel&gt;Van&lt;/Rel&gt;
+&lt;/GLB&gt;
+</pre>
+</code>	
+	  The greast lower bound of PassengerVehicle and Van is a MiniVan. I.E MiniVan inherits from both a Van and a PassengerVehicle.
+	  <br><br>
+	  <img src="glbR.jpg" />
+	  <br><br>
+	
+-->
+
+	
+	  <LI>
+<code>
+<pre>
+&lt;LUB&gt;
+   &lt;Var&gt;Result&lt;/Var&gt;
+   &lt;Rel&gt;SportsCoupe&lt;/Rel&gt;
+   &lt;Rel&gt;ToyotaCorolla&lt;/Rel&gt;
+   &lt;Rel&gt;MiniVan&lt;/Rel&gt;
+&lt;/LUB&gt;
+</pre>
+</code>	
+	  The least upper bound of a SportsCoupe, ToyotaCorolla, and MiniVan is a passenger vehicle.  I.e PassengerVehicle is the smallest class above SportsCoupe, ToyotaCorrla,
+	  and MiniVan.  The result is bound to a variable.
+	  <br><br>
+	  <img src="lubVarR.jpg" />
+	  <br><br>
+	  
+	  <LI>
+<code>
+<pre>
+&lt;GLB&gt;
+   &lt;Var&gt;Result&lt;/Var&gt;
+   &lt;Rel&gt;PassengerVehicle&lt;/Rel&gt;
+   &lt;Rel&gt;Van&lt;/Rel&gt;
+&lt;/GLB&gt;
+</pre>
+</code>	
+	  The greast lower bound of PassengerVehicle and Van is a MiniVan. I.e, MiniVan directly inherits from both a Van and a PassengerVehicle.  The Result
+	  is bound to a variable.
+	  <br><br>
+	  <img src="glbVarR.jpg" />
+	  <br><br>
+	  
+	  </OL>
+
+	</td>
+      <td style="height: 609px;" class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; July 5, 2008</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Ben Craig </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

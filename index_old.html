@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>OO jDREW - Home</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="3" class="title">OO jDREW</td>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="index.html">home</a></td>
+
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="docs.html">documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="pres.html">presentations</a></td>
+      </tr>
+      <tr>
+
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="download.html">downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="demo.html">online demo</a></td>
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea"><h3>Introduction</h3>
+    <p>OO jDREW is a deductive reasoning engine for the RuleML web rule language (including its OO extensions), written in the Java programming language (Tested with Version 1.6.0). </p>
+      <h3>Release Notes</h3>
+	  
+	  <h4>Version 0.93 Bug Fixes</h4>
+	   <ul>
+		<li>Fixed bugs that caused problems with efficiency issues.</li>
+
+	  </ul>
+	  
+	  <h4>Version 0.93</h4>
+	    
+	  <ul>
+		<li><a href="http://www.ruleml.org/0.91/">RuleML 0.91</a> parser implemented. </li>
+		<li>Ability to read from files and write files in the TD, BU and Translator GUIs.  More information can
+		be found <a href="docs/files.html">here</a>. </li>
+
+	  </ul>
+	  
+	  
+	  <h4>Version 0.92</h4>
+
+		<ul>
+		  <li>The Data element will now work in both the Top Down and the Bottom Up
+		Engines. You can find more information about it <a href="docs/data.html">here</a>.</li>
+		</ul>
+	  
+	  <h4>Version 0.91</h4>
+
+		<p>Bug fixes made to the Top Down Engine:</p>
+		<ul>
+		  <li>Corrected errors in handling of types</li>
+		  <li>The unification of two variables with non-intersecting types results in unification failure instead of a binding with a type of NOTHING</li>
+		  <li>Corrected display of variable bindings in user interface so that role names are not erroneously displayed.</li>
+		</ul>
+	  
+	  <h4>Version 0.90</h4>
+
+	    
+	  <p>New features added to the Bottom Up Engine:</p>
+	  <ul>
+		<li><a href="docs/strat.html">Test for Stratification</a></li>
+		<li><a href="docs/loop.html">Loop Counter</a></li>
+		<li><a href="docs/rules.html">Option to Print Only Facts Instead of Facts and Rules</a></li>
+	  </ul>
+	  
+	  
+      <h4>Version 0.89 </h4>
+
+	<p>License changed to LGPL</p>
+	
+	<h4>Version 0.88 </h4>
+	<p>Support for the RuleML syntax (version 0.88 with rest parameters from version 0.89) </p>
+	<p>Currently the following Object Oriented features from RuleML are supported:</p>
+	<ul>
+      <li>Keyed parameters (Slots)</li>
+
+      <li>Order-Sorted types (defined in RDFS)</li>
+      <li>Object Identifiers</li>
+      </ul>
+    <p>Currently URI grounding of individual constants (&lt;Ind&gt;) is not supported; primarily because of W3C issues related to the normalization of URIs. This should be supported in a future release. </p>
+
+	<h3>Known Issues</h3>
+
+    <p>The following are known outstanding issues with OO jDREW:</p>
+    <ul>
+      <li>URI grounding is not currently supported</li>
+      <li>In POSL syntax a symbol cannot contain the <strong>&quot;</strong> character. </li>
+      <li>Un-quoted symbols must follow the following definition (-)? [a-zA-Z0-9] [a-zA-Z0-9_.]*</li>
+    </ul>
+
+      
+    <h3>RuleML &lt;-&gt; POSL Converter Application</h3>
+    <p>A small Java Web Start application to convert between RuleML and POSL syntax is available <a href="demo/translator.jnlp">here</a></p>
+
+
+    <h3>License</h3>
+    <p>OO jDREW - Copyright (C) 2005 - 2006 Marcel Ball and Ben Craig</p>
+    <p>This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+    <p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href='license.html'>GNU
+Lesser General Public License</a> for more details.</p>
+
+    <h3>Mailing List jdrew-all (including Open Source Roadmap) &amp; Email Contact</h3>
+
+    <p>A mailing list, jdrew-all@jdrew.org has been created to discuss development and uses for jDREW and OO jDREW. To get more information about the list or to subscribe please visit <a href="http://mail.jdrew.org/mailman/listinfo/jdrew-all">http://mail.jdrew.org/mailman/listinfo/jdrew-all</a>. An archive of the mailing list is available at <a href="http://mail.jdrew.org/pipermail/jdrew-all/">http://mail.jdrew.org/pipermail/jdrew-all/</a></p>
+    <p>An open source roadmap for OO jDREW has been released on the mailing list, describing the planned development of the engine. An archived copy of this roadmap is <a href="http://mail.jdrew.org/pipermail/jdrew-all/2005-June/000001.html">archived here</a>.</p>
+    
+	<p>If you have any question/comment about OO jDREW (features, implementation, use, installation, etc.), please do not hesitate to contact me by email: ben.craig "at" unb "dot" ca </p>
+	
+
+</td>
+    <td class="rightbar"><p>Last Updated:<br />
+
+  &nbsp;&nbsp; July 30, 2007</p>
+    <p>By:<br />
+      &nbsp;&nbsp; Ben Craig
+    </p>
+    </td>
+  </tr>
+</table>
+</body>
+
+</html>

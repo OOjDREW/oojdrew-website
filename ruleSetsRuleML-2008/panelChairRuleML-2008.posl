@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF profile for RuleML-2008 Panel Chair: **Disclaimer** these rules are experimental and not offical									    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF contact and personal information									                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%FOAF facts about the Panel Chairs	
+
+person(
+  symposiumChair[ruleML_2008,panel],  
+  foafname[firstName[john],lastName[hall]],
+  foaftitle[title[dr]],
+  foafmbox[email[johnATemailDOTcom]],
+  exphones[telephoneNumbers[office[3214],cellPhone[4312]]]).
+
+person(
+  symposiumChair[ruleML_2008,panel],   
+  foafname[firstName[Axel],lastName[Polleres]],
+  foaftitle[title[Dr]],
+  foafmbox[email[AxelATemailDOTcom]],
+  exphones[telephoneNumbers[office[1234],cellPhone[4124]]]).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Regarding Panel Time           							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+panelStartTime(ruleML_2008, 12: integer).
+panelDate(ruleML_2008, date[day[30:integer],month[10:integer],year[2008:integer]]).
+currentDate(date[day[20:integer],month[6:integer], year[2008:integer]]).
+
+numberOfDays(1 :integer, 31 :integer, january).
+numberOfDays(2 :integer, 28 :integer, february).
+numberOfDays(3 :integer, 31 :integer, march).
+numberOfDays(4 :integer, 30 :integer, april).
+numberOfDays(5 :integer, 31 :integer, may).
+numberOfDays(6 :integer, 30 :integer, june).
+numberOfDays(7 :integer, 31 :integer, july).
+numberOfDays(8 :integer, 31 :integer, august).
+numberOfDays(9 :integer, 30 :integer, september).
+numberOfDays(10 :integer, 31 :integer, october).
+numberOfDays(11 :integer, 30 :integer, november).
+numberOfDays(12 :integer, 31 :integer, december).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Regarding Panel Time           							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewPanelTime(?Meeting, ?Time,?Day, ?Month, ?Year) :-
+	panelStartTime(?Meeting, ?Time),
+	panelDate(?Meeting, date[day[?Day],month[?Month], year[?Year]]).
+	
+daysUntilPanel(?daysToPanel:integer):-
+  currentDate(date[day[?currentDay:integer],month[?currentMonth:integer], year[?currentYear:integer]]),	
+  panelDate(?Meeting, date[day[?panelDay:integer],month[?panelMonth:integer], year[?panelYear:integer]]),
+  %get remaining days in this month
+  numberOfDays(?currentMonth:integer,?daysInCurrentMonth:integer, ?),
+  subtract(?daysLeftInMonth:integer, ?daysInCurrentMonth:integer, ?currentDay:integer),
+  %add the days remaining this month with the amount into the panel month
+  add(?days:integer, ?daysLeftInMonth:integer, ?panelDay:integer),
+  %recursivly add the remaining days in the months until the panel month
+  add(?nextMonth:integer, ?currentMonth:integer, 1:integer),
+  recursiveAdd(?recursiveDays:integer, ?days:integer, ?nextMonth:integer),
+  add(?daysToPanel:integer,?recursiveDays:integer).
+  
+recursiveAdd(?newDays:integer, ?days:integer, ?monthIncrement:integer) :-  
+  panelDate(?meeting, date[day[?panelDay:integer],month[?panelMonth:integer], year[?panelYear:integer]]),
+  lessThan(?monthIncrement:integer,?panelMonth:integer),
+  numberOfDays(?monthIncrement:integer,?monthDays:integer,?),
+  add(?nextDays:integer,?days:integer,?monthDays:integer),
+  add(?monthIncrementUpdate:integer,?monthIncrement:integer,1:integer),
+  recursiveAdd(?newDays:integer, ?nextDays:integer, ?monthIncrementUpdate:integer).
+ 
+%base case
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts About Pending Panel Participants								                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pendingPanelParticipant(ruleML_2008, james_Owen).
+pendingPanelParticipant(ruleML_2008, barbara_von_Halle).
+pendingPanelParticipant(ruleML_2008, mark_Linehan).
+pendingPanelParticipant(ruleML_2008, elisa_Kendall).
+pendingPanelParticipant(ruleML_2008, jacob_Feldman).
+pendingPanelParticipant(ruleML_2008, adrian_Walker).
+pendingPanelParticipant(ruleML_2008, benjamin_Grosof).
+
+participantAssociation(james_Owen, dallas_Rules_Group).
+participantAssociation(barbara_von_Halle, knowledge_Partners_International).
+participantAssociation(mark_Linehan, ibm).
+participantAssociation(elisa_Kendall, sandpiper_Software).
+participantAssociation(jacob_Feldman, open_Rules).
+participantAssociation(adrian_Walker, open_Rules).
+participantAssociation(benjamin_Grosof, vulcan).
+
+associationsURI(dallas_Rules_Group, "http://dallasrulesgroup.org/").
+associationsURI(knowledge_Partners_International, "http://www.kpiusa.com/").
+associationsURI(ibm, "http://www.ibm.com/").
+associationsURI(sandpiper_Software,"http://www.sandsoft.com/").
+associationsURI(open_Rules, "http://openrules.com/").
+associationsURI(vulcan,"http://www.vulcan.com/").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules For Pending Panel Participants								                                                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+checkPendingPanelParticipants(?Meeting, ?Participant, ?Organization) :-
+	pendingPanelParticipant(?Meeting, ?Participant),
+	participantAssociation(?Participant, ?Organization),
+	associationsURI(?Organization, ?URI).
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts About Pending Panel Topics								                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pendingPanelTopics(ruleML_2008, topic).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts For Pending Panel Topics								                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+checkPendingPanelTopics(?Meeting, ?Topic) :- pendingPanelTopics(?Meeting, ?Topic).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%TODO: Expand Rules for Panel Chair        							                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+

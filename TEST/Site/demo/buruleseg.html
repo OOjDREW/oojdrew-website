@@ -1,0 +1,76 @@
+<HTML>
+	<HEAD>
+		<TITLE>OO jDREW Bottom Up Example Rules: NBBizKB</TITLE>
+	</HEAD>
+	<BODY>
+	<H3>% Example: NBBizKB sample rules - Bottom Up</H3>
+<XMP>
+% NBBizKB Rules for Bottom Up                                     March 11, 2004
+% ===========================
+
+% The rules are given here in POSL (POsitional SLotted) syntax.
+% POSL can be transformed to RuleML syntax via the translator at
+% http://www.ruleml.org:8080/converters/servlet/AsciiToRuleML.
+
+
+% Validation Rules
+% There is an Alert if a BIZNET_ENT with some NUMBER N has a LANGUAGE_SPOK of ENGL
+% but a LANGUAGE_WRIT value of FREN.
+
+Alert(NUMBER->?N; LANGUAGE_SPOK->ENGL; LANGUAGE_WRIT->FREN) :-
+  BIZNET_ENT(NUMBER->?N; LANGUAGE_SPOK->ENGL; LANGUAGE_WRIT->FREN ! ?).
+
+% There is an Alert if a BIZNET_ENT with some NUMBER N has a LANGUAGE_SPOK of FREN
+% but a LANGUAGE_WRIT value of ENGL.
+
+Alert(NUMBER->?N; LANGUAGE_SPOK->FREN; LANGUAGE_WRIT->ENGL) :-
+  BIZNET_ENT(NUMBER->?N; LANGUAGE_SPOK->FREN; LANGUAGE_WRIT->ENGL ! ?).
+
+% There is an Alert if a BIZNET_ENT with some NUMBER N has a LANGUAGE_SPOK S not
+% equal to BILI(ngual) but a LANGUAGE_WRIT value of BILI(ngual).
+
+Alert(NUMBER->?N; LANGUAGE_SPOK->?S; LANGUAGE_WRIT->BILI) :-
+  BIZNET_ENT(NUMBER->?N; LANGUAGE_SPOK->?S; LANGUAGE_WRIT->BILI ! ?),
+  $seq(?S,BILI,false).
+
+% There is an Alert if a BIZNET_ENT with some NUMBER N has a CURRENT_EMPLOYMENT with
+% a MAX of EMax and a MIN of EMin but EMin is greater than EMax.
+
+Alert(NUMBER->?N; CURRENT_EMPLOYMENT->[MAX->?EMax; MIN->?EMin]) :-
+  BIZNET_ENT(NUMBER->?N; CURRENT_EMPLOYMENT->[MAX->?EMax; MIN->?EMin] ! ?),
+  $gt(?EMin,?EMax,true).
+
+
+% There is an Alert if no complete BIZNET_ENT fact can be derived:
+
+% There is an Alert if no complete YAHOO_ENT fact can be derived:
+
+
+
+SectorCategory(?S, ?C) :-         % supported by
+  IdSectorCategory(?K1, ?S, ?C),  % first,
+  IdSectorCategory(?K2, ?S, ?C),  % second, ...
+  $seq(?K1,?K2,false).               % different Identity-providing Keys
+
+
+% S and C are a K-keyed Sector-Category pair if
+%   there is some BIZNET_ENT with KEY K
+%   having NAICS_INDUSTRY_SECTOR S
+%   and some YAHOO_ENT with the same KEY K
+%   having CATEGORY C.
+
+IdSectorCategory(?K, ?S, ?C) :-
+  BIZNET_ENT(CONTACT->[PHONE->?K !?]; NAICS_INDUSTRY_SECTOR->?S ! ?),
+  YAHOO_ENT(PHONE->?K; CATEGORY->?C ! ?).
+
+
+% NBEnterprise assumes all slots unchanged from K-keyed BIZNET_ENT facts
+
+NBEnterprise(NAME->?Ne ! ?Rest) :- BIZNET_ENT(NAME->?Ne ! ?Rest).
+
+
+% Contact: Anna Maclachlan or Harold Boley
+
+</XMP>
+	</BODY>
+</HTML>

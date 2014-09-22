@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <title>OO jDREW - Demo Extensions</title>
+  
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      
+      <h3>Negation As Failure</h3>
+
+
+      
+      <p>Negation-as-failure (Naf) has first been implemented in
+OO jDREW TD (version 0.88),&nbsp;and recently introduced into OO
+jDREW BU for stratified programs.</p>
+
+
+      
+      <p>For example,&nbsp;</p>
+
+
+      
+      <p>&lt;Assert&gt;<br />
+
+
+&nbsp;&nbsp; &lt;And&gt;<br />
+
+
+      <br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Implies
+closure="universal"&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;And&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Rel&gt;premium&lt;/Rel&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Var&gt;customer&lt;/Var&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Rel&gt;onsale&lt;/Rel&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Var&gt;product&lt;/Var&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/Atom&gt; <br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Naf&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Rel&gt;special&lt;/Rel&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Var&gt;product&lt;/Var&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/Naf&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/And&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Rel&gt;discount&lt;/Rel&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Var&gt;customer&lt;/Var&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Var&gt;product&lt;/Var&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Ind&gt;5.0 percent&lt;/Ind&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/Atom&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/Implies&gt;<br />
+
+
+      <br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Atom
+closure="universal"&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Rel&gt;premium&lt;/Rel&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Ind&gt;bob&lt;/Ind&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/Atom&gt;<br />
+
+
+      <br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Atom
+closure="universal"&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Rel&gt;onsale&lt;/Rel&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;Ind&gt;clothes&lt;/Ind&gt;<br />
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/Atom&gt;<br />
+
+
+      <br />
+
+
+&nbsp;&nbsp; &lt;/And&gt;<br />
+
+
+&lt;/Assert&gt;</p>
+
+
+      <img style="width: 807px; height: 699px;" alt="query2naf" src="jpeg/ext2naf-td.JPG" /><br />
+
+
+      <br />
+
+
+      <img style="width: 809px; height: 697px;" alt="output2naf" src="jpeg/ext2naf-bu.JPG" /><br />
+
+
+      <br />
+
+
+      
+      <h3>Equality</h3>
+
+
+      
+      <p>Equivalence individuals are presented with RuleML tag
+&lt;Equal&gt;&lt;/Equal&gt; in OO jDREW BU</p>
+
+
+      
+      <p>For the above example, we define as below:</p>
+
+
+      
+      <pre>&lt;Equal&gt;<br /> &lt;Ind&gt;fatherOFtom&lt;/Ind&gt;<br /> &lt;Ind&gt;bob&lt;/Ind&gt;<br />&lt;/Equal&gt; <br />&lt;Equal&gt;<br /> &lt;Ind&gt;fatherOFtom&lt;/Ind&gt;<br /> &lt;Ind&gt;uncleOFmary&lt;/Ind&gt;<br />&lt;/Equal&gt;</pre>
+
+
+      
+      <p>the coming statements are:</p>
+
+
+      
+      <pre>1: discount("uncleOFmary", clothes, "5.0 percent").<br />1: discount("fatherOFtom", clothes, "5.0 percent").<br />1: discount("bob", clothes, "5.0 percent").<br />2: onsale(clothes).<br />3: premium("uncleOFmary").<br />3: premium("fatherOFtom").<br />3: premium("bob").<br />4: equal("uncleOFmary",uncleOFmary).<br />4: equal("fatherOFtom",uncleOFmary).<br />4: equal("bob",uncleOFmary).<br />4: equal(fatherOFtom,bob).</pre>
+
+
+      
+      <p>while another atom is provided as:</p>
+
+
+      
+      <pre>&lt;Atom&gt;<br /> &lt;Rel&gt;special&lt;/Rel&gt;<br /> &lt;Ind&gt;clothes&lt;/Ind&gt;<br />&lt;/Atom&gt;</pre>
+
+
+      
+      <p>less conclusions we will receive:</p>
+
+
+      
+      <pre>1: premium("uncleOFmary").<br />1: premium("fatherOFtom").<br />1: premium("bob").<br />2: equal("uncleOFmary",uncleOFmary).<br />2: equal("fatherOFtom",uncleOFmary).<br />2: equal("bob",uncleOFmary).<br />2: equal(fatherOFtom,bob).<br />3: onsale(clothes).<br />4: special(clothes).<br /><br />******<br /><br />Here is a <a href="download4ext/DownLoads4ext.html">link to download</a> the extension features of OO jDREW.</pre>
+
+
+      </td>
+
+
+      <td class="rightbar">
+      
+      <p style="margin-left: 0px; width: 116px;">Last
+Updated:<br />
+
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+
+      
+      <p>By:<br />
+
+
+&nbsp;&nbsp; Jing Mei</p>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  </tbody>
+</table>
+
+
+<br />
+
+
+</body>
+</html>

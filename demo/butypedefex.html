@@ -1,0 +1,39 @@
+<HTML>
+	<HEAD>
+		<TITLE>OO jDREW  Example - Type Definition</TITLE>
+	</HEAD>
+	<BODY>
+	<H3>% Example: NBBizKB sample type definition</H3>
+<XMP>
+
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">]>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+   <rdfs:Class rdf:ID="Person"/>
+
+   <rdfs:Class rdf:ID="Customer">
+	<rdfs:subClassOf rdf:resource="#Person"/>
+   </rdfs:Class>
+   
+   <rdfs:Class rdf:ID="Employee">
+	<rdfs:subClassOf rdf:resource="#Person"/>
+   </rdfs:Class>
+
+   <rdfs:Class rdf:ID="Offer"/>
+
+   <rdfs:Class rdf:ID="Promotion"/>
+
+   <rdfs:Class rdf:ID="Sale">
+      <rdfs:subClassOf rdf:resource="#Offer"/>
+      <rdfs:subClassOf rdf:resource="#Promotion"/>
+   </rdfs:Class>
+</rdf:RDF>
+
+
+</XMP>
+	</BODY>
+</HTML>

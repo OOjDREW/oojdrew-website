@@ -1,0 +1,333 @@
+<?cocoon-format type="text/html"><html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>Glossary of RuleML 0.91 for OO jDREW</title>
+<style type="text/css">
+       h1 { font-size: 32pt; font-weight: bold }
+       h2 { font-size: 16pt; font-weight: bold }
+       ul { line-height: 120% }
+       ol { line-height: 120% }
+       p { line-height: 100% }
+       dt { font-weight: bold }
+       abbr, acronym { cursor:help }
+     </style>
+</head>
+<body bgcolor="#FFFFFF">
+		<center>
+			<br>
+			<br>
+			<h1>Glossary of RuleML 0.91 for OO jDREW</h1>
+			<h2>Ben Craig</h2>
+			<h2>Quick link: <a href="http://www.ruleml.org/spec/">Specification</a>
+			</h2>
+		</center>
+	<h2>Contents</h2>
+<ul>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#Glossary">Glossary</a></li>
+</ul>
+<h2><a name="Introduction">Introduction</a></h2>
+		
+		<p>This glossary describes every tag of RuleML as of version 0.91 supported by OO jDREW</p>
+	<h2><a name="Glossary">Glossary</a></h2>
+		
+		<dl>
+		
+			<dt id="gloss-And"><code>&lt;And&gt;</code></dt>
+			<dd>A conjunctive expression, where <code>&lt;And&gt;Atom&lt;/And&gt;</code> is equivalent to <code>Atom</code>.
+			<p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
+				</p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/connective_module.xsd">connective module</a>)</p>
+			</dd>
+			
+			
+			
+			<dt id="gloss-Assert"><code>&lt;Assert&gt;</code></dt>
+			<dd>A <abbr title="Knowledge Query Manipulation Language">KQML</abbr>-like performative acting as a wrapper specifying that its content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is asserted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives.
+			<p>Attributes:  <a href="#gloss-@mapClosure"><code>@mapClosure</code></a> </p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/performative_module.xsd">performative module</a> and <a href="http://www.ruleml.org/fol">FOL RuleML</a>)</p>
+			</dd>
+			
+			
+			<dt id="gloss-Atom"><code>&lt;Atom&gt;</code></dt>
+			<dd>A logical atom, i.e. an expression formed from a predicate (or relation) applied to a collection of its (logical) arguments.  The relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) is followed by a sequence of zero or more arguments.  Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments. Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example, &quot;John is the father of Mary&quot;:
+<b><pre>
+&lt;Atom&gt;
+  &lt;Rel&gt;father&lt;/Rel&gt;
+  &lt;Ind&gt;John&lt;/Ind&gt;
+  &lt;slot&gt;&lt;Ind&gt;daughter&lt;/Ind&gt;&lt;Ind&gt;Mary&lt;/Ind&gt;&lt;/slot&gt;
+&lt;/Atom&gt;</pre></b>
+				<p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
+				</p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/atom_module.xsd">atom module</a> and <a href="http://www.ruleml.org/0.91/xsd/modules/holog_module.xsd">holog module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			
+			<dt id="gloss-@closure"><code>@closure</code></dt>
+			<dd>An attribute indicating how the contained free variables are quantified. Allowed values are &quot;universal&quot; and &quot;existential&quot;.
+<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/connective_module.xsd">connective module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			<dt id="gloss-Data"><code>&lt;Data&gt;</code></dt>
+			<dd>A fixed argument like RDF literals. It may be optionally associated with an
+<a href="http://www.w3.org/TR/xmlschema-2/#built-in-datatypes">XML Schema built-in datatype</a> using the <code>xsi:type</code> attribute. For example:
+<b><pre>&lt;Data xsi:type=&quot;xs:dateTime&quot;&gt;2002-10-10T17:00:00Z&lt;/Data&gt;</pre></b>
+is valid (according to the <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">dateTime</a> datatype), but the following is not:
+<b><pre>&lt;Data xsi:type=&quot;xs:dateTime&quot;&gt;tomorrow&lt;/Data&gt;</pre></b>
+Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid because no built-in datatype is given and that XML is also permissible, e.g.
+<b><pre>
+ &lt;Data&gt;   
+   &lt;ex:object&gt;
+     &lt;ex:id&gt;115897&lt;/ex:id&gt;
+     &lt;ex:owner&gt;John Doe&lt;/ex:owner&gt;
+   &lt;/ex:object&gt;
+ &lt;/Data&gt;</pre></b>
+
+<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/term_module.xsd">term module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<dt id="gloss-Expr"><code>&lt;Expr&gt;</code></dt>
+			<dd>A logical function of the form &quot;f(...)&quot; where f is a function name. The function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) is followed by a sequence of zero or more arguments. Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments, just like an atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>).	Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. If the attribute <code>@in</code> has value &quot;no&quot;, the <code>&lt;Expr&gt;</code> corresponds to a complex term (<code>&lt;Cterm&gt;</code>) in 0.9 and earlier:
+<b><pre>
+&lt;Expr in=&quot;no&quot;&gt;
+  &lt;Fun&gt;book&lt;/Fun&gt;
+  &lt;Var&gt;title&lt;/Var&gt;
+  &lt;Var&gt;author&lt;/Var&gt;
+  &lt;Var&gt;table of contents&lt;/Var&gt;
+  &lt;Var&gt;chapters&lt;/Var&gt;
+&lt;/Expr&gt;</pre></b>
+		On the other hand, if the attribute <code>@in</code> has value &quot;yes&quot;, the <code>&lt;Expr&gt;</code> corresponds to a nano (<code>&lt;Nano&gt;</code>) in 0.9 and earlier.
+		<p>Attributes: <a href="#gloss-@type"><code>@type</code></a>
+</p>
+			<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/expr_module.xsd">expr module</a> and <a href="http://www.ruleml.org/fun">Functional Ruleml</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			<dt id="gloss-Fun"><code>&lt;Fun&gt;</code></dt>
+			<dd>A user-defined function name of an <a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>. It is optionally surrounded by an operator (<a href="#gloss-op"><code>&lt;op&gt;</code></a>).
+
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/expr_module.xsd">expr module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			
+			
+			<dt id="gloss-Implies"><code>&lt;Implies&gt;</code></dt>
+			<dd>An implication rule.  A premise role followed by a conclusion role. For example, &quot;The discount for a customer buying a product is 5.0 percent if the customer is premium and the product is regular&quot;:
+<b><pre>
+&lt;Implies&gt;
+  &lt;And&gt;
+    &lt;Atom&gt;
+      &lt;Rel&gt;premium&lt;/Rel&gt;
+      &lt;Var&gt;customer&lt;/Var&gt;
+    &lt;/Atom&gt;
+    &lt;Atom&gt;
+      &lt;Rel&gt;regular&lt;/Rel&gt;
+      &lt;Var&gt;product&lt;/Var&gt;
+    &lt;/Atom&gt;
+  &lt;/And&gt;
+  &lt;Atom&gt;
+    &lt;Rel&gt;discount&lt;/Rel&gt;
+    &lt;Var&gt;customer&lt;/Var&gt;
+    &lt;Var&gt;product&lt;/Var&gt;
+    &lt;Ind&gt;5.0 percent&lt;/Ind&gt;
+  &lt;/Atom&gt;
+&lt;/Implies&gt;</pre></b>
+				<p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
+</p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/connective_module.xsd">connective module</a>)</p>
+			</dd>
+			
+			
+			
+			<dt id="gloss-Ind"><code>&lt;Ind&gt;</code></dt>
+			<dd>An individual constant, as in predicate logic, which can also be considered to be a fixed argument like RDF resources.
+<p>Attributes: <a href="#gloss-@type"><code>@type</code></a>
+</p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/term_module.xsd">term module</a>)</p>
+			</dd>
+			
+			
+			
+			
+
+			
+			
+			<dt id="gloss-@mapClosure"><code>@mapClosure</code></dt>
+			<dd>An attribute indicating how the free variables falling within its scope (i.e. child elements) are quantified.  Allowed values are &quot;universal&quot;.
+<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/connective_module.xsd">connective module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<dt id="gloss-Naf"><code>&lt;Naf&gt;</code></dt>
+			<dd>A &quot;by default&quot; negation of a logical atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>)  (i.e. &quot;weak&quot; negation or negation as failure).
+<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/naf_module.xsd">naf module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			<dt id="gloss-op"><code>&lt;op&gt;</code></dt>
+			<dd>An operator expression including either a relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) of an atom (<a href="#gloss-op"><code>&lt;Atom&gt;</code></a>), a function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) of a (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>).
+<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/atom_module.xsd">atom module</a>, <a href="http://www.ruleml.org/0.91/xsd/modules/expr_module.xsd">expr module</a> and <a href="http://www.ruleml.org/0.91/xsd/modules/holog_module.xsd">holog module</a>)</p>
+			</dd>
+			
+			
+
+			
+			
+			
+			
+			
+			<dt id="gloss-Plex"><code>&lt;Plex&gt;</code></dt>
+			<dd>A collection of (ordered) arguments and/or (unordered) user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>), identical to an uninterpreted expression (<a href="#gloss-Expr"><code>&lt;Expr in=&quot;no&quot;&gt;</code></a>) except not having a user-specified function name (equivalent to having a system-specified constructor 'Plex'). Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example:
+<b><pre>
+&lt;Plex&gt;
+  &lt;Var&gt;title&lt;/Var&gt;
+  &lt;Var&gt;author&lt;/Var&gt;
+  &lt;Var&gt;table of contents&lt;/Var&gt;
+  &lt;Var&gt;chapters&lt;/Var&gt;
+&lt;/Plex&gt;
+</pre></b>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/expr_module.xsd">expr module</a>)</p>
+			</dd>
+				
+
+			
+			<dt id="gloss-Query"><code>&lt;Query&gt;</code></dt>
+			<dd>A <abbr title="Knowledge Query Manipulation Language">KQML</abbr>-like performative acting as a wrapper specifying that its content is queried, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives.
+<p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
+				</p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/performative_module.xsd">performative module</a> and <a href="http://www.ruleml.org/fol">FOL RuleML</a>)</p>
+			</dd>
+			
+			
+			
+			<dt id="gloss-Rel"><code>&lt;Rel&gt;</code></dt>
+			<dd>A relation, i.e. a logical predicate, of an atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>). It is optionally surrounded by an operator (<a href="#gloss-op"><code>&lt;op&gt;</code></a>).
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/atom_module.xsd">atom module</a>)</p>
+			</dd>
+			
+			
+			<dt id="gloss-repo"><code>&lt;repo&gt;</code></dt>
+			<dd>A positional rest variable used in <a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>s, <a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>s and <a href="#gloss-Plex"><code>&lt;Plex&gt;</code></a>s. Note that <a href="#gloss-Plex"><code>&lt;Plex&gt;</code></a>s are generated, so <code>&lt;repo&gt;</code>s are only available above the Datalog sublanguage.
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/rest_module.xsd">rest module</a>)</p>
+			</dd>
+			
+			
+			<dt id="gloss-resl"><code>&lt;resl&gt;</code></dt>
+			<dd>A slotted rest variable used in <a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>s, <a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>s and <a href="#gloss-Plex"><code>&lt;Plex&gt;</code></a>s. Note that <a href="#gloss-Plex"><code>&lt;Plex&gt;</code></a>s are generated, so <code>&lt;resl&gt;</code>s are only available above the Datalog sublanguage.
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/rest_module.xsd">rest module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			<dt id="gloss-Rulebase"><code>&lt;Rulebase&gt;</code></dt>
+			<dd>A collection of rules that can be ordered or unordered, without or with duplicates. For example: <a href="http://www.ruleml.org/0.91/exa/FOL+/naffolog/ssn.ruleml"><code>ssn.ruleml</code></a>
+			<p>Attributes: <a href="#gloss-@mapClosure"><code>@mapClosure</code></a>
+</p>
+			<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/connective_module.xsd">connective module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<dt id="gloss-slot"><code>&lt;slot&gt;</code></dt>
+			<dd>A user-defined slot consisting of a name (first position) and a filler (second position). For example:
+<b><pre>
+&lt;slot&gt;
+  &lt;Ind&gt;color&lt;/Ind&gt;
+  &lt;Ind&gt;blue&lt;/Ind&gt;
+&lt;/slot&gt;
+</pre></b>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/slot_module.xsd">slot module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<dt id="gloss-@type"><code>@type</code></dt>
+			<dd>A role for optionally specify a term's (user-defined) type.
+<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/term_module.xsd">term module</a>)</p>
+			</dd>
+			
+			
+			
+			
+			
+			<dt id="gloss-Var"><code>&lt;Var&gt;</code></dt>
+			<dd>A logical variable, as in logic programming.
+<p>Attributes: <a href="#gloss-@type"><code>@type</code></a>
+</p>
+				<p>(See: <a href="http://www.ruleml.org/0.91/xsd/modules/term_module.xsd">term module</a>)</p>
+			</dd>
+			
+		
+			
+			
+			
+			
+		</dl>
+	<br>
+		<p>
+		Page Version: 2007-08-09
+		<br>
+			<br>
+			<br>
+			<a name="Practice-Preach"></a>
+			<small>&quot;Practice what you preach&quot;: XML source of this homepage at <a href="index.xml">index.xml</a> (<a href="index.xml.txt">index.xml.txt</a>);
+	      <br>
+	      transformed to HTML via the adaptation of <a href="http://www.dfki.uni-kl.de/~sintek/">Michael Sintek</a>'s SliML <a href="http://www.w3.org/TR/xslt">XSLT</a> stylesheet at <a href="http://www.dfki.uni-kl.de/~boley/xslt/homepage.xsl">homepage.xsl</a> (View | Page Source)
+	   </small>
+		</p>
+	</body>
+</html>

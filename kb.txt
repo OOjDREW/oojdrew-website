@@ -1,0 +1,105 @@
+%Main Query to be called
+contact(?person,?contactInfo,?contactMethod) :- checkSchedule(?person,?contactInfo,?contactMethod).
+
+%Find the Contact Method and Contact Information
+checkSchedule(?person,?contactInfo,?contactMethod) :- 
+getContactMethod(?person,?contactMethod),
+contactInformation(?contactMethod,?contactInfo).
+
+%Check the contact information for every activity other than work
+getContactMethod(?person,?contactMethod) :- 
+time(?time:Integer),
+schedule(?person,?time:Integer,?activity:String),
+naf(stringEqualIgnoreCase(?activity:String,"Work":String)),
+contactMethod(?contactMethod,?activity).
+
+%Check the contact information while at work
+getContactMethod(?person,?contactMethod) :- 
+time(?time:Integer),
+schedule(?person,?time:Integer,?activity),
+contactPerson(?contactMethod,?activity).
+
+%Afternoon work
+contactPerson(?contactMethod,?activity) :- 
+time(?time:Integer),
+greaterThanOrEqual(?time:Integer,13:Integer),
+lessThanOrEqual(?time:Integer,15:Integer),
+contactMethod(?contactMethod,?activity,?).
+
+%Morning work
+contactPerson(?contactMethod,?activity) :- 
+time(?time:Integer),
+greaterThanOrEqual(?time:Integer,9:Integer),
+lessThanOrEqual(?time:Integer,11:Integer),
+contactMethod(?contactMethod,?activity,?).
+
+%Dynamically Asserted During Execution time
+%time(12:Integer).
+
+%Schedule information For a weekday
+
+schedule(ben,0:Integer,sleep:String).
+schedule(ben,1:Integer,sleep:String).
+schedule(ben,2:Integer,sleep:String).
+schedule(ben,3:Integer,sleep:String).
+schedule(ben,4:Integer,sleep:String).
+schedule(ben,5:Integer,sleep:String).
+schedule(ben,6:Integer,sleep:String).
+schedule(ben,7:Integer,sleep:String).
+schedule(ben,8:Integer,sleep:String).
+schedule(ben,9:Integer,work:String).
+schedule(ben,10:Integer,work:String).
+schedule(ben,11:Integer,work:String).
+schedule(ben,12:Integer,lunch:String).
+schedule(ben,13:Integer,work:String).
+schedule(ben,14:Integer,work:String).
+schedule(ben,15:Integer,work:String).
+schedule(ben,16:Integer,meeting:String).
+schedule(ben,17:Integer,spareTime:String).
+schedule(ben,18:Integer,spareTime:String).
+schedule(ben,19:Integer,spareTime:String).
+schedule(ben,20:Integer,spareTime:String).
+schedule(ben,21:Integer,spareTime:String).
+schedule(ben,22:Integer,spareTime:String).
+schedule(ben,23:Integer,spareTime:String).
+
+%How to contact someone during certain Activities
+contactMethod(email,sleep).
+contactMethod(phone,work,beforeLunch).
+contactMethod(sms,work,afterLunch).
+contactMethod(skype,spareTime).
+contactMethod(voiceMail,meeting).
+contactMethod(cellPhone,lunch).
+
+%Specific Contact Information
+contactInformation(email,"ben.craig@unb.ca").
+contactInformation(phone,"15064557201").
+contactInformation(sms, "15064713877").
+contactInformation(skype,"bencraig18").
+contactInformation(voiceMail,"1506444057").
+contactInformation(cellPhone,"15064713877").
+
+
+
+% create person information from RDF vCard
+
+person(?Name,?Role, ?Title, ?EMail, ?Telephone):-
+ name(?Name),
+ role(?Role),
+ title(?Title),
+ telephone(?Telephone),
+ email(?EMail).
+
+ name(ben).
+ role(lead).
+ title(student).
+ telephone(15064440547).
+ email(bencraigatunbdotca).
+
+reference("A Typed Hybrid Description Logic Programming Language with Polymorphic Order-Sorted DL-Typed Unification for Semantic Web Type Systems", "Paschke Adrian").
+reference(book,ben).
+
+c(a).
+c(b).
+c(c).
+c(d).

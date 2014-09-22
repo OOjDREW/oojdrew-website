@@ -1,0 +1,48 @@
+<HTML>
+    <HEAD>
+    	<TITLE>OO jDREW Bottom-Up Demo Application Instructions</TITLE>
+    </HEAD>
+    <BODY>
+    	<H3>OO jDREW Bottom-Up Demo Application Instructions</H3>
+	<P>
+	    <B>1. Type Definition</B><BR/>
+	    If your knowledge base makes use of the type system, you must define the type hierarchy
+	    for it. This is done in RDFS, using the rdfs:Class and rdfs:subClassOf elements. This
+	    RDFS document can be entered in the text area provided on the <I>Type Definition</I>
+	    tab.  
+
+	    <BR />Note that the following types are predefined:<BR/>
+	    <UL>
+		<LI>Thing - The top of the type lattice - every type will inherit from this type</LI>
+		<LI>String - A type to represent strings - this is used by the built-in relations</LI>
+		<LI>Numeric - A base type for numeric values</LI>
+		<LI>Integer - A type to represent integer numbers - this is a sub-type of Numeric. This is used by the built-in relations</LI>
+		<LI>Real - A type to represent real numbers - this is a sub-type of Numeric. This is used by the built-in relations</LI>
+		<LI>Nothing - The bottom of the type lattice - this type inherits from every type. This is used as the artificial lower bound when two types have now lower bound. You cannot create a type that is a sub-type of Nothing.</LI>
+   	    </UL>
+	    Once you have entered the rdfs to define your types press the <I>Load Type Information</I> button
+	    to parse the type information.<BR />
+	    If your knowledge base does not make use of types you do not need to do anything on the <I>Type Definition</I> tab.
+	</P>
+	<P>
+	    <B>2. Knowledge Base</B><BR/>
+	    The knowledge base (rulebase) can be entered in either RuleML 0.88 (with rest tags) XML format,
+	    or the POSL syntax. At the <I>Knowledge Base</I> tab of the application window
+	    select the correct format with the radio buttons at the bottom of the tab,
+	    and then enter the knowledge base in the text area provided on the <I>Knowledge
+	    Base</I> tab, you should be able to copy and paste from other applications.<BR />
+	    Once you have entered your knowledge base click the <I>Parse Knowledge Base</I> button to parse and load your knowledge base. When you parse a knowledge base
+	    all previous known clauses are erased.
+	</P>
+	<P>
+	    If you knowledge base makes use of the type system you should complete step one before doing this step.
+	</P>
+	<P>
+	    <B>3. Running the Forward Reasoner</B>
+	    To run the forward reasoner click on the <I>Run Forward Reasoner</I> button on the <I>Output</I> tab, all 
+ 	    facts and rules that can be produced from the input knowledge base are
+	    output in the text area on the <I>Output</I> tab, in the format of the format selected at the
+	    bottom of the application window (this can be changed inbetween parsing the knowledge base and running the reasoner).
+	</P>
+    </BODY>
+</HTML>

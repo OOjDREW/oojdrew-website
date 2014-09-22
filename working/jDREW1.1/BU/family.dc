@@ -1,0 +1,10 @@
+gm(X, Z) :- pa(X, Y), pa(Y, Z), fe(X).
+unc(X, Z) :- ma(X), sib(X, Y), pa(Y, Z).
+ma(ed).
+sib(chas, ed).
+sib(X, Y) :- sib(Y, X).
+pa(chas, will).
+fe(liz).
+pa(liz, chas).
+
+

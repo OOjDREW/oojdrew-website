@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta name="robots" content="index,follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Language" content="en-gb">
+  <meta name="language" content="en-gb">
+  <link rel="shortcut icon"
+ href="http://www.cs.manchester.ac.uk/favicon.ico">
+  <meta name="author" content="Suzanne M. Embury">
+  <meta http-equiv="imagetoolbar" content="no">
+  <meta name="Keywords" content="business rule, conference">
+  <meta name="Description"
+ content="This is the website for the 2008 International RuleML Symposium on Rule Applications and Interchange.">
+  <title>Rule Responder: RuleML-2008 Use Case</title>
+  <link rel="stylesheet"
+ href="http://www.cs.manchester.ac.uk/ruleML/default.css"
+ type="text/css">
+  <script type="text/javascript">
+
+	function elementSelected(){
+
+		var choice = document.form1.select1.selectedIndex;
+
+		var choice1 = "\t <Message mode=\"outbound\" directive=\"query-sync\">" + "\n" +
+			      "\t\t<oid>" + "\n" + 
+			      "\t\t\t<Ind>RuleML-2008</Ind>" + "\n" +
+			      "\t\t</oid>" + "\n" +
+			      "\t\t<protocol>" + "\n" +
+			      "\t\t\t<Ind>esb</Ind>" + "\n" +
+			      "\t\t</protocol>" + "\n" +
+			      "\t\t<sender>" + "\n" +
+			      "\t\t<Ind>User</Ind>" + "\n" +
+			      "\t\t</sender>" + "\n" +
+			      "\t\t<content>" + "\n" +
+			      "\t\t\t<Atom>" + "\n" +
+			      "\t\t\t\t<Rel>getContact</Rel>" + "\n" +
+			      "\t\t\t\t<Ind>ruleml2007_Website</Ind>" + "\n" +
+			      "\t\t\t\t<Ind>update</Ind>" + "\n" +
+			      "\t\t\t\t<Var>Contact</Var>" + "\n" +
+			      "\t\t\t</Atom>" + "\n" +
+			      "\t\t</content>" + "\n" +
+			      "\t</Message>" + "\n" +
+			      "</RuleML>";
+
+	       var messageHeader = "<RuleML xmlns=\"http://www.ruleml.org/0.91/xsd\"" + "\n" +
+				   " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" + "\n" +
+				   " xsi:schemaLocation=\"http://www.ruleml.org/0.91/xsd" + "\n" +
+				   " http://ibis.in.tum.de/research/ReactionRuleML/0.2/rr.xsd\"" + "\n" +
+				   " xmlns:ruleml2007=\"http://ibis.in.tum.de/projects/paw#\">" + "\n";					
+
+
+		if(choice == 0){
+			document.form2.box1.value = messageHeader + choice1;
+		}else if(choice == 1){
+			document.form2.box1.value = messageHeader;
+		}else if(choice == 2){
+			document.form2.box1.value = "C";
+		}		
+
+	}
+
+  </script>
+</head>
+<body>
+<div id="container"><!-- Introduce header panel -->
+<div id="banner"> <a href="http://www.ruleml.org"> </a>
+<h1><a href="http://www.cs.manchester.ac.uk/ruleML/"><span class="green">Rule
+Responder:RuleML-2008 Use Case<br>
+</span></a></h1>
+</div>
+<div id="bannertext">
+<p><span class="black">The International RuleML Symposium on Rule
+Interchange and Applications</span></p>
+<p><span class="green">Orlando, Florida: October 30-31, 2008 (Image
+should go up here)<br>
+</span></p>
+</div>
+<div id="navigation">
+<ul>
+  <li> <a href="#ARCHITECTURE">ARCHITECTURE</a></li>
+  <li> <a href="#DESCRIPTION">DESCRIPTION</a> </li>
+  <li> <a href="#INTENTION">INTENTION</a> </li>
+  <li> <a href="#SOURCES">SOURCES</a> </li>
+  <li> <a href="#ONTOLOGY">ONTOLOGY</a></li>
+</ul>
+</div>
+<div id="main"><!-- Introduce navigation panel -->
+<div class="mainleft">
+<div class="title">Latest News</div>
+<div class="date">Updated - 20th May, 2008</div>
+<p>RuleML-2008 usecase updated<br>
+<a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=4&amp;Itemid=4">read
+more news</a></p>
+<div class="title">Main Menu<br>
+</div>
+<div class="navcontainer">
+<ul class="navlist">
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_frontpage&amp;Itemid=1">Home</a></li>
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=2&amp;Itemid=2">Overview</a></li>
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=7&amp;Itemid=3">Publications</a></li>
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=4&amp;Itemid=4">News</a></li>
+</ul>
+</div>
+<div class="title">User Menu<br>
+</div>
+<div class="navcontainer">
+<ul class="navlist">
+<!--    <li class="active"><a href="#" id="current"></a></li> -->
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=3&amp;Itemid=5">Use
+Cases</a></li>
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=8&amp;Itemid=6">Tools</a></li>
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=5&amp;Itemid=7">Download<br>
+    </a></li>
+  <li><a
+ href="http://ibis.in.tum.de/projects/paw/index.php?option=com_content&amp;task=view&amp;id=6&amp;Itemid=12">Project
+Management<br>
+    </a></li>
+</ul>
+</div>
+<div class="title">Other Menu<br>
+</div>
+<div class="navcontainer">
+<ul class="navlist">
+  <li><a href="http://www.ruleml.org">RuleML</a></li>
+  <li><a href="http://ibis.in.tum.de/research/ReactionRuleML/">Reaction
+RuleML<br>
+    </a></li>
+  <li><a href="http://www.prova.ws/">Prova</a></li>
+  <li><a href="http://www.jdrew.org/oojdrew/">OO jDREW</a></li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+</div>
+<!-- Main body -->
+<div class="mainright">
+<h3>RuleML-2008 Interactive Use Case Demo:</h3>
+<p style="margin-bottom: 0pt;"><strong><span style="font-style: italic;">Use
+this text form to send a query in </span></strong><a name="textfield"></a><a
+ href="http://ibis.in.tum.de/research/ReactionRuleML/" target="_blank">Reaction
+RuleML in format</a><strong><span style="font-style: italic;"></span><i>
+to the RuleML-2008 Organizational Agent:<br>
+<br>
+</i></strong></p>
+<form name="form2" method="get" action="http://198.164.40.210:8888"> <input
+ name="Horde" value="3a466331bca877eeb014be19eee68790" type="hidden"> <textarea
+ name="box1" cols="65" rows="20"></textarea>
+  <div align="center"><input value="Send Message" type="submit"> </div>
+</form>
+<p style="margin-bottom: 0pt;"><span style="font-weight: bold;">Query
+Selection</span><br>
+<strong><span style="font-style: italic;"></span></strong></p>
+<p style="margin-bottom: 0pt;"><strong style="font-weight: normal;"><span
+ style="font-style: italic;">Use
+this text form to select which query you want to send to the
+RuleML-2008 Organizational Agent</span></strong><strong><i><span
+ style="font-weight: normal;">:</span><br>
+<br>
+</i></strong></p>
+<form name="form1" method="post">
+  <div align="center">
+  <select name="select1" onchange="elementSelected()">
+  <option value="A">A - Query</option>
+  <option value="B">B - Query</option>
+  <option value="C">C - Query</option>
+  </select>
+  </div>
+</form>
+<hr size="20" width="100%">
+<a name="ARCHITECTURE"></a>
+<h3>ARCHITECTURE</h3>
+<br>
+<br>
+<hr size="20" width="100%">
+<a name="DESCRIPTION"></a>
+<h3>DESCRIPTION</h3>
+<br>
+<br>
+<hr size="20" width="100%">
+<a name="INTENTION"></a>
+<h3>INTENTION</h3>
+<br>
+<br>
+<hr size="20" width="100%">
+<a name="SOURCES"></a>
+<h3>SOURCES</h3>
+<br>
+<br>
+<hr size="20" width="100%">
+<a name="ONTOLOGY"></a>
+<h3>ONTOLOGY</h3>
+<br>
+<br>
+</div>
+<!-- end of mainright --> </div>
+<!-- end of main --><!-- Introduce footer -->
+<div id="footer">
+<div class="right"> <a href="http://www.ruleml.org">RuleML.org</a> | <a
+ href="http://www.cs.manchester.ac.uk/ruleML/">RuleML-2008</a> | <a
+ href="http://2007.ruleml.org">RuleML-2007</a>
+</div>
+<div class="left"> <a href="mailto:ben.craig@unb.ca">Contact Us</a>
+</div>
+</div>
+</div>
+<!-- end of container -->
+</body>
+</html>

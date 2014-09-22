@@ -1,0 +1,19 @@
+connected_to_via_Acadian_Lines('Sydney', 'Truro').
+connected_to_via_Acadian_Lines('Truro', 'Amherst').
+connected_to_via_SMT('Amherst', 'Sussex').
+connected_to_via_SMT('Sussex', 'Fredericton').
+
+connected_to(X, Y) :- connected_to_via_Acadian_Lines(X, Y).
+connected_to(X, Y) :- connected_to_via_SMT(X, Y).
+
+connected_to(X, Y) :- connected_to(Y, X).
+connected_to(X, Y) :- connected_to(X, Z), connected_to(Z, Y).
+
+%connected_to(X, nil, X).
+%connected_to(X, r(X, R), Y) :- connected_to(X, Z), connected_to(Z, R, Y).
+%connected_to(X, r(X, R), Y) :- connected_to(X, Z), connected_to(Z, R, Y).
+
+
+
+
+

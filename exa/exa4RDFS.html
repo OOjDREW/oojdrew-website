@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Demo Examples RDFS</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <h3 style="width: 636px;">OO jDREW Examples with RDF
+Schema</h3>
+
+      <pre style="font-family: Arial;"><img style="width: 546px; height: 619px;" alt="a RDFS typing system" src="jpeg/VehicleDAG.jpg" /><br /><br />****** type definition ******<br />&lt;?xml version="1.0"?&gt;<br />&lt;rdf:RDF <br /> xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" <br /> xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"<br /> xml:base="http://example.org/schemas/vehicles"&gt;<br /><br />&lt;rdf:Description rdf:ID="Vehicle"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br />&lt;/rdf:Description&gt;<br /><br />&lt;rdf:Description rdf:ID="PassengerVehicle"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#Vehicle"/&gt;<br />&lt;/rdf:Description&gt;<br /><br />&lt;rdf:Description rdf:ID="Van"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#Vehicle"/&gt;<br />&lt;/rdf:Description&gt;<br /><br />&lt;rdf:Description rdf:ID="Car"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#PassengerVehicle"/&gt;<br />&lt;/rdf:Description&gt;<br /><br />&lt;rdf:Description rdf:ID="MiniVan"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#Van"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#PassengerVehicle"/&gt;<br />&lt;/rdf:Description&gt;<br /><br />&lt;rdf:Description rdf:ID="Sedan"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#Car"/&gt;<br />&lt;/rdf:Description&gt;<br /><br /><br />&lt;rdf:Description rdf:ID="ToyotaCorolla"&gt;<br /> &lt;rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/&gt;<br /> &lt;rdfs:subClassOf rdf:resource="#Sedan"/&gt;<br />&lt;/rdf:Description&gt;<br /><br />&lt;/rdf:RDF&gt;<br /><br />****** knowledge base ******<br /><br />&lt;Assert&gt;<br /> &lt;And&gt;<br /><br /> &lt;Implies closure="universal"&gt;<br /> &lt;And&gt;<br /> &lt;Atom&gt;<br /> &lt;Rel&gt;premium&lt;/Rel&gt;<br /> &lt;Var&gt;customer&lt;/Var&gt;<br /> &lt;/Atom&gt;<br /> &lt;Atom&gt;<br /> &lt;Rel&gt;regular&lt;/Rel&gt;<br /> &lt;Var&gt;product&lt;/Var&gt;<br /> &lt;/Atom&gt;<br /> &lt;/And&gt;<br /> &lt;Atom&gt;<br /> &lt;Rel&gt;discount&lt;/Rel&gt;<br /> &lt;Var&gt;customer&lt;/Var&gt;<br /> &lt;Var&gt;product&lt;/Var&gt;<br /> &lt;Ind&gt;percent5&lt;/Ind&gt;<br /> &lt;/Atom&gt;<br /> &lt;/Implies&gt;<br /><br /> &lt;Atom closure="universal"&gt;<br /> &lt;Rel&gt;base_price&lt;/Rel&gt;<br /> &lt;slot&gt;<br /> &lt;Ind&gt;customer&lt;/Ind&gt;<br /> &lt;Plex&gt;<br /> &lt;slot&gt;&lt;Ind&gt;sex&lt;/Ind&gt;&lt;Ind&gt;male&lt;/Ind&gt;&lt;/slot&gt;<br /> &lt;resl&gt;&lt;Var /&gt;&lt;/resl&gt;<br /> &lt;/Plex&gt;<br /> &lt;/slot&gt;<br /> &lt;slot&gt;&lt;Ind&gt;vehicle&lt;/Ind&gt;&lt;Var type="Car" /&gt;&lt;/slot&gt;<br /> &lt;slot&gt;&lt;Ind&gt;price&lt;/Ind&gt;&lt;Ind type="Integer"&gt;650&lt;/Ind&gt;&lt;/slot&gt;<br /> &lt;/Atom&gt;<br /><br /> &lt;Atom closure="universal"&gt;<br /> &lt;Rel&gt;base_price&lt;/Rel&gt;<br /> &lt;slot&gt;<br /> &lt;Ind&gt;customer&lt;/Ind&gt;<br /> &lt;Plex&gt;<br /> &lt;slot&gt;&lt;Ind&gt;sex&lt;/Ind&gt;&lt;Ind&gt;male&lt;/Ind&gt;&lt;/slot&gt;<br /> &lt;resl&gt;&lt;Var /&gt;&lt;/resl&gt;<br /> &lt;/Plex&gt;<br /> &lt;/slot&gt;<br /> &lt;slot&gt;&lt;Ind&gt;vehicle&lt;/Ind&gt;&lt;Var type="Van" /&gt;&lt;/slot&gt;<br /> &lt;slot&gt;&lt;Ind&gt;price&lt;/Ind&gt;&lt;Ind type="Integer"&gt;725&lt;/Ind&gt;&lt;/slot&gt;<br /> &lt;/Atom&gt;<br /><br /> &lt;/And&gt;<br />&lt;/Assert&gt;<br /><br />****** query ******<br /><br />base_price(customer-&gt;[sex-&gt;male; name-&gt;"John Doe"; age-&gt;28]; vehicle-&gt;vehicle:ToyotaCorolla; price-&gt;?money:Integer).<br /><br /><img style="width: 805px; height: 699px;" alt="query2RDFS" src="jpeg/exa4RDFS.JPG" /><span style="font-family: courier; font-size: 10pt;"></span></pre>
+
+      </td>
+
+      <td class="rightbar">
+      <p style="margin-left: 0px; width: 125px;">Last
+Updated:<br />
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Jing Mei</p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

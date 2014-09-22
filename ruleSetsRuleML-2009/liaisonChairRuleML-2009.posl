@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF profile for RuleML-2009 Liaison Chair: **Disclaimer** these rules are experimental and not offical									    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF contact and personal information									                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%FOAF facts about the Liaison Chair	
+
+person(
+  symposiumChair[ruleML_2009, liaison], 
+  foafname[firstName[Hai],lastName[Zhuge]],
+  foaftitle[title[Dr]],
+  foafmbox[email[zhugeATictDOTacDOTcn]],
+  exphones[telephoneNumbers[office[861062562703],cellPhone[]]]).
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Regarding Partner Organizations for RuleML-2009     			                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+partnerOrganization(ruleML_2009, w3c).
+partnerOrganization(ruleML_2009, object_management_group).
+partnerOrganization(ruleML_2009, artificial_intelligence_and_law).
+partnerOrganization(ruleML_2009, association_for_computing_machinery).
+partnerOrganization(ruleML_2009, sigart).
+partnerOrganization(ruleML_2009, sigmus).
+partnerOrganization(ruleML_2009, belgain_business_rules_forum).
+partnerOrganization(ruleML_2009, mit_sloan_alumni_club_of_boston).
+partnerOrganization(ruleML_2009, epts).
+partnerOrganization(ruleML_2009, eccai).
+partnerOrganization(ruleML_2009, orf).
+partnerOrganization(ruleML_2009, bpm_forum).
+partnerOrganization(ruleML_2009, aaai).
+
+organizationURI(w3c,"http://www.w3.org/").
+organizationURI(object_management_group,"http://www.omg.org/").
+organizationURI(artificial_intelligence_and_law,"http://www.iaail.org/").
+organizationURI(association_for_computing_machinery,"http://www.acm.org/").
+organizationURI(sigart,"http://www.sigart.org/").
+organizationURI(sigmus,"http://www.sigmis.org/").
+organizationURI(belgain_business_rules_forum,"http://econweb3.econ.kuleuven.ac.be/brforum/").
+organizationURI(mit_sloan_alumni_club_of_boston,"http://www.mitcio.com/").
+organizationURI(epts,"http://www.ep-ts.com/").
+organizationURI(eccai,"http://www.eccai.org/").
+organizationURI(orf,"http://www.octoberrulesfest.org/").
+organizationURI(bpm_forum,"http://www.bpmforumbelgium.org/").
+organizationURI(aaai,"http://www.aaai.org/home.html").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Regarding Partner Organizations      							                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewOrganizationPartners(?Meeting, ?Partner) :- partnerOrganization(?Meeting, ?Partner),
+                                                      organizationURI(?Partner,?URI).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Regarding Sponsors             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+sponsor(ruleML_2009, ontotext, gold).
+sponsor(ruleML_2009, nicta, silver).
+sponsor(ruleML_2009, csw, silver).
+sponsor(ruleML_2009, franz_inc, silver).
+sponsor(ruleML_2009, bbn, silver).
+sponsor(ruleML_2009, plug_tree, bronze).
+sponsor(ruleML_2009, lpa, bronze).
+sponsor(ruleML_2009, model_systems, bronze).
+sponsor(ruleML_2009, rule_core, bronze).
+sponsor(ruleML_2009, jboss, bronze).
+
+sponsorURI(ontotext, "http://www.ontotext.com/").
+sponsorURI(nicta, "http://www.nicta.com.au/").
+sponsorURI(csw, "http://www.corporate-semantic-web.de/").
+sponsorURI(franz_inc,"http://www.franz.com/").
+sponsorURI(bbn, "http://www.bbn.com/").
+sponsorURI(lpa, "http://www.lpa.co.uk/").
+sponsorURI(plug_tree, "http://www.plugtree.com/").
+sponsorURI(model_systems, "http://www.modelsy.com/").
+sponsorURI(rule_core, "http://www.rulecore.com/").
+sponsorURI(jboss, "http://www.jboss.com/").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Regarding Sponsors             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewSponsors(?Meeting, ?Sponsor, ?SponsorLevel) :- sponsor(?Meeting, ?Sponsor, ?SponsorLevel),
+                                                         sponsorURI(?Sponsor,?URI).
+
+viewSponsors(?Meeting, ?Sponsor) :- sponsor(?Meeting, ?Sponsor, ?),
+                                          sponsorURI(?Sponsor,?URI).
+										  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Media Partners             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+mediaPartner(ruleML_2009,springer_LNCS).
+mediaPartner(ruleML_2009,rising_media).
+
+mediaPartnerURI(springer_LNCS,"http://www.springer.com/computer/lncs?SGWID=0-164-6-73659-0").
+mediaPartnerURI(rising_media,"http://www.risingmedia.com/").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Media Partners             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewMediaPartners(?Meeting, ?Partner) :- mediaPartner(?Meeting, ?Partner),
+                                               mediaPartnerURI(?Partner,?URI).  
+										  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%TODO: Expand Rules for Liason Chair   							                                                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

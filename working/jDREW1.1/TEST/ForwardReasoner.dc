@@ -1,0 +1,61 @@
+
+
+youngAge(X) :- $lessThan(X, 20), age(X).
+
+% Search Section 
+
+eats(fred,pears).
+eats(fred,t_bone_steak).
+eats(fred,apples).     
+
+like(X, Y) :- eats(X, Y).
+
+hold_party(X):- 
+	  birthday(X),
+	  happy(X).
+
+birthday(tom). 
+birthday(fred). 
+birthday(helen). 
+
+happy(mary).
+happy(jane).
+happy(helen).
+
+fun(X) :-              % something is either fun because its .... 
+	  red(X),            % red 
+	  car(X).            % and a car 
+
+fun(X) :-              % or its fun if its.... 
+	  blue(X),           % blue 
+	  bike(X).           % and a bike 
+
+% database of red items 
+red(apple_1).
+red(block_1).
+red(car_27).
+
+% database of cars 
+car(desoto_48).
+car(edsel_57).
+
+% database of blue items 
+blue(flower_3).
+blue(glass_9).
+blue(honda_81).
+
+% database of bikes 
+bike(iris_8).
+bike(my_bike).
+bike(honda_81).
+
+% Recursion Section 
+on_route(rome).
+on_route(Place):- 
+	  move(Place,Method,NewPlace),
+	  on_route(NewPlace).
+
+move(home,taxi,halifax).
+move(halifax,train,gatwick).
+move(gatwick,plane,rome).
+

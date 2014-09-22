@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Assert
+xmlns="http://www.ruleml.org/0.88/xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ruleml.org/0.88/xsd http://www.ruleml.org/0.88/xsd/hornlog.xsd">
+
+<And>
+<Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>base_price</Rel>
+         <slot>
+            <Ind>customer</Ind>
+            <Var>cust0</Var>
+         </slot>
+         <slot>
+            <Ind>vehicle</Ind>
+            <Var>veh1</Var>
+         </slot>
+         <slot>
+            <Ind>price</Ind>
+            <Var>base4</Var>
+         </slot>
+      </Atom>
+      <Atom>
+         <Rel>adjustments</Rel>
+         <slot>
+            <Ind>customer</Ind>
+            <Var>cust0</Var>
+         </slot>
+         <slot>
+            <Ind>vehicle</Ind>
+            <Var>veh1</Var>
+         </slot>
+         <slot>
+            <Ind>ids</Ind>
+            <Var>adjustments3</Var>
+         </slot>
+         <slot>
+            <Ind>amount</Ind>
+            <Var>adjust5</Var>
+         </slot>
+      </Atom>
+      <Atom>
+         <Rel>add</Rel>
+         <Var>subtotal6</Var>
+         <Var>base4</Var>
+         <Var>adjust5</Var>
+      </Atom>
+      <Atom>
+         <Rel>multiply</Rel>
+         <Var>rate2</Var>
+         <Var>subtotal6</Var>
+         <Ind type="Real">1.15</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>calculate_rate</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Var>cust0</Var>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var>veh1</Var>
+      </slot>
+      <slot>
+         <Ind>rate</Ind>
+         <Var>rate2</Var>
+      </slot>
+      <slot>
+         <Ind>adjustment_ids</Ind>
+         <Var>adjustments3</Var>
+      </slot>
+   </Atom>
+</Implies> <Atom closure="universal">
+   <Rel>base_price</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Plex>
+         <slot>
+            <Ind>sex</Ind>
+            <Ind>male</Ind>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Plex>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="Car"/>
+   </slot>
+   <slot>
+      <Ind>price</Ind>
+      <Ind type="Real">800</Ind>
+   </slot>
+</Atom> <Atom closure="universal">
+   <Rel>base_price</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Plex>
+         <slot>
+            <Ind>sex</Ind>
+            <Ind>female</Ind>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Plex>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="Car"/>
+   </slot>
+   <slot>
+      <Ind>price</Ind>
+      <Ind type="Real">500</Ind>
+   </slot>
+</Atom> <Atom closure="universal">
+   <Rel>base_price</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Plex>
+         <slot>
+            <Ind>sex</Ind>
+            <Ind>male</Ind>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Plex>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="Van"/>
+   </slot>
+   <slot>
+      <Ind>price</Ind>
+      <Ind type="Real">700</Ind>
+   </slot>
+</Atom> <Atom closure="universal">
+   <Rel>base_price</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Plex>
+         <slot>
+            <Ind>sex</Ind>
+            <Ind>female</Ind>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Plex>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="Van"/>
+   </slot>
+   <slot>
+      <Ind>price</Ind>
+      <Ind type="Real">500</Ind>
+   </slot>
+</Atom> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">16</Ind>
+      </Atom>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">21</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>male</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">600</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageM16_21</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">16</Ind>
+      </Atom>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">21</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>female</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">300</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageF16_21</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">22</Ind>
+      </Atom>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">25</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>male</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">400</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageM22_25</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">22</Ind>
+      </Atom>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">25</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>female</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">100</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageF22_25</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">26</Ind>
+      </Atom>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">50</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>male</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">0</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageM26_50</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">26</Ind>
+      </Atom>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>age0</Var>
+         <Ind type="Integer">60</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>female</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">0</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageF26_60</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <Atom>
+      <Rel>greaterThanOrEqual</Rel>
+      <Var>age0</Var>
+      <Ind type="Integer">51</Ind>
+   </Atom>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>male</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">200</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageM51plus</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <Atom>
+      <Rel>greaterThanOrEqual</Rel>
+      <Var>age0</Var>
+      <Ind type="Integer">61</Ind>
+   </Atom>
+   <Atom>
+      <Rel>age_adjustment</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Plex>
+            <slot>
+               <Ind>sex</Ind>
+               <Ind>female</Ind>
+            </slot>
+            <slot>
+               <Ind>age</Ind>
+               <Var>age0</Var>
+            </slot>
+            <resl>
+               <Var/>
+            </resl>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var type="Vehicle"/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">75</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageF61plus</Ind>
+      </slot>
+   </Atom>
+</Implies> <Atom closure="universal">
+   <Rel>type_adjustment</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Var/>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="Sedan"/>
+   </slot>
+   <slot>
+      <Ind>amount</Ind>
+      <Ind type="Real">50</Ind>
+   </slot>
+   <slot>
+      <Ind>id</Ind>
+      <Ind>typeSedan</Ind>
+   </slot>
+</Atom> <Atom closure="universal">
+   <Rel>type_adjustment</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Var/>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="SportsCoupe"/>
+   </slot>
+   <slot>
+      <Ind>amount</Ind>
+      <Ind type="Real">300</Ind>
+   </slot>
+   <slot>
+      <Ind>id</Ind>
+      <Ind>typeSports</Ind>
+   </slot>
+</Atom> <Atom closure="universal">
+   <Rel>type_adjustment</Rel>
+   <slot>
+      <Ind>customer</Ind>
+      <Var/>
+   </slot>
+   <slot>
+      <Ind>vehicle</Ind>
+      <Var type="MiniVan"/>
+   </slot>
+   <slot>
+      <Ind>amount</Ind>
+      <Ind type="Real">-100</Ind>
+   </slot>
+   <slot>
+      <Ind>id</Ind>
+      <Ind>typeMiniVan</Ind>
+   </slot>
+</Atom> <Implies closure="universal">
+   <Atom>
+      <Rel>lessThanOrEqual</Rel>
+      <Var>year1</Var>
+      <Ind type="Integer">1975</Ind>
+   </Atom>
+   <Atom>
+      <Rel>year_adjustment</Rel>
+      <Cterm type="Vehicle">
+         <Ctor>vehicle</Ctor>
+         <slot>
+            <Ind>year</Ind>
+            <Var>year1</Var>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Cterm>
+      <slot>
+         <Ind>customer</Ind>
+         <Var/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">-250</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageAntiuqe</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>year1</Var>
+         <Ind type="Integer">1980</Ind>
+      </Atom>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>year1</Var>
+         <Ind type="Integer">1976</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>year_adjustment</Rel>
+      <Cterm type="Vehicle">
+         <Ctor>vehicle</Ctor>
+         <slot>
+            <Ind>year</Ind>
+            <Var>year1</Var>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Cterm>
+      <slot>
+         <Ind>customer</Ind>
+         <Var/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">-150</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageClassic</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>lessThanOrEqual</Rel>
+         <Var>year1</Var>
+         <Ind type="Integer">1999</Ind>
+      </Atom>
+      <Atom>
+         <Rel>greaterThanOrEqual</Rel>
+         <Var>year1</Var>
+         <Ind type="Integer">1981</Ind>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>year_adjustment</Rel>
+      <Cterm type="Vehicle">
+         <Ctor>vehicle</Ctor>
+         <slot>
+            <Ind>year</Ind>
+            <Var>year1</Var>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Cterm>
+      <slot>
+         <Ind>customer</Ind>
+         <Var/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">200</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageOld</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <Atom>
+      <Rel>greaterThanOrEqual</Rel>
+      <Var>year1</Var>
+      <Ind type="Integer">2000</Ind>
+   </Atom>
+   <Atom>
+      <Rel>year_adjustment</Rel>
+      <Cterm type="Vehicle">
+         <Ctor>vehicle</Ctor>
+         <slot>
+            <Ind>year</Ind>
+            <Var>year1</Var>
+         </slot>
+         <resl>
+            <Var/>
+         </resl>
+      </Cterm>
+      <slot>
+         <Ind>customer</Ind>
+         <Var/>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Ind type="Real">0</Ind>
+      </slot>
+      <slot>
+         <Ind>id</Ind>
+         <Ind>ageNew</Ind>
+      </slot>
+   </Atom>
+</Implies> <Implies closure="universal">
+   <And>
+      <Atom>
+         <Rel>age_adjustment</Rel>
+         <slot>
+            <Ind>customer</Ind>
+            <Var>cust0</Var>
+         </slot>
+         <slot>
+            <Ind>vehicle</Ind>
+            <Var>veh1</Var>
+         </slot>
+         <slot>
+            <Ind>amount</Ind>
+            <Var>ageamt6</Var>
+         </slot>
+         <slot>
+            <Ind>id</Ind>
+            <Var>ageid2</Var>
+         </slot>
+      </Atom>
+      <Atom>
+         <Rel>type_adjustment</Rel>
+         <slot>
+            <Ind>customer</Ind>
+            <Var>cust0</Var>
+         </slot>
+         <slot>
+            <Ind>vehicle</Ind>
+            <Var>veh1</Var>
+         </slot>
+         <slot>
+            <Ind>amount</Ind>
+            <Var>typeamt7</Var>
+         </slot>
+         <slot>
+            <Ind>id</Ind>
+            <Var>typeid3</Var>
+         </slot>
+      </Atom>
+      <Atom>
+         <Rel>year_adjustment</Rel>
+         <slot>
+            <Ind>customer</Ind>
+            <Var>cust0</Var>
+         </slot>
+         <slot>
+            <Ind>vehicle</Ind>
+            <Var>veh1</Var>
+         </slot>
+         <slot>
+            <Ind>amount</Ind>
+            <Var>yearamt8</Var>
+         </slot>
+         <slot>
+            <Ind>id</Ind>
+            <Var>yearid4</Var>
+         </slot>
+      </Atom>
+      <Atom>
+         <Rel>add</Rel>
+         <Var>total5</Var>
+         <Var>ageamt6</Var>
+         <Var>typeamt7</Var>
+         <Var>yearamt8</Var>
+      </Atom>
+   </And>
+   <Atom>
+      <Rel>adjustments</Rel>
+      <slot>
+         <Ind>customer</Ind>
+         <Var>cust0</Var>
+      </slot>
+      <slot>
+         <Ind>vehicle</Ind>
+         <Var>veh1</Var>
+      </slot>
+      <slot>
+         <Ind>ids</Ind>
+         <Plex>
+            <Var>ageid2</Var>
+            <Var>typeid3</Var>
+            <Var>yearid4</Var>
+         </Plex>
+      </slot>
+      <slot>
+         <Ind>amount</Ind>
+         <Var>total5</Var>
+      </slot>
+   </Atom>
+</Implies> 
+</And>
+</Assert>

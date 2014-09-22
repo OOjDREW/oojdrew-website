@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Hybrid Rules from AL-log</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr>
+
+      <td colspan="3" class="title">OO jDREW</td>
+
+    </tr>
+
+    <tr>
+
+      <td class="leftbar">
+      <table style="width: 125px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tbody>
+
+          <tr>
+
+            <td style="width: 119px;" class="topspacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../../index.html">home</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../../docs.html">documentation</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../../pres.html">presentations</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../../download.html">downloads</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="menuitem">
+&gt; <a href="../../demo.html">online demo</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td style="width: 119px;" class="bottomspacer"></td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      </td>
+
+      <td class="mainarea">
+      <pre style="font-family: Arial;"><a href="jpeg/exa4posl-bu2.JPG"><span style="font-family: courier; font-size: 10pt;"></span></a><span style="font-family: courier; font-size: 10pt;"></span><span style="font-family: courier; font-size: 10pt;">An Example From AL-log for query to mayDoThesis(paul, mary)<br /><br /><img style="width: 684px; height: 231px;" alt="" src="../jpeg/al-log.JPG" /><br /><br />the Rule component (in POSL)<br /><br />curr(?X, ?Z) :- Q_Co(?Y), exam(?X,?Y), subject(?Y,?Z), Q_St(?X), Q_Tp(?Z).<br />mayDoThesis(?X,?Y) :- Q_Tp(?Z), curr(?X,?Z), expert(?Y,?Z), Q_St(?X), Q_Sorry(?Y).<br />mayDoThesis(?X,?Y) :- Q_St(?X), Q_NFP(?Y).<br />exam(paul, ai).<br />subject(ai, lp).<br />expert(mary, lp).<br />subject(ai, kr).<br />expert(john, kr).<br /><br />the DL component (in RACER)<br /><br />(in-knowledge-base allog-t allog-a)<br /><br />(in-tbox allog-t)<br /><br />(signature :atomic-concepts (FP FM NFP AC BC Co St Tp Sorry)<br /> :roles ((TC))<br /> :individuals (john mary paul ai kr lp))<br /><br />(implies FP FM)<br />(equivalent NFP (and FP (not (some TC Co))))<br />(equivalent (or AC BC) Co)<br />(implies (and AC BC) *bottom*)<br />(equivalent Sorry (and FM (some TC AC)))<br /><br />(in-abox allog-a)<br /><br />(instance john FP)<br />(instance paul St)<br />(instance ai AC)<br />(instance kr Tp)<br />(instance lp Tp)<br />(instance mary (and FP (all TC AC)))<br /><br />(related john ai TC)<br /></span></pre>
+
+      </td>
+
+      <td class="rightbar">
+      <p style="margin-left: 0px; width: 125px;">Last
+Updated:<br />
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Jing Mei </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

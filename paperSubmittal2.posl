@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules about RuleML-2007 paper submission: **Disclaimer** these rules are experimental and not offical											%%
+%%When someone submits a paper, a check is needed on submitting(abstract,paper,final paper) and also if the submitter is an allowable authors.  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%This rule is called when an abstract is submitted to the conference.
+%The rule must check to see the results of submitting an abstract based on the author requirements and deadline.
+
+submit(?R:requester,abstract,result[?Result1,?Reason1,?Result2,?Reason2]) :-
+  abstractSubmittal(?R:requester,?Result1,?Reason1),
+  authorPossiblity(?R:requester,?Result2,?Reason2).
+
+%This rule is called when a paper is submitted to the conference.
+%The rule must check to see the results of submitting a paper based on the author requirements and deadline.
+
+submit(?R:requester,paper,result[?Result1,?Reason1,?Result2,?Reason2]) :-
+  paperSubmittal(?R:requester,?Result1,?Reason1),
+  authorPossiblity(?R:requester,?Result2,?Reason2).
+ 
+%This rule is called when a final submission is submitted to the conference.
+%The rule must check to see the results of submitting a final submission based on the author requirements and deadline.
+
+submit(?R:requester,final,result[?Result1,?Reason1,?Result2,?Reason2]) :-
+  finalSubmittal(?R:requester,?Result1,?Reason1),
+  authorPossiblity(?R:requester,?Result2,?Reason2).
+
+%This rule is called to check the author requirements of a paper.
+
+authorPossiblity(?R:requester,?Authors,?Answer) :-
+  authorRequirements(?R:requester,?Authors,?Answer).
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%These facts define who can be authors for papers in the RuleML 2007 conference.%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%The Organizing Committee can be a second or later authors
+
+authorRequirements(?R:organizing_Committee,submission[authors], decision[yes,author[second,later]]).
+
+%The Program chair can be a first or later author
+
+authorRequirements(?R:program_Chair, submission[authors], decision[yes,author[first,later]]).
+
+%A Requester can be a first or later author.
+
+authorRequirements(?R:requester, submission[authors], decision[yes,author[first,later]]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%These rules define if a paper, abstract or final submission can be submitted.  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+%This rule is called when someone submits a abstract to the conference but the deadline has passed.
+%The abstract is rejected because the requester is not an exceptional case to the deadline.
+
+abstractSubmittal(?R:requester, submission[possible], decision[no,passed[deadline]]) :-
+  date(?X:Integer), deadline(abstract, ?D:Integer), greaterThan(?X:Integer,?D:Integer),naf(exceptionalCase(?R:requester)).
+
+%This rule is called when someone submits a paper to the conference but the deadline has passed.
+%The paper is rejected because the requester is not an exceptional case to the deadline.
+
+paperSubmittal(?R:requester, submission[possible], decision[no,passed[deadline]]) :-
+  date(?X:Integer), deadline(paper, ?D:Integer), greaterThan(?X:Integer,?D:Integer),naf(exceptionalCase(?R:requester)).
+
+%This rule is called when someone submits a final submission to the conference but the deadline has passed .
+%The final submission is rejected because the requester is not an exceptional case to the deadline.
+
+finalSubmittal(?R:requester, submission[possible], decision[no,passed[deadline]]) :-
+  date(?X:Integer), deadline(final, ?D:Integer), greaterThan(?X:Integer,?D:Integer),naf(exceptionalCase(?R:requester)).
+
+%This rule is called when someone submits a abstract to the conference but the deadline has passed.
+%The abstract is accepted because the requester is an exceptional case to the deadline.
+
+abstractSubmittal(?R:requester, submission[possible], decision[restricted[yes,passed[deadline]],exceptionalCase,submit[asap]]) :-
+  date(?X:Integer), deadline(abstract, ?D:Integer), greaterThan(?X:Integer,?D:Integer),exceptionalCase(?R:requester).
+
+%This rule is called when someone submits a paper to the conference but the deadline has passed.
+%The paper is accepted because the requester is an exceptional case to the deadline.
+  
+paperSubmittal(?R:requester,submission[possible],decision[restricted[yes,passed[deadline]],exceptionalCase,submit[asap]]) :-
+  date(?X:Integer), deadline(paper, ?D:Integer), greaterThan(?X:Integer,?D:Integer),exceptionalCase(?R:requester).
+
+%This rule is called when someone submits a final submission to the conference but the deadline has passed .
+%The final submission is accepted because the requester is an exceptional case to the deadline.
+  
+finalSubmittal(?R:requester,submission[possible], decision[restricted[yes,passed[deadline]],exceptionalCase,submit[asap]]) :-
+  date(?X:Integer), deadline(final, ?D:Integer), greaterThan(?X:Integer,?D:Integer),exceptionalCase(?R:requester).
+
+%This rule is called when someone submits a abstract to the conference and the deadline is on going
+%so the abstract is accepted.
+
+abstractSubmittal(?From:requester,submission[possible],decision[yes,onGoing[deadline]]) :-
+  date(?X:Integer), deadline(abstract, ?D:Integer), lessThanOrEqual(?X:Integer,?D:Integer).
+
+%This rule is called when someone submits a paper to the conference and the deadline is on going
+%so the paper is accepted.
+
+paperSubmittal(?From:requester,submission[possible],decision[yes,onGoing[deadline]]) :-
+  date(?X:Integer), deadline(paper, ?D:Integer), lessThanOrEqual(?X:Integer,?D:Integer).
+
+%This rule is called when someone submits a final submission to the conference and the deadline is on going
+%so the final submission is accepted.
+
+finalSubmittal(?From:requester,submission[possible],decision[yes,onGoing[deadline]]) :-
+  date(?X:Integer), deadline(final, ?D:Integer), lessThanOrEqual(?X:Integer,?D:Integer).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%These facts define the deadlines for abstracts,papers and final submissions    %%
+%%in the RuleML 2007 conference.                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%The deadline for the abstract is July 7,2007
+
+deadline(abstract, 20070710:Integer).
+
+%The deadline for the paper is July 20,2007
+
+deadline(paper, 20070720:Integer).
+
+%The deadline for the paper is Auguest 23,2007
+
+deadline(final, 20070823:Integer).
+
+%date is dynamically defined in the java servlet code
+date(20070618:Integer).
+
+%Define a rule to figure out if someone is an exception case  should be more detailed, possible could relate to spondering level
+%Exception case may be renamed to something else.
+
+exceptionalCase(?R:requester) :- sick(?R:requester).
+
+sick(ben:requester).

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Hybrid Rules from RuleML FOAF</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+  <tbody>
+
+    <tr>
+
+      <td colspan="3" class="title">OO jDREW</td>
+
+    </tr>
+
+    <tr>
+
+      <td class="leftbar">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tbody>
+
+          <tr>
+
+            <td class="topspacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="menuitem"> &gt; <a href="../../index.html">home</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="menuitem"> &gt; <a href="../../docs.html">documentation</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="menuitem"> &gt; <a href="../../pres.html">presentations</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="menuitem"> &gt; <a href="../../download.html">downloads</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="spacer"></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="menuitem"> &gt; <a href="../../demo.html">online demo</a></td>
+
+          </tr>
+
+          <tr>
+
+            <td class="bottomspacer"></td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      </td>
+
+      <td class="mainarea">
+      <pre style="font-family: Arial; width: 636px;"><a href="jpeg/exa4posl-bu2.JPG"><span style="font-family: courier; font-size: 10pt;"></span></a><span style="font-family: courier; font-size: 10pt;"></span><span style="font-family: courier; font-size: 10pt;">An Example From RuleML FOAF for query to possiblyKnows(Laura, Ben).<br /><br /><img style="width: 584px; height: 206px;" alt="" src="../jpeg/RuleMLFOAF.JPG" /><br /><br /><br />the Rule component (in POSL)<br /><br />close2FOAF(?X) :- Q_knows(?X, ?Y), Q_FOAFPerson(?Y).<br />possiblyKnows(?X, ?Y) :- close2FOAF(?X), Q_FOAFStar(?Y).<br /></span><span style="font-family: courier; font-size: 10pt;"><br /><br />the DL component (in RACER)<br /><br />(in-knowledge-base datalogDL-t datalogDL-a)<br /><br />(in-tbox datalogDL-t)<br />(signature :atomic-concepts (FOAFPerson FOAFFan FOAFStar)<br /> :roles((knowsWell :parent knows)<br />	(isKnownBy :inverse knows)<br />	)<br /> :individuals (Jing Jie Ben Laura))<br /><br /><br />(implies </span><span style="font-family: courier; font-size: 10pt;">FOAFPerson</span><span style="font-family: courier; font-size: 10pt;"> (some knows </span><span style="font-family: courier; font-size: 10pt;">FOAFPerson</span><span style="font-family: courier; font-size: 10pt;">))<br />(equivalent FOAFFan (and </span><span style="font-family: courier; font-size: 10pt;">FOAFPerson</span><span style="font-family: courier; font-size: 10pt;"> (all knowsWell </span><span style="font-family: courier; font-size: 10pt;">FOAFPerson</span><span style="font-family: courier; font-size: 10pt;">)))<br />(equivalent FOAFStar (and </span><span style="font-family: courier; font-size: 10pt;">FOAFPerson</span><span style="font-family: courier; font-size: 10pt;"> (at-least 2 isKnownBy </span><span style="font-family: courier; font-size: 10pt;">FOAFPerson</span><span style="font-family: courier; font-size: 10pt;">)))<br /><br />(in-abox datalogDL-a)<br /><br />(related Jing Ben knowsWell)<br />(related Jing Jie knowsWell)<br />(related Jie Ben knows)<br />(related Jie Laura isKnownBy)<br /><br />(instance Jing FOAFFan)</span><span style="font-family: courier; font-size: 10pt;"></span></pre>
+
+      </td>
+
+      <td class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Jing Mei </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

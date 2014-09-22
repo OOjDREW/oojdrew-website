@@ -1,0 +1,4 @@
+rides(ben,bus,night).
+rides(greg,plane,morning).
+rides(bob,car,lunch).
+rides(tim, train,afternoon).

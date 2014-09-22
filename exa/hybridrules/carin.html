@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Hybrid Rules from CARIN</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <pre style="font-family: Arial; width: 707px;"><a href="jpeg/exa4posl-bu2.JPG"><span style="font-family: courier; font-size: 10pt;"></span></a><span style="font-family: courier; font-size: 10pt;"></span><span style="font-family: courier; font-size: 10pt;">An Example From (non-recursive) CARIN for query to price(a, usa, high)<br /><br /><img style="width: 686px; height: 235px;" alt="" src="../jpeg/carin-nonrecursive.JPG" /><br /><br />the Rule component (in POSL)<br /><br />price(?X, usa, high) :- made_by(?X, ?Y),<br />	Q_no_fellow_company(?Y).<br />price(?X, usa, high) :- made_by(?X, ?Y),<br />	</span><span style="font-family: courier; font-size: 10pt;">monopoly(?Y, ?X, usa),<br />	</span><span style="font-family: courier; font-size: 10pt;">Q_associate(?Y, ?Z),<br />	Q_american(?Z).<br /><br />made_by(a, b).<br />monopoly(b, a, usa).<br /><br />the DL component (in RACER)<br /><br />(in-knowledge-base carin-t carin-a)<br /><br />(in-tbox carin-t)<br /><br />(signature :atomic-concepts (european <br />	american<br />	european_associate<br />	american_associate<br />	no_fellow_company<br />	international_company)<br /> :roles ((associate))<br /> :individuals (a b))<br /><br />(implies (and european american) *bottom*)<br />(equivalent european_associate (some associate european))<br />(equivalent american_associate (some associate american))<br />(equivalent no_fellow_company (all associate (not american)))<br />(equivalent international_company (or european_associate american_associate))<br /><br />(in-abox carin-a)<br /><br />(instance b international_company)<br />(instance a *top*)<br /><br /></span><span style="font-family: courier; font-size: 10pt;">An Example From (recursive) CARIN for query to TaxLaw(c3, USA, Domestic)<br /><br /><img style="width: 706px; height: 263px;" alt="" src="../jpeg/carin-recursive.JPG" /><br /><br />*** rewriting the recursive Datalog rules with DL axioms ***<br /><br />the Rule component (in POSL)<br /></span><span style="font-family: courier; font-size: 10pt;"><br />TaxLaw(?Y, USA, Domestic) :- Q_foreign_associate(?X),<br />	Q_conglomerate(?X),<br />	Q_sameGroup(?X, ?Y).<br />TaxLaw(?Y, USA, Domestic) :- Q_american_associate(?X),<br />	Q_associate(?X, ?Y).</span><br /><span style="font-family: courier; font-size: 10pt;"><br />the DL component (in RACER)<br /><br />(signature :atomic-concepts (american<br />	american_associate<br />	foreign_associate<br />	allied_company<br />	conglomerate)<br /> :roles ((associate :parent sameGroup)<br />	(sameGroup :transitive t))<br /> :individuals (c1 c2 c3))<br /><br />(equivalent american_associate (some associate american))<br />(equivalent foreign_associate (some associate (not american)))<br />(equivalent allied_company (or american american_associate))<br />(equivalent conglomerate (at-least 2 associate))<br /><br />(in-abox carinAdd-a)<br /><br />(instance c1 (and foreign_associate (some associate (not american))))<br />(instance c2 (and allied_company (or american (some associate american))))<br />(instance c3 (not american))<br /><br /><br />(related c1 c2 associate)<br />(related c2 c3 associate)<br /></span></pre>
+
+      </td>
+
+      <td class="rightbar">
+      <p style="margin-left: 0px; width: 125px;">Last
+Updated:<br />
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Jing Mei </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF profile for RuleML-2008 Liaison Chair: **Disclaimer** these rules are experimental and not offical									    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%FOAF contact and personal information									                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%FOAF facts about the Liaison Chair	
+
+person(
+  symposiumChair[ruleML_2008, liaison], 
+  foafname[firstName[mark],lastName[proctor]],
+  foaftitle[title[dr]],
+  foafmbox[email[markATemailDOTcom]],
+  exphones[telephoneNumbers[office[4133],cellPhone[5546]]]).
+
+person(
+  symposiumChair[ruleML_2008, liaison],  
+  foafname[firstName[rainer],lastName[ammon]],
+  foaftitle[title[dr]],
+  foafmbox[email[rainerATemailDOTcom]],
+  exphones[telephoneNumbers[office[7765],cellPhone[7865]]]).
+
+person(
+  symposiumChair[ruleML_2008, liaison],
+  foafname[firstName[jan],lastName[vanthienen]],
+  foaftitle[title[dr]],
+  foafmbox[email[janATemailDOTcom]],
+  exphones[telephoneNumbers[office[3124],cellPhone[1232]]]).
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Regarding Partner Organizations for RuleML-2008     			                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+partnerOrganization(ruleML_2008, aaai).
+partnerOrganization(ruleML_2008, w3c).
+partnerOrganization(ruleML_2008, bpm_Forum).
+partnerOrganization(ruleML_2008, business_Rules_Forum).
+partnerOrganization(ruleML_2008, eccai).
+partnerOrganization(ruleML_2008, oasis).
+partnerOrganization(ruleML_2008, omg).
+partnerOrganization(ruleML_2008, dallas_Rules_Group).
+partnerOrganization(ruleML_2008, belgium_Business_Rules_Forum).
+partnerOrganization(ruleML_2008, mit_Sloan_CIO_Symposium).
+partnerOrganization(ruleML_2008, acm).
+partnerOrganization(ruleML_2008, acm_sigart).
+partnerOrganization(ruleML_2008, acm_sigmis).
+partnerOrganization(ruleML_2008, acm_sigweb).
+partnerOrganization(ruleML_2008, open_Research_Society).
+partnerOrganization(ruleML_2008, ieee_smcs_tc_on_Intelligent_Internet_Systems).
+partnerOrganization(ruleML_2008, ieee_smcs_tc_on_Distributed_Intelligent_Systems).
+partnerOrganization(ruleML_2008, ieee_Systems_Man_and_Cybernetics_Society).
+partnerOrganization(ruleML_2008, ieee_Computer_Society_TC_on_Autonomous_and_Autonomic_Systems).
+
+organizationURI(aaai, "http://www.aaai.org/home.html/").
+organizationURI(w3c,"http://www.w3.org/").
+organizationURI(bpm_Forum,"http://www.econ.kuleuven.be/bpm-forum/index.asp/").
+organizationURI(business_Rules_Forum,"http://www.brforum.be/").
+organizationURI(eccai,"http://www.eccai.org/").
+organizationURI(oasis,"http://www.oasis-open.org/").
+organizationURI(omg,"http://www.omg.org/").
+organizationURI(dallas_Rules_Group,"http://dallasrulesgroup.org/").
+organizationURI(belgium_Business_Rules_Forum,"http://econweb3.econ.kuleuven.ac.be/brforum/").
+organizationURI(mit_Sloan_CIO_Symposium,"http://www.mitcio.com/").
+organizationURI(acm,"http://www.acm.org/").
+organizationURI(acm_sigart,"http://sigart.acm.org/").
+organizationURI(acm_sigmis,"http://www.sigmis.org/").
+organizationURI(acm_sigweb,"http://www.sigweb.org/").
+organizationURI(open_Research_Society,"http://www.open-research-society.net/").
+organizationURI(ieee_smcs_tc_on_Intelligent_Internet_Systems,"http://www.ieeesmc.org/technicalcommittess/tc_iis.html").
+organizationURI(ieee_smcs_tc_on_Distributed_Intelligent_Systems,"http://www.ieeesmc.org/technicalcommittess/tc_iis.html").
+organizationURI(ieee_Systems_Man_and_Cybernetics_Society,"http://www.computer.org/portal/site/ieeecs/index.jsp?pageID=ieeecs_level1&path=ieeecs/Communities/tab/tclist&file=TCAAS.xml&xsl=generic.xsl").
+organizationURI(ieee_Computer_Society_TC_on_Autonomous_and_Autonomic_Systems,"http://www.computer.org/portal/site/ieeecs/index.jsp?pageID=ieeecs_level1&path=ieeecs/Communities/tab/tclist&file=TCAAS.xml&xsl=generic.xsl").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Regarding Partner Organizations      							                                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewOrganizationPartners(?Meeting, ?Partner) :- partnerOrganization(?Meeting, ?Partner),
+                                                      organizationURI(?Partner,?URI).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Regarding Sponsors             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+sponsor(ruleML_2008, vulcan_Inc, gold).
+sponsor(ruleML_2008, model_Systems, silver).
+sponsor(ruleML_2008, sti_Innsbruck, bronze).
+sponsor(ruleML_2008, ruleCore, bronze).
+sponsor(ruleML_2008, jboss, bronze).
+
+sponsorURI(vulcan_Inc, "http://www.vulcan.com/").
+sponsorURI(model_Systems, "http://www.modelsys.com/").
+sponsorURI(sti_Innsbruck,"http://www.sti-innsbruck.at/").
+sponsorURI(ruleCore, "http://www.rulecore.com/").
+sponsorURI(jboss, "http://jboss.com/").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Regarding Sponsors             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewSponsors(?Meeting, ?Sponsor, ?SponsorLevel) :- sponsor(?Meeting, ?Sponsor, ?SponsorLevel),
+                                                         sponsorURI(?Sponsor,?URI).
+
+viewSponsors(?Meeting, ?Sponsor) :- sponsor(?Meeting, ?Sponsor, ?),
+                                          sponsorURI(?Sponsor,?URI).
+										  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Facts Media Partners             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+mediaPartner(ruleML_2008,springer_LNCS).
+mediaPartner(ruleML_2008,target_Wire).
+
+mediaPartnerURI(target_Wire,"http://www.targetwire.com/").
+mediaPartnerURI(springer_LNCS,"http://www.springer.com/computer/lncs?SGWID=0-164-6-73659-0").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Rules Media Partners             							                                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+viewMeidaPartners(?Meeting, ?Partner) :- mediaPartner(?Meeting, ?Partner),
+                                               mediaPartnerURI(?Partner,?URI).  
+										  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%TODO: Expand Rules for Liason Chair   							                                                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

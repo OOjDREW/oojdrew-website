@@ -1,0 +1,75 @@
+%knowledge base
+modify(itemID->?item; userID->?user; attribute->?attribute; amount->"0.25") :-
+	commonArtistBonus(userID->?user),
+	itemIn(itemID->?item; writer->?artist !?),
+	item(itemID->?item2; writer->?artist !?),
+	rating(userID->?user; itemID->?item2; attribute->?attribute; rating->5).
+
+modify(itemID->?item; userID->?user; attribute->?attribute; amount->"-0.25") :-
+	commonArtistBonus(userID->?user),
+	itemIn(itemID->?item; writer->?artist !?),
+	item(itemID->?item2; writer->?artist !?),
+	rating(userID->?user; itemID->?item2; attribute->?attribute; rating->1).
+
+block(itemID->?item; userID->?user):-
+	newArtistOnly(userID->?user),
+	itemIn(itemID->?item; writer->?artist !?),
+	item(itemID->?item2; writer->?artist !?),
+	rating(userID->?user, itemID->?item2 !?).
+
+%predicted values for item 3
+prediction(itemID->3; userID->1;attribute->Originality;rating->3).
+prediction(itemID->3; userID->1;attribute->Overall;rating->4).
+prediction(itemID->3; userID->1;attribute->Workout;rating->5).
+prediction(itemID->3; userID->1;attribute->Party;rating->2).
+prediction(itemID->3; userID->1;attribute->Romantic;rating->3).
+prediction(itemID->3; userID->1;attribute->"Feel Good";rating->4).
+prediction(itemID->3; userID->1;attribute->Depressing;rating->2).
+prediction(itemID->3; userID->1;attribute->Relaxing;rating->4).
+prediction(itemID->3; userID->1;attribute->Stressed;rating->3).
+prediction(itemID->3; userID->2;attribute->Originality;rating->4).
+prediction(itemID->3; userID->2;attribute->Overall;rating->3).
+prediction(itemID->3; userID->2;attribute->Workout;rating->2).
+prediction(itemID->3; userID->2;attribute->Party;rating->3).
+prediction(itemID->3; userID->2;attribute->Romantic;rating->4).
+prediction(itemID->3; userID->2;attribute->"Feel Good";rating->2).
+prediction(itemID->3; userID->2;attribute->Depressing;rating->3).
+prediction(itemID->3; userID->2;attribute->Relaxing;rating->4).
+prediction(itemID->3; userID->2;attribute->Stressed;rating->3).
+
+%item 3 information
+itemIn(itemID->3;ownerID->2;category->Rock;title->11am;mp3->"http://thedashboard.net/sean/seans_song1.mp3";writer->"Sean McGrath";producer->"Sean McGrath";album->"";length->"";"release date"->2003;tempo->Medium;mood->Peaceful).
+
+%item Knowledge
+item(itemID->1;ownerID->1;category->"Modern Rock";title->"Be There";mp3->"http://www.birdseyeviewmusic.com/music/bethere.mp3";writer->"Bird's Eye View";producer->"Bird's Eye View";album->Demo;length->"0.163194444444444";"release date"->"September 2003";tempo->Medium;mood->Dark).
+item(itemID->2;ownerID->2;category->Rock;title->"First Sight";mp3->"http://thedashboard.net/sean/seans_song1.mp3";writer->"Sean McGrath";producer->"Sean McGrath";album->"";length->"";"release date"->2003;tempo->Medium;mood->Peaceful).
+
+%user Knowledge
+user(userID->1;username->Mary;city->"Saint John";country->Canada;age->21;sex->F).
+user(userID->2;username->John;city->Fredericton;country->Canada;age->21;sex->M).
+
+%user1 profile
+commonArtistBonus(userID->1).
+newArtistOnly(userID->1).
+
+%user2 profile
+commonArtistBonus(userID->2).
+
+
+%rating Knowledge
+rating(userID->1;itemID->1;attribute->Originality;rating->5).
+rating(userID->1;itemID->2;attribute->Overall;rating->4).
+rating(userID->1;itemID->2;attribute->Originality;rating->2).
+rating(userID->1;itemID->2;attribute->Workout;rating->4).
+rating(userID->1;itemID->2;attribute->Party;rating->4).
+rating(userID->1;itemID->2;attribute->Romantic;rating->4).
+
+rating(userID->2;itemID->2;attribute->Overall;rating->3).
+rating(userID->2;itemID->2;attribute->Originality;rating->5).
+rating(userID->2;itemID->2;attribute->Workout;rating->1).
+rating(userID->2;itemID->2;attribute->Party;rating->2).
+rating(userID->2;itemID->2;attribute->Romantic;rating->5).
+rating(userID->2;itemID->2;attribute->"Feel Good";rating->3).
+rating(userID->2;itemID->2;attribute->Depressing;rating->2).
+rating(userID->2;itemID->2;attribute->Relaxing;rating->3).
+rating(userID->2;itemID->2;attribute->Stressed;rating->1).

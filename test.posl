@@ -1,0 +1,39 @@
+submit(ben:requester,abstract,result1).
+submit(ben:requester,final,result1).
+submit(ben:requester,abstract,result2).
+submit(ben:requester,final,result2).
+submit(ben:requester,abstract,result3).
+submit(ben:requester,final,result3).
+
+
+ % abstractSubmittal(?R:Requester,?Result1,?Reason1),
+ % authorPossiblity(?R:Requester,?Result2,?Reason2).
+
+%authorPossiblity(?R:Requester,?Authors,?Answer) :-
+  %authorRequirements(?R:Requester,?Authors,?Answer).
+
+
+%authorRequirements(?R:Organizing_Committee,submission[authors], decision[yes,author[second,later]]).
+%authorRequirements(?R:Program_Chair, submission[authors], decision[yes,author[first,later]]).
+%authorRequirements(?R:Requester, submission[authors], decision[yes,author[first,later]]).
+
+%abstractSubmittal(?R:Requester, submission[possible], decision[no,passed[deadline]]) :-
+ % date(?X:Integer), deadline(abstract, ?D:Integer), greaterThan(?X:Integer,?D:Integer),naf(exceptionalCase(?R:Requester)).
+
+%abstractSubmittal(?R:Requester, submission[possible], decision[restricted[yes,passed[deadline]],exceptionalCase,submit[asap]]) :-
+ % date(?X:Integer), deadline(abstract, ?D:Integer), greaterThan(?X:Integer,?D:Integer),exceptionalCase(?R:Requester).
+
+%abstractSubmittal(?From:Requester,submission[possible],decision[yes,onGoing[deadline]]) :-
+  %date(?X:Integer), deadline(abstract, ?D:Integer), lessThanOrEqual(?X:Integer,?D:Integer).
+
+
+
+%deadline(abstract, 20070710:Integer).
+%deadline(paper, 20070720:Integer).
+%deadline(final, 20070823:Integer).
+
+%date(20070618:Integer).
+
+%exceptionalCase(?R:Requester) :- sick(?R:Requester).
+
+%sick(ben:Requester).

@@ -1,0 +1,58 @@
+<HTML>
+	<HEAD>
+		<TITLE>OO jDREW Bottom Up Example typed rules and facts (RuleML)</TITLE>
+	</HEAD>
+	<BODY>
+	<H3>&lt;!-- Example: NBBizKB sample typed rules and facts (RuleML) - Bottom Up --&gt;</H3>
+<XMP>
+<?xml version="1.0" encoding="UTF-8"?> 
+<rulebase>  
+	<imp>  
+		<_head>  
+			<atom>  
+				<_opr><rel>discount</rel></_opr>  
+				<_slot name="offerName"><var type="Offer">off</var></_slot>  
+				<_slot name="customerName"><var type="Customer">cust</var></_slot>  
+				<_slot name="amount"><ind>10</ind></_slot>  
+			</atom>  
+		</_head>  
+		<_body>  
+			<and>  
+				<atom>  
+					<_opr><rel>offer</rel></_opr>  
+					<_slot name="name"><var type="Offer">off</var></_slot>  
+					<_slot name="category"><ind>special</ind></_slot>  
+					<_slot name="price"><var/></_slot>  
+				</atom>  
+				<atom>  
+					<_opr><rel>customer</rel></_opr>  
+					<_slot name="name"><var type="Customer">cust</var></_slot>  
+					<_slot name="status"><ind>gold</ind></_slot>  
+				</atom> 
+			</and>  
+		</_body>  
+	</imp>  
+	<fact> 
+		<_head>  
+			<atom>  
+				<_opr><rel>customer</rel></_opr>  
+				<_slot name="name"><var type="Customer">cust</var></_slot>  
+				<_slot name="status"><ind>gold</ind></_slot>  
+			</atom>  
+		</_head>  
+	</fact>  
+	<fact>  
+		<_head> 
+			<atom>  
+				<_opr><rel>offer</rel></_opr>  
+				<_slot name="name"><var type="Promotion">offer</var></_slot>  
+				<_slot name="category"><ind>special</ind></_slot>  
+				<_slot name="price"><var/></_slot>  
+			</atom>  
+		</_head> 
+	</fact> 
+</rulebase>
+
+</XMP>
+	</BODY>
+</HTML>

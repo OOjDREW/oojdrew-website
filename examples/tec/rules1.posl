@@ -1,0 +1,16 @@
+%%Instance 1,
+%project facts
+project(id->1:Neural_Networks;name->project2).
+project(id->2:Control_Engineering;name->project2).
+project(id->3:Pulp_and_Paper;name->Forestryproject).
+project(id->4:Printing_Technology;name->Manufacturing_Eng_project).
+project(id->5:Biomaterials;name->project5).
+project(id->6:Genetic_Algorithms;name->project6).
+
+%department_project rule - defines a project as being in the CS 
+pepartment if it's area is AI
+department_project(dept->CS;projectid->?ID):-project(id->?ID:Artificial_Intelligence !?X).
+
+%example queries
+%project(id->?ID:Manufacturing_Engineering;name->?Name).
+%department_project(dept->CS;projectid->?ID).

@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW -Stratification Examples</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <h3>Testing for Stratification </h3>
+	  <br>
+	  A knowledge base is stratified if and only if there is no naf through recursion.
+	  <br><br>
+	  To test for stratification make sure to check the box that says <b>"Test for Stratification" :</b>
+	  <br><br>
+	  <img src="checkBox.jpg" />
+	  
+	  <br>
+	  
+	  <p><b>Simple Example</b></p>
+	  
+	p() :- p1(). <br>
+	p1() :- p2().<br>
+	p2() :- p3().<br>
+	p3() :- p4().<br>
+	p4() :- p5().<br>
+	p5() :- p6().<br>
+	p6() :- naf(p()).<br>
+	
+	<br>
+	This knowledge base is clearly not stratifiable. To see more details on why stratification fails
+	click (Yes) in the popup box after you parse, the knowledge base:
+	<br>
+	<br>
+	<img src="yes.jpg" />
+	<br>
+	<br>
+	After you clicked yes, a popup box will appear to explain in more details why stratification failed:
+	<br>
+	<br>
+	<img src="details.jpg" />
+	<br>
+	
+	
+	
+	  <p><b>Modified Simple Example</b></p>
+	p() :- p1().<br>
+	p1() :- p2().<br>
+	p2() :- p3().<br>
+	p3() :- naf(p4()).<br>
+	p4() :- p5().<br>
+	p5() :- p6().<br>
+	p6() :- naf(p()).<br>
+	
+	<br>
+	If there are multiple reasons why stratification fails, they will all be displayed:<br>
+	<br>
+	<img src="mod.jpg" />
+	<br>
+	
+	<br>
+	 <p><b>Example with Body Terms</b></p>
+	actual_adv(?S,?P) :-  student(?S,?Majr,?Yr), professor(?P, ?Majr), chosen(?S, ?P).<br>
+	chosen(?S,?P) :- student(?S,?Majr,?Yr), professor(?P, ?Majr), naf(diffChoice(?S, ?P)).<br>
+	diffChoice(?S,?P) :- chosen(?S, ?P1).<br>
+	<br>
+	This example shows how rules with body terms will be displayed during stratification violations:
+	<br>
+	<br>
+	<img src="body.jpg" />
+	<br>
+	<br>
+	<p><b>Example using <a href="http://www.ruleml.org/usecases/nbbizkb/NBBizKBRules.posl">NBBizKB use case</a></b></p>
+	Here is a link to the NBBizKB rules in <a href="http://www.ruleml.org/usecases/nbbizkb/NBBizKBRules.posl">POSL format</a>.
+	<br><br>
+	This is not stratifiable for four reasons:
+	<br><br>
+	<img src="biz.jpg" />
+	<br>
+	
+      </td>
+
+      <td style="height: 609px;" class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; July 25, 2006</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Ben Craig </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

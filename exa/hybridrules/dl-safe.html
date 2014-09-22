@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>OO jDREW - Hybrid Rules from DL-safe</title>
+
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+
+<body>
+
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+
+  <tr>
+	<td colspan="3" class="title">
+	<a href="../../index.html"> <img border="0" src="jdrew264.png"></img> </a>
+  </tr>
+
+  <tr>
+    <td class="leftbar"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="topspacer"></td>
+      </tr>
+	  
+      <tr>
+        <td class="menuitem"> &gt; <a href="../../index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../../docs.html">Documentation</a></td>
+      </tr>
+
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+
+        <td class="menuitem"> &gt; <a href="../../download.html">Downloads</a></td>
+      </tr>
+      <tr>
+        <td class="spacer"></td>
+
+      </tr>
+      <tr>
+        <td class="menuitem"> &gt; <a href="../../demo.html">Online Demo</a></td>
+      <tr>
+        <td class="spacer"></td>
+      </tr>
+	  
+	   <tr>
+        <td class="menuitem"> &gt; <a href="../../contact.html">Contact</a></td>
+       </tr>
+		
+      <tr>
+        <td class="bottomspacer"></td>
+      </tr>
+    </table>      
+      <p>&nbsp;</p>
+
+    </td>
+    <td class="mainarea">
+      <pre style="font-family: Arial; width: 636px;"><a href="jpeg/exa4posl-bu2.JPG"><span style="font-family: courier; font-size: 10pt;"></span></a><span style="font-family: courier; font-size: 10pt;"></span><span style="font-family: courier; font-size: 10pt;">An Example From DL-safe for query to BadChild(Cain)<br /><br /><img style="height: 121px; width: 619px;" alt="" src="../jpeg/dl-safe.JPG" /><br /><br />*** making rules DL safe ***<br /><br />the Rule component (in POSL)<br /><br />BadChild(?X) :- Q_Grandchild(?X), Q_parent(?X, ?Y), Q_parent(?Z, ?Y),<br />	hates(?X, ?Z)</span><span style="font-family: courier; font-size: 10pt;">, O(?X)</span><span style="font-family: courier; font-size: 10pt;">, O(?Y)</span><span style="font-family: courier; font-size: 10pt;">, O(?Z)</span><span style="font-family: courier; font-size: 10pt;">.<br /><br />hates(Cain, Abel).<br />O(Cain).<br />O(Abel).<br />O(Adam).<br /><br />the DL component (in RACER)<br /><br />(in-knowledge-base dlrule-t dlrule-a)<br /><br />(in-tbox dlrule-t)<br /><br />(signature :atomic-concepts (Person Grandchild)<br /> :roles ((parent)<br />	(father :parent parent))<br /> :individuals (Cain Adam Abel))<br /><br />(implies Person (some father Person))<br />(implies (some father (some father Person)) Grandchild)<br /><br />(in-abox dlrule-a)<br /><br />(instance Cain Person)<br /><br />(related Cain Adam father)<br />(related Abel Adam father)</span><span style="font-family: courier; font-size: 10pt;"></span></pre>
+
+      </td>
+
+      <td class="rightbar">
+      <p>Last Updated:<br />
+
+&nbsp;&nbsp; October 31, 2005</p>
+
+      <p>By:<br />
+
+&nbsp;&nbsp; Jing Mei </p>
+
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>
