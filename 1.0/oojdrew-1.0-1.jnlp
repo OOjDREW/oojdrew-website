@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- JNLP File for OO jDREW 1.0 --> 
+<jnlp spec="1.0+" codebase="http://cloud.github.com/downloads/OOjDREW/OOjDREW/" href="oojdrew-1.0.jnlp">
+	<information>
+		<title>OO jDREW Top-Down Engine</title> 
+		<vendor>NRC</vendor>
+		<homepage href="http://ruleml.org/oojdrew/"/>
+		<description>OO jDREW Top-Down Engine</description>
+		<description kind="short">OO jDREW Top-Down Engine</description>
+		<offline-allowed/> 
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+    <resources>
+      <j2se version="1.3+" href="http://java.sun.com/products/autodl/j2se"/>
+      <j2se version="1.3+"/>
+	  <jar href="oojdrew-1.0-SNAPSHOT-jar-with-dependencies.jar" main="true" download="eager"/>
+   </resources>
+   <application-desc main-class="org.ruleml.oojdrew.TopDown.TopDownApp"/>
+</jnlp>

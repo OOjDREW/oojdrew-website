@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<jnlp spec="1.0+" 
+  codebase= "http://cloud.github.com/downloads/OOjDREW/OOjDREW/" 
+  href="translator10.jnlp">
+	<information>
+		<title>Translator Application RuleML - POSL Converter</title> 
+		<vendor>NRC</vendor>
+		<homepage href="http://ruleml.org/oojdrew/"/>
+		<description>Translator Application RuleML - POSL Converter</description>
+		<description kind="short">Translator Application</description>
+		<offline-allowed/> 
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+    <resources>
+      <j2se version="1.3+" href="http://java.sun.com/products/autodl/j2se"/>
+      <j2se version="1.3+"/>
+	  <jar href="oojdrew-1.0-SNAPSHOT-jar-with-dependencies.jar" main="true" 
+      download="eager"/>
+   </resources>
+   <application-desc main-class="org.ruleml.oojdrew.GUI.Translator"/>
+</jnlp>
